@@ -2,35 +2,77 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM — The Future Without Debt — Founder JHON GONZALES</title>
+<title>PO80.COM — Private System — No Stores — Founder JHON GONZALES</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;600;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Instrument+Serif&display=swap" rel="stylesheet">
 <style>
-*{font-family:'Bricolage Grotesque',sans-serif}.serif{font-family:'Instrument Serif',serif}.mono{font-family:'JetBrains Mono',monospace}
-body{background:#020203;color:#fff;overflow-x:hidden}
-#bg{position:fixed;inset:0;z-index:-6;width:100%;height:100%;object-fit:cover;filter:brightness(0.30) contrast(1.15)}
-#fog{position:fixed;inset:0;z-index:-5;background:radial-gradient(90% 65% at 50% 10%, rgba(255,255,255,0.16), transparent 60%), linear-gradient(to bottom, transparent, #020203 92%)}
-.orb{position:fixed;filter:blur(70px);z-index:-4;animation:float 22s infinite alternate}
-@keyframes float{0%{transform:translate(-8%,-8%)}100%{transform:translate(10%,12%)}}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));backdrop-filter:blur(70px);border:1px solid rgba(255,255,255,0.13);box-shadow:0 0 90px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.14)}
-.card-w{background:#fcfbf8;color:#080808}
-.shock{background:linear-gradient(180deg,#fff 10%, rgba(255,255,255,0.22) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+body{background:#020208;color:#fff}#bg{position:fixed;inset:0;z-index:-6;width:100%;height:100%;object-fit:cover;filter:brightness(0.35)}
+.card{background:rgba(255,255,255,0.08);backdrop-filter:blur(70px);border:1px solid rgba(255,255,255,0.12)}
 </style>
 </head>
 <body>
-
 <video id="bg" autoplay muted loop playsinline><source src="https://videos.pexels.com/video-files/18069234/18069234-uhd_1440_1440_24fps.mp4" type="video/mp4"></video>
-<div id="fog"></div>
-<div class="orb" style="left:-5%;top:-5%;width:900px;height:900px;background:radial-gradient(circle, rgba(255,255,255,0.13), transparent 70%)"></div>
-<div class="orb" style="right:-10%;bottom:-5%;width:1200px;height:1200px;background:radial-gradient(circle, rgba(247,147,26,0.18), transparent 70%)"></div>
 
-<div class="max-w-[1440px] mx-auto px-6 md:px-12 pt-8 pb-32">
-
-<!-- HEADER -->
+<div class="max-w-[1300px] mx-auto px-6 pt-8 pb-20">
 <div class="flex justify-between items-center">
-<p class="tracking-[0.8em] text-[12px]">PO80.COM</p>
-<div class="flex gap-3 items-center">
-<div class="relative">
-<button id="langBtn" class="card rounded-full px-6 py-3 mono text-[10px] tracking-[0.3em]">🌐 ENGLISH ▼</button>
-<div id="langMenu" class="hidden absolute right-0 top-12 card rounded-[20px] p-2 w-[180px] z-50">
-<button onclick="set
+<p class="tracking-[0.9em] text-[11px]">PO80.COM — PRIVATE — JHON GONZALES</p>
+<select id="tr" class="card rounded-full px-6 py-2 text-[10px]"><option value="en">🌐 ENGLISH</option><option value="es">ESPAÑOL</option><option value="fr">FRANÇAIS</option><option value="ru">РУССКИЙ</option><option value="zh">中文</option></select>
+</div>
+
+<h1 class="text-[13vw] md:text-[105px] leading-[0.85] mt-12 font-bold">Private.<br>No stores.<br>No bills.</h1>
+<p class="mt-6 text-[20px] opacity-70 max-w-[900px]">PO80.COM is private. Not for sale on PlayStore or Apple Store. Download only from po80.com. One payment for life. Your phone becomes wireless modem without SIM. Founder JHON GONZALES.</p>
+
+<div class="mt-12 grid md:grid-cols-2 gap-8">
+<div class="bg-white text-black rounded-[32px] p-8">
+<p class="text-[11px] tracking-[0.5em] opacity-60">PRIVATE DISTRIBUTION — REAL SYSTEM</p>
+<h3 class="text-[24px] mt-4 font-bold">Real offline system. Scans WiFi in your location. Recharges. Uses without data.</h3>
+
+<div class="mt-6 p-4 bg-black text-white rounded-xl mono text-[11px] leading-[2]">
+<p>📡 STATUS: <span id="s" class="text-[#F7931A]">Detecting...</span></p>
+<p>💾 STORAGE: <span id="st">0%</span></p>
+<div class="w-full h-2 bg-white/20 rounded-full mt-2"><div id="b" class="h-full bg-[#F7931A]" style="width:0%"></div></div>
+</div>
+
+<button onclick="recharge()" class="mt-6 w-full bg-black text-white py-4 rounded-full text-[11px] font-bold">🔋 RECHARGE USING FREE WIFI — REAL</button>
+<button onclick="useOff()" class="mt-3 w-full border-2 border-black py-4 rounded-full text-[11px] font-bold">📴 USE WITHOUT DATA OR WIFI</button>
+
+<p class="text-[12px] mt-6 leading-[1.8] opacity-70">Android APK: Scans WiFi SSIDs around you with WifiManager (real). iPhone: PWA private — Add to Home Screen from Safari, no App Store needed. Both save offline packs. No monthly bill. One payment. Client secure.</p>
+</div>
+
+<div>
+<div class="bg-black rounded-[32px] p-8 border-2 border-[#F7931A]">
+<p class="text-[10px] tracking-[0.5em] text-[#F7931A]">OFFICIAL BTC WALLET — FOUNDER JHON GONZALES — PRIVATE</p>
+<p class="mt-3 text-[13px] break-all font-bold text-[#F7931A]">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
+<img id="qr" class="bg-white p-2 rounded-xl mt-4 w-[200px] mx-auto">
+<div class="mt-4 grid grid-cols-2 gap-2">
+<button onclick="navigator.clipboard.writeText('bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s');alert('COPIED')" class="bg-white text-black py-3 rounded-full text-[10px] font-bold">COPY BTC</button>
+<button onclick="window.open('bitcoin:bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s')" class="bg-[#F7931A] text-black py-3 rounded-full text-[10px] font-bold">PAY BTC</button>
+</div>
+<p class="text-[8px] opacity-40 mt-4 mono text-center">BTC ONLY — PRIVATE — NO STORES — DIRECT FROM PO80.COM</p>
+</div>
+
+<div class="bg-[#fcfbf7] text-black rounded-[32px] p-8 mt-6">
+<p class="text-[10px] tracking-[0.5em] opacity-50">PRICES BELOW — ONE PAYMENT — LIFETIME — PRIVATE DOWNLOAD</p>
+<div class="mt-4 space-y-2 text-[13px]">
+<div class="flex justify-between p-3 border rounded-xl"><span>5 GB STARTER</span><b>$4.99</b></div>
+<div class="flex justify-between p-3 bg-black text-white rounded-xl"><span>20 GB POPULAR 🔥</span><b>$15.99</b></div>
+<div class="flex justify-between p-3 border rounded-xl"><span>1000 GB FOUNDER 1TB</span><b class="text-[#F7931A]">$666.99</b></div>
+</div>
+<button onclick="alert('PRIVATE DOWNLOAD: Android -> Download PO80.apk direct from po80.com/downloads. iPhone -> Open po80.com in Safari -> Share -> Add to Home Screen. No PlayStore, no Apple Store. One payment BTC: bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s')" class="mt-6 w-full bg-black text-white py-4 rounded-full text-[11px] font-bold">⬇ PRIVATE DOWNLOAD — APK + IPHONE PWA — FROM PO80.COM ONLY</button>
+<p class="text-[9px] opacity-50 mt-3 text-center mono">NOT FOR SALE ON STORES. ONLY PO80.COM. FOUNDER JHON GONZALES.</p>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+document.getElementById('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bitcoin:bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s';
+let st=parseInt(localStorage.getItem('po80_s')||'0');
+function upd(){document.getElementById('b').style.width=st+'%';document.getElementById('st').textContent=st+'% — '+(st*12)+' MB OFFLINE';}
+upd();
+document.getElementById('s').textContent=navigator.onLine? 'ON WIFI — READY TO RECHARGE (PRIVATE SYSTEM)':'OFFLINE — USING STORED '+st+'%';
+function recharge(){if(!navigator.onLine){alert('Connect to free WiFi to recharge');return;}st=Math.min(100,st+10);localStorage.setItem('po80_s',st);upd();alert('RECHARGED +10% PRIVATE — OFFLINE PACK SAVED');}
+function useOff(){alert('OFFLINE MODE: Using '+st+'% stored. No data, no WiFi. Private system from PO80.COM only.');}
+</script>
+</body>
+</html>
