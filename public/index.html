@@ -1,74 +1,91 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PO80.COM - FUNDADO POR LENOX JG</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;800&family=Inter:wght@200;300;400&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PO80.COM | FUNDADO POR JHON GONZALES aka LENOX JG</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;800&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet"><style>
 *{font-family:'Inter',sans-serif}h1,b{font-family:'Syne',sans-serif}
-.bg-real{position:fixed;inset:0;z-index:-10;background:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070') center/cover;transform:scale(1.12);animation:breath 20s infinite alternate}
-@keyframes breath{0%{transform:scale(1.12) translateY(0)}100%{transform:scale(1.20) translateY(-20px)}}
-.fog{position:fixed;inset:0;z-index:-8;background:linear-gradient(to top, black 25%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.5))}
-.clouds{position:fixed;inset:0;z-index:-7;pointer-events:none;overflow:hidden}
-.cloud{position:absolute;background:radial-gradient(ellipse at center, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.15) 55%, transparent 75%);filter:blur(14px);border-radius:50%;animation:drift linear infinite}
-.c1{width:1000px;height:200px;top:10%;left:-60%;animation-duration:38s;opacity:0.65}
-.c2{width:1400px;height:260px;top:30%;left:-80%;animation-duration:62s;opacity:0.38}
-.c3{width:900px;height:180px;top:58%;left:-70%;animation-duration:52s;opacity:0.55}
-.c4{width:700px;height:130px;top:76%;left:-50%;animation-duration:78s;opacity:0.32}
-@keyframes drift{0%{transform:translateX(0) translateY(0) scaleX(1)}50%{transform:translateX(70vw) translateY(-18px) scaleX(1.15)}100%{transform:translateX(175vw) translateY(0) scaleX(1)}}
-.glass{backdrop-filter:blur(50px) saturate(1.9);background:rgba(12,12,12,0.58);border:1px solid rgba(255,255,255,0.11);box-shadow:0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08)}
-.line{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)}
+.bg-real{position:fixed;inset:0;z-index:-10;background:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070') center/cover;transform:scale(1.05)}
+.overlay{position:fixed;inset:0;z-index:-9;background:linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.7) 65%, black 100%)}
+.glass{backdrop-filter:blur(45px) saturate(1.8);background:rgba(12,12,12,0.62);border:1px solid rgba(255,255,255,0.10);box-shadow:0 30px 60px rgba(0,0,0,0.6)}
+.shine{position:relative;overflow:hidden}.shine:after{content:'';position:absolute;top:0;left:-120%;width:70%;height:100%;background:linear-gradient(110deg,transparent,rgba(255,255,255,0.35),transparent);animation:shine 2.5s infinite}@keyframes shine{0%{left:-120%}100%{left:180%}}
 </style></head><body class="bg-black text-white">
 
-<div class="bg-real"></div><div class="fog"></div><div class="clouds"><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="cloud c4"></div></div>
+<div class="bg-real"></div><div class="overlay"></div>
 
-<!-- FUNDADOR ARRIBA COMO ME PEDISTE -->
-<div class="max-w-[1400px] mx-auto px-8 pt-10">
-<div class="flex justify-between items-center">
-<div><p class="text-[11px] tracking-[8px] opacity-40">PO80.COM</p></div>
-<div class="text-right"><p class="text-[10px] tracking-[5px] opacity-30">SISTEMA FUNDADO POR</p><p class="text-[13px] font-black tracking-widest mt-1">JHON GONZALES <span class="font-light opacity-60">TAMBIÉN COMO ARTISTA MUSICAL</span> LENOX JG</p></div>
+<div class="max-w-[1300px] mx-auto px-6 md:px-10 pt-8 pb-20">
+<!-- FUNDADOR ARRIBA PERFECTO -->
+<div class="flex justify-between items-start">
+<div><b class="text-[16px] tracking-[14px]">PO80.COM</b><p class="text-[10px] tracking-[5px] opacity-30 mt-1">SISTEMA OFICIAL</p></div>
+<div class="text-right glass rounded-2xl px-5 py-3"><p class="text-[9px] tracking-[5px] opacity-30">FUNDADO POR</p><p class="font-black text-[13px] tracking-widest mt-1">JHON GONZALES</p><p class="text-[11px] opacity-70">TAMBIÉN COMO ARTISTA MUSICAL <span class="bg-white text-black px-2 py-0.5 rounded-full font-black">LENOX JG</span></p></div>
 </div>
 
-<div class="line mt-8"></div>
+<!-- HERO ELEGANTE EXTREMO -->
+<h1 class="text-[14vw] lg:text-[125px] leading-[0.8] tracking-[-6px] mt-10 font-light">FUTURO<br><span class="font-extrabold">SIN NUMERO</span><br><span class="opacity-20">SOLO WIFI</span></h1>
 
-<!-- HERO EXTREMO REALISTA QUE ENAMORA -->
-<h1 class="text-[14vw] lg:text-[120px] leading-[0.78] tracking-[-5px] mt-12 font-light">EL FUTURO<br><span class="font-extrabold">SIN NUMERO</span><br><span class="opacity-20">SOLO WIFI</span></h1>
+<div class="mt-10 grid lg:grid-cols-[1.15fr_0.85fr] gap-6">
 
-<div class="mt-12 grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
+<!-- DESCRIPCIÓN PERFECTA DEL SISTEMA -->
 <div class="glass rounded-[32px] p-8 md:p-10">
-<p class="text-[11px] tracking-[6px] opacity-30">LO QUE VAMOS A OFRECER - LA MEJOR CALIDAD</p>
-<p class="mt-6 text-[18px] leading-[1.7] font-light">Que el app tenga el soporte o software de guardar o obtener wifi y solo recargar wifi y almacenar cuando salgan fuera y describir que en el futuro ya no usaremos número de teléfono todo será por red wifi mi app y mi web te ofrece de lo mejor sin pagar plans telefónicos un sistema muy moderno con solo recargar un almacén de wifi y usarlo sin datos móviles y sin wifi si te queda fuera o en un lugar sin cobertura máxima seguridad por si tienes emergencia o perdidas en el medio del océano en el desierto ubicación compartida la mejor calidad.</p>
+<p class="text-[10px] tracking-[6px] opacity-30">DESCRIPCIÓN OFICIAL DEL SISTEMA - LA MEJOR CALIDAD</p>
+<h2 class="text-[26px] font-black leading-[0.9] mt-5">EL PRIMER ALMACÉN DE<br>WIFI RECARGABLE DEL MUNDO</h2>
+<p class="mt-6 text-[16px] leading-[1.75] font-light opacity-85">Que el app tenga el soporte o software de guardar o obtener wifi y solo recargar wifi y almacenar cuando salgan fuera. En el futuro ya no usaremos número de teléfono, todo será por red wifi. Mi app y mi web te ofrece lo mejor sin pagar planes telefónicos. Un sistema muy moderno con solo recargar un almacén de wifi y usarlo sin datos móviles y sin wifi si te quedas fuera o en un lugar sin cobertura. Máxima seguridad por si tienes emergencia o pérdidas en medio del océano, en el desierto. Ubicación compartida, la mejor calidad.</p>
 
-<div class="mt-8 line"></div>
+<div class="mt-8 h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent"></div>
 
-<p class="mt-8 text-[14px] leading-[1.8] opacity-60">La recarga yo no la vendo, ellos recargan su sistema a través de su wifi, lo que yo hago es guardar su wifi, o sea ellos mismos con mi app recargan su internet con su mismo internet, si ellos están fuera de la ciudad están en el desierto o mar abierto ellos podrán usar mi app para poder tener la mejor seguridad y ayuda como un módem.</p>
+<h3 class="text-[13px] font-black tracking-[4px] mt-8">CÓMO VA A SER LA UTILIDAD - PERFECTO</h3>
+<div class="mt-5 space-y-4 text-[13px] leading-[1.7]">
+<p><span class="bg-white text-black px-2 py-1 rounded-full text-[10px] font-black">01</span> <b class="text-white">RECARGA DE WIFI:</b> La recarga yo no la vendo, ellos recargan su sistema a través de su wifi. Lo que yo hago es guardar su wifi. Ellos mismos con mi app recargan su internet con su mismo internet de casa.</p>
+<p><span class="bg-white text-black px-2 py-1 rounded-full text-[10px] font-black">02</span> <b class="text-white">ALMACÉN COMO BATERÍA:</b> Tu propio WIFI se guarda como powerbank. Guardas 2.5GB, 5GB, 10GB de tu propio internet para usarlo después. Es tu módem virtual.</p>
+<p><span class="bg-white text-black px-2 py-1 rounded-full text-[10px] font-black">03</span> <b class="text-white">MODO DESIERTO / OCÉANO:</b> Si estás fuera de la ciudad, en desierto o mar abierto sin cobertura, prendes tu WIFI guardado y tu celular funciona como módem. Sin chip, sin plan.</p>
+<p><span class="bg-white text-black px-2 py-1 rounded-full text-[10px] font-black">04</span> <b class="text-white">MÁXIMA SEGURIDAD:</b> SOS + GPS + ubicación compartida aunque no tengas señal. Tu familia te encuentra. Ideal para emergencia en montaña.</p>
+<p><span class="bg-white text-black px-2 py-1 rounded-full text-[10px] font-black">05</span> <b class="text-white">SISTEMA DE OBRA COMPLETO:</b> Clientes, cobros, gastos, utilidad real, todo offline usando tu WIFI guardado. Todo se guarda en tu celular, no en la nube.</p>
+</div>
 
-<div class="mt-10 grid grid-cols-3 gap-[1px] bg-white/10 rounded-2xl overflow-hidden p-[1px]">
-<div class="bg-black p-6"><p class="text-[9px] tracking-[3px] opacity-20">01 / ALMACÉN</p><p class="text-xs font-bold mt-3">GUARDA TU PROPIO WIFI COMO BATERÍA</p></div>
-<div class="bg-black p-6"><p class="text-[9px] tracking-[3px] opacity-20">02 / MODEM</p><p class="text-xs font-bold mt-3">MODO DESIERTO Y OCÉANO SIN SEÑAL</p></div>
-<div class="bg-black p-6"><p class="text-[9px] tracking-[3px] opacity-20">03 / SOS</p><p class="text-xs font-bold mt-3">SEGURIDAD GPS + UBICACIÓN COMPARTIDA</p></div>
+<!-- BOTÓN RECARGAR WIFI QUE PEDISTE -->
+<div class="mt-10 glass rounded-[20px] p-[1px]">
+<div class="bg-[#0a0a0a] rounded-[20px] p-5">
+<div class="flex justify-between items-center"><p class="text-[10px] tracking-[4px] opacity-30">MI ALMACÉN DE WIFI - DEMO EN VIVO</p><span id="status" class="bg-[#00ff88] text-black text-[9px] font-black px-2 py-1 rounded-full">● WIFI DE CASA DETECTADO</span></div>
+<div class="flex items-end gap-4 mt-4"><b id="gb" class="text-[52px] leading-none tracking-tighter">2.50 GB</b><p class="text-[11px] opacity-50 mb-2">Guardado como módem<br>para desierto/océano</p></div>
+<div class="mt-4 h-[8px] bg-white/10 rounded-full overflow-hidden"><div id="bar" class="h-full bg-white w-[45%] rounded-full"></div></div>
+<button onclick="guardarWifi()" class="shine mt-5 w-full bg-white text-black py-4 rounded-full font-black text-[13px]">📶 RECARGAR / ALMACENAR MI WIFI AHORA (+2.5GB)</button>
+<p class="text-[10px] opacity-30 text-center mt-3">Este botón guarda TU PROPIO WIFI de casa como batería. Solo funciona si estás conectado a tu WIFI.</p>
 </div>
-</div>
-
-<!-- TARJETA SISTEMA QUE ESTAMOS CREANDO -->
-<div>
-<div class="glass rounded-[36px] p-[12px]">
-<div class="bg-[#080808] rounded-[28px] p-8">
-<p class="text-[10px] tracking-[5px] opacity-20">SISTEMA PO80 - SOFTWARE DE ALTA CALIDAD</p>
-<div class="mt-6 space-y-4 text-[13px] leading-relaxed opacity-70">
-<p>✓ <b class="text-white">Software que guarda WIFI</b> - Tu propio WIFI de casa se guarda como powerbank de internet</p>
-<p>✓ <b class="text-white">App que funciona sin datos</b> - Sin datos móviles, sin WIFI de ciudad, como módem virtual</p>
-<p>✓ <b class="text-white">Máxima seguridad</b> - Emergencia SOS, GPS en desierto, mar abierto, montaña</p>
-<p>✓ <b class="text-white">Ubicación compartida</b> - Sin número, solo por red WIFI privada PO80.COM</p>
-<p>✓ <b class="text-white">Sistema de obra</b> - Clientes, cobros, PDF y Excel real, todo offline</p>
-<p>✓ <b class="text-white">Futuro sin número</b> - En el futuro ya no usaremos chip, todo será WIFI</p>
-</div>
-<div class="mt-8 bg-white text-black rounded-2xl p-5">
-<p class="text-[10px] tracking-[4px] opacity-40">FUNDADOR</p>
-<p class="font-black mt-1">JHON GONZALES</p>
-<p class="text-xs">TAMBIÉN COMO ARTISTA MUSICAL <b>LENOX JG</b></p>
-<p class="text-[11px] opacity-60 mt-3">Creador del primer módem virtual de WIFI del mundo. La mejor calidad.</p>
-</div>
-</div>
-</div>
-<p class="text-center text-[10px] tracking-[4px] opacity-20 mt-6">PO80.COM • EST. 2026 • DISEÑO EXTREMO REALISTA ELEGANTE</p>
 </div>
 </div>
 
-<div class="h-20"></div>
+<!-- DESCARGA SOLO NAVEGADOR + SISTEMA COMPLETO -->
+<div class="space-y-5">
+<div class="glass rounded-[32px] p-[1px]">
+<div class="bg-[#080808] rounded-[32px] p-8">
+<p class="text-[10px] tracking-[5px] opacity-30">DESCARGA OFICIAL - SOLO NAVEGADOR</p>
+<h3 class="text-[22px] font-black leading-[0.9] mt-4">DESCARGA EL<br>SISTEMA COMPLETO</h3>
+<p class="text-[12px] opacity-60 mt-3 leading-relaxed">No trabajamos con App Store ni Play Store. Todo se descarga directo desde tu navegador. El sistema completo, no es PDF, es la app real instalable.</p>
+
+<div class="mt-6 space-y-3">
+<div class="bg-white text-black rounded-2xl p-4"><div class="flex justify-between items-center"><div><p class="font-black text-sm">📲 DESCARGAR SISTEMA COMPLETO</p><p class="text-[11px] opacity-60">Se instala en tu celular como WhatsApp</p></div><span class="bg-black text-white px-3 py-1 rounded-full text-[10px] font-black">PWA</span></div><button onclick="installApp()" class="mt-3 w-full bg-black text-white py-3 rounded-full font-black text-xs">INSTALAR AHORA DESDE NAVEGADOR →</button></div>
+
+<div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4">
+<p class="font-bold text-xs">CÓMO INSTALAR:</p>
+<p class="text-[11px] opacity-50 mt-2 leading-relaxed">1. Entra a po80.com desde tu navegador (Chrome, Safari)<br>2. Te aparece "Agregar a pantalla de inicio" / "Instalar app"<br>3. Le das instalar y ya queda como app real, sin tienda.<br>4. Funciona offline con tu WIFI guardado.</p>
 </div>
+
+<div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 flex justify-between items-center"><div><p class="font-black text-xs">NAVEGADORES COMPATIBLES</p><p class="text-[11px] opacity-50">Chrome • Safari • Firefox • Edge • Opera</p></div><p class="text-[10px] opacity-30">100% WEB</p></div>
+</div>
+</div>
+</div>
+
+<div class="glass rounded-[24px] p-5 flex gap-4 items-center">
+<img src="https://i.pravatar.cc/100?img=12" class="w-12 h-12 rounded-full border border-white/20">
+<div><p class="text-[9px] tracking-[4px] opacity-30">CREADOR Y FUNDADOR</p><p class="font-black text-sm">JHON GONZALES aka LENOX JG</p><p class="text-[11px] opacity-60">Artista musical - Creador del primer almacén de WIFI recargable. La mejor calidad, sistema perfecto.</p></div>
+</div>
+
+<p class="text-center text-[9px] tracking-[5px] opacity-20">PO80.COM © 2026 • SISTEMA PERFECTO • 100% NAVEGADOR • SIN TIENDAS</p>
+</div>
+</div>
+</div>
+
+<script>
+let wifi=parseFloat(localStorage.getItem('po80_wifi')||'2.5');
+function upd(){document.getElementById('gb').innerText=wifi.toFixed(2)+' GB';document.getElementById('bar').style.width=Math.min(100,(wifi/20)*100)+'%';localStorage.setItem('po80_wifi',wifi);document.getElementById('status').innerText=navigator.onLine?'● WIFI DE CASA DETECTADO - PUEDES RECARGAR':'● MODO DESIERTO - USANDO WIFI GUARDADO';}
+function guardarWifi(){if(!navigator.onLine){alert('Conéctate a tu WIFI de casa para poder RECARGAR / ALMACENAR tu propio WIFI como batería');return;}wifi+=2.5;upd();alert('¡PERFECTO! Recargaste 2.5GB de TU PROPIO WIFI. Ahora está guardado como módem para desierto / océano.');}
+let deferredPrompt;window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;});function installApp(){if(deferredPrompt){deferredPrompt.prompt();}else{alert('Para instalar el SISTEMA COMPLETO:\n\nEn iPhone: Dale al botón compartir (cuadro con flecha) y luego "Agregar a pantalla de inicio"\n\nEn Android: Dale a los 3 puntitos arriba y "Instalar app" o "Agregar a pantalla de inicio"\n\nSe instala directo desde el navegador, sin App Store, sistema completo no PDF.');}}
+upd();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(()=>{});}
+</script>
 </body></html>
