@@ -3,24 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM — BY LENOX JG</title>
+<title>PO80.COM — BY LENOX JG | MÓDEM INALÁMBRICO + BTC</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{font-family:'Bricolage Grotesque',sans-serif}
 .serif{font-family:'Instrument Serif',serif}
-body{background:#050507;color:#f5f5f5;overflow-x:hidden}
-#bgVideo{position:fixed;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;filter:brightness(0.6) saturate(1.1)}
-.overlay{position:fixed;inset:0;z-index:-2;background:radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,0.12), transparent 60%),linear-gradient(to bottom, rgba(5,5,7,0.2), rgba(5,5,7,0.85) 70%, #050507 95%)}
-.mist{position:fixed;inset:0;z-index:-1;opacity:0.5;background:radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 40%),radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06), transparent 50%);animation:drift 20s infinite alternate}
-@keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(-3%, -2%)}}
-.card{background:rgba(255,255,255,0.06);backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.10)}
-.card-w{background:rgba(246,245,242,0.96);backdrop-filter:blur(30px);color:#0a0a0a;box-shadow:0 20px 80px rgba(0,0,0,0.5)}
-.price-card{transition:all 0.4s;cursor:pointer}.price-card:hover{transform:translateY(-6px) scale(1.02);background:#fff}
-.glow{box-shadow:0 0 40px rgba(255,255,255,0.15)}
-#lockScreen{position:fixed;inset:0;z-index:9999;background:#050507;display:flex;align-items:center;justify-content:center;padding:20px}
-#main{display:none}
+.mono{font-family:'JetBrains Mono',monospace}
+body{background:#050507;color:#f5f5f5}
+#bgVideo{position:fixed;inset:0;z-index:-4;width:100%;height:100%;object-fit:cover;filter:brightness(0.5) saturate(1.2) contrast(1.1)}
+.overlay{position:fixed;inset:0;z-index:-3;background:radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,0.14), transparent 60%),linear-gradient(to bottom, rgba(5,5,7,0.1), rgba(5,5,7,0.88) 70%, #050507 98%)}
+.grain{position:fixed;inset:0;z-index:-2;opacity:0.08;background-image:url('https://grainy-gradients.vercel.app/noise.svg');pointer-events:none}
+.card{background:rgba(255,255,255,0.06);backdrop-filter:blur(50px);border:1px solid rgba(255,255,255,0.11)}
+.card-w{background:rgba(246,245,242,0.98);color:#0a0a0a;backdrop-filter:blur(30px);box-shadow:0 30px 100px rgba(0,0,0,0.6)}
 .bar{transition:width 1s cubic-bezier(0.16,1,0.3,1)}
+.btc{background:linear-gradient(135deg,#F7931A,#FF9900);color:#000}
 </style>
 </head>
 <body>
@@ -28,48 +25,73 @@ body{background:#050507;color:#f5f5f5;overflow-x:hidden}
 <video id="bgVideo" autoplay muted loop playsinline>
 <source src="https://videos.pexels.com/video-files/18069234/18069234-uhd_1440_1440_24fps.mp4" type="video/mp4">
 </video>
-<div class="overlay"></div><div class="mist"></div>
+<div class="overlay"></div><div class="grain"></div>
 
-<div id="lockScreen">
-<div class="card rounded-[36px] p-10 max-w-[420px] w-full text-center glow">
-<p class="text-[10px] tracking-[0.6em] opacity-40">PO80.COM</p>
-<h2 class="serif text-[42px] leading-[0.9] mt-6">Sistema<br><span class="italic opacity-50">privado</span></h2>
-<p class="text-[11px] opacity-40 mt-4 tracking-[0.2em]">FUNDADO POR LENOX JG — JHON GONZALES</p>
-<input id="user" placeholder="Usuario" class="mt-10 w-full bg-white/[0.06] border border-white/10 rounded-full px-6 py-4 text-[13px] outline-none text-center">
-<input id="pass" type="password" placeholder="Contraseña" class="mt-3 w-full bg-white/[0.06] border border-white/10 rounded-full px-6 py-4 text-[13px] outline-none text-center">
-<button onclick="login()" class="mt-6 w-full bg-white text-black py-4 rounded-full text-[11px] tracking-[0.3em] font-bold">ENTRAR AL SISTEMA</button>
-<p id="err" class="text-[11px] text-red-400 mt-4 hidden">Usuario o contraseña incorrecto</p>
-</div>
-</div>
-
-<div id="main" class="max-w-[1280px] mx-auto px-6 md:px-10 pt-8 pb-32">
+<div class="max-w-[1320px] mx-auto px-6 md:px-10 pt-8 pb-32">
 
 <div class="flex justify-between items-center">
-<p class="text-[13px] tracking-[0.6em] font-light">PO80.COM</p>
-<div class="flex gap-3">
-<div class="card rounded-full px-5 py-2 hidden md:block"><p class="text-[10px] tracking-[0.2em] opacity-60">MÓDEM INALÁMBRICO SIN CHIP</p></div>
-<button onclick="logout()" class="card rounded-full px-5 py-2 text-[10px] tracking-[0.2em]">CERRAR SESIÓN</button>
+<p class="text-[14px] tracking-[0.6em] font-bold">PO80.COM</p>
+<div class="flex gap-2"><div class="card rounded-full px-4 py-2"><p class="text-[9px] tracking-[0.3em] mono">BTC ONLY • NO BANKS</p></div><div class="btc rounded-full px-4 py-2"><p class="text-[9px] tracking-[0.3em] mono font-bold">BY LENOX JG</p></div></div>
+</div>
+
+<h1 class="serif text-[18vw] md:text-[138px] leading-[0.8] tracking-[-0.06em] mt-14">Tu módem<br><span class="italic opacity-40">inalámbrico</span><br>con BTC.</h1>
+
+<p class="max-w-[700px] mt-8 text-[17px] leading-[1.8] font-light opacity-70">PO80.COM no es una app. Es tu módem inalámbrico, tu sistema de obra y tu seguro de vida en desierto, mar y montaña. Recargas con la contraseña del wifi gratis de tu casa, cafetería o comedor. Luego apagas todo y sigues trabajando sin chip, sin bill de teléfono. Pagas una sola vez en la vida, solo con Bitcoin.</p>
+
+<div class="mt-14 grid md:grid-cols-[1.2fr_0.8fr] gap-6">
+
+<!-- IZQUIERDA -->
+<div class="space-y-6">
+
+<div class="card rounded-[36px] p-9 md:p-11">
+<p class="text-[10px] tracking-[0.5em] opacity-30 mono">01 / COMO FUNCIONA — LA FACILIDAD TOP</p>
+<h2 class="text-[28px] md:text-[34px] leading-[1.05] mt-6">Vas a comer, te dan wifi gratis, recargas y usas todo sin chip.</h2>
+<div class="mt-8 grid gap-4 text-[13px]">
+<div class="bg-white/[0.06] rounded-[22px] p-6 border border-white/[0.05]"><p class="mono text-[10px] opacity-40">PASO 01</p><p class="mt-2 leading-[1.6] opacity-75"><b class="text-white">Estás en tu casa / cafetería / comedor:</b> Te dan la contraseña del wifi gratis. La pones en PO80 y presionas RECARGAR. Tu almacén sube poco a poco 14% cada vez, como batería Tesla, hasta 100%.</p></div>
+<div class="bg-white/[0.06] rounded-[22px] p-6 border border-white/[0.05]"><p class="mono text-[10px] opacity-40">PASO 02</p><p class="mt-2 leading-[1.6] opacity-75"><b class="text-white">Modo módem inalámbrico:</b> Sales del lugar, apagas wifi y datos móviles. Entras a PO80.COM y todo tu sistema sigue funcionando con lo que recargaste. Se va consumiendo poco a poco como si usaras datos móviles.</p></div>
+<div class="bg-white/[0.06] rounded-[22px] p-6 border border-white/[0.05]"><p class="mono text-[10px] opacity-40">PASO 03</p><p class="mt-2 leading-[1.6] opacity-75"><b class="text-white">Sin bill:</b> No pagas plan telefónico. Solo pagas una vez en la vida tu almacenamiento. Luego recargas gratis donde quieras.</p></div>
+</div>
+
+<div class="mt-10 card-w rounded-[28px] p-7">
+<p class="mono text-[10px] tracking-[0.4em] opacity-50">RECARGA CON WIFI DEL LUGAR — DEMO REAL</p>
+<input id="wifiPass" type="password" placeholder="Contraseña del wifi (casa, cafetería, comedor...)" class="mt-5 w-full bg-black/[0.05] border border-black/10 rounded-full px-6 py-4 text-[13px] outline-none">
+<div class="mt-5 h-[12px] bg-black/10 rounded-full overflow-hidden p-1"><div id="barReal" class="bar h-full bg-black w-[0%] rounded-full"></div></div>
+<div class="flex justify-between mt-3 mono"><p id="porc" class="text-[11px] opacity-60">0% — VACÍO</p><p id="gbTxt" class="text-[11px] font-bold">0.00 / 1.00 GB</p></div>
+<button onclick="recargarPoco()" class="mt-6 w-full bg-black text-white py-5 rounded-full text-[11px] tracking-[0.35em] font-bold">RECARGAR CON ESTE WIFI AHORA</button>
 </div>
 </div>
 
-<h1 class="serif text-[18vw] md:text-[130px] leading-[0.82] tracking-[-0.05em] mt-16">Tu módem<br><span class="italic opacity-40">inalámbrico</span><br>sin chip.</h1>
-
-<div class="mt-10 grid md:grid-cols-[1.3fr_0.7fr] gap-6">
-
-<div class="card rounded-[32px] p-8 md:p-10 glow">
-<p class="text-[10px] tracking-[0.5em] opacity-30">COMO FUNCIONA — TOP QUALITY</p>
-<h2 class="text-[26px] md:text-[30px] leading-[1.1] mt-6 font-light">Estás en tu casa, cafetería o comedor. Te dan la clave del wifi gratis. Recargas PO80 y lo usas donde quieras como datos.</h2>
-
-<div class="mt-8 space-y-3">
-<div class="flex gap-4 bg-white/[0.05] rounded-[20px] p-5"><span class="serif text-[22px] opacity-40">01</span><p class="text-[13px] leading-[1.6] opacity-70"><b class="text-white">En tu casa:</b> pones tu contraseña de wifi, le das RECARGAR y tu almacén se llena poco a poco como batería Tesla.</p></div>
-<div class="flex gap-4 bg-white/[0.05] rounded-[20px] p-5"><span class="serif text-[22px] opacity-40">02</span><p class="text-[13px] leading-[1.6] opacity-70"><b class="text-white">En cafetería / comedor:</b> te dan wifi gratis. Lo pones aquí, recargas sin usar chip, sin pagar bill de teléfono.</p></div>
-<div class="flex gap-4 bg-white/[0.05] rounded-[20px] p-5"><span class="serif text-[22px] opacity-40">03</span><p class="text-[13px] leading-[1.6] opacity-70"><b class="text-white">Se consume como datos:</b> sales, apagas wifi y datos, usas PO80.COM. Lo recargado se consume poco a poco. Tu app es tu módem.</p></div>
+<div class="card rounded-[36px] p-9 md:p-11">
+<p class="mono text-[10px] tracking-[0.5em] opacity-30">02 / QUE TENDREMOS — SISTEMA COMPLETO PO80</p>
+<div class="mt-8 grid md:grid-cols-2 gap-4 text-[12.5px] leading-[1.7] opacity-70">
+<div class="bg-white/[0.05] rounded-[20px] p-5"><b class="text-white block mb-1">📍 UBICACIÓN SOS SATELITAL</b> Compartir ubicación en tiempo real en desierto, océano, montaña sin señal. Botón SOS que manda tu ubicación a tu familia.</div>
+<div class="bg-white/[0.05] rounded-[20px] p-5"><b class="text-white block mb-1">🏗️ GESTIÓN DE OBRAS</b> Crea obras, clientes, trabajadores, presupuestos, fotos, facturas. Todo offline con lo recargado.</div>
+<div class="bg-white/[0.05] rounded-[20px] p-5"><b class="text-white block mb-1">🗺️ MAPAS OFFLINE</b> Mapas que funcionan sin internet usando tu almacén recargado. Como si tuvieras el módem conectado.</div>
+<div class="bg-white/[0.05] rounded-[20px] p-5"><b class="text-white block mb-1">📡 MÓDEM INALÁMBRICO</b> Tu teléfono se convierte en módem. Recargas con wifi gratis y consumes como datos.</div>
+<div class="bg-white/[0.05] rounded-[20px] p-5"><b class="text-white block mb-1">🔒 PRIVACIDAD TOTAL</b> Sin bancos, sin número, sin chip. Solo Bitcoin. Nadie te rastrea.</div>
+<div class="bg-white/[0.05] rounded-[20px] p-5"><b class="text-white block mb-1">⚡ RECARGA INTELIGENTE</b> Detecta wifi gratis y recarga poco a poco hasta 100%. Barra premium estilo Tesla.</div>
+</div>
 </div>
 
-<div class="mt-8 card-w rounded-[28px] p-7">
-<p class="text-[10px] tracking-[0.4em] opacity-50">RECARGA TU ALMACÉN CON WIFI DEL LUGAR</p>
-<input id="wifiPass" type="password" placeholder="Contraseña del wifi (casa, cafetería, comedor...)" class="mt-5 w-full bg-black/[0.04] border border-black/10 rounded-full px-6 py-4 text-[13px] outline-none">
-<div class="mt-5 h-[8px] bg-black/10 rounded-full overflow-hidden"><div id="barReal" class="bar h-full bg-black w-[0%] rounded-full"></div></div>
-<div class="flex justify-between mt-3"><p id="porc" class="text-[11px] opacity-60">0% — Vacío</p><p id="gbTxt" class="text-[11px] font-bold">0.00 / 1.00 GB</p></div>
-<button onclick="recargarPoco()" class="mt-6 w-full bg-black text-white py-5 rounded-full text-[11px] tracking-[0.3em] font-bold">RECARGAR AHORA CON ESTE WIFI</button>
-<p class="text-[10px] opacity-40 text-center mt-3">
+</div>
+
+<!-- DERECHA PRECIOS BTC -->
+<div class="space-y-6">
+
+<div class="card-w rounded-[36px] p-8 md:p-9">
+<p class="mono text-[10px] tracking-[0.4em] opacity-40">PRECIOS — SOLO BTC — UN PAGO EN LA VIDA</p>
+<h3 class="serif text-[36px] leading-[0.9] mt-5">Pagas con Bitcoin<br><span class="italic opacity-40">una vez y para siempre</span></h3>
+<p class="text-[11px] opacity-50 mt-3 mono">BTC RATE: ~$65,000 USD. Precio final en satoshis al momento de pagar.</p>
+
+<div class="mt-7 grid gap-3">
+
+<div onclick="payBTC(5)" class="group border border-black/10 rounded-[20px] p-5 flex justify-between items-center cursor-pointer hover:bg-black hover:text-white transition-all">
+<div><p class="text-[14px] font-bold">5 GB — STARTER</p><p class="mono text-[10px] opacity-50">$4.99 ≈ 0.000076 BTC</p></div><p class="btc px-3 py-1 rounded-full text-[10px] font-bold mono">PAY BTC</p>
+</div>
+
+<div onclick="payBTC(20)" class="group border border-black/10 rounded-[20px] p-5 flex justify-between items-center cursor-pointer hover:bg-black hover:text-white transition-all">
+<div><p class="text-[14px] font-bold">20 GB — POPULAR</p><p class="mono text-[10px] opacity-50">$15.99 ≈ 0.000246 BTC</p></div><p class="btc px-3 py-1 rounded-full text-[10px] font-bold mono">PAY BTC</p>
+</div>
+
+<div onclick="payBTC(50)" class="bg-black text-white rounded-[20px] p-5 flex justify-between items-center cursor-pointer">
+<div><p class="text-[14px]
