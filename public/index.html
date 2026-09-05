@@ -2,127 +2,70 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM — WORLD TOP SYSTEM — JHON GONZALES</title>
+<title>PO80.COM - REAL SYSTEM</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<style>
-body{font-family:'Bricolage Grotesque',sans-serif;background:#060608;color:#fff}
-.mono{font-family:'JetBrains Mono',monospace}
-.card{background:rgba(255,255,255,0.06);backdrop-filter:blur(80px);border:1px solid rgba(255,255,255,0.08)}
-.top{box-shadow:0 0 100px rgba(247,147,26,0.15)}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>body{font-family:'Bricolage Grotesque';background:#08080a;color:#fff}.mono{font-family:'JetBrains Mono',monospace}.card{background:rgba(255,255,255,0.07);backdrop-filter:blur(60px);border:1px solid rgba(255,255,255,0.1)}</style>
 </head>
-<body>
+<body class="max-w-[1400px] mx-auto px-5 py-6">
 
-<div class="max-w-[1500px] mx-auto px-6 md:px-10 py-8">
-
-<!-- TOP BAR MUNDIAL -->
 <div class="flex justify-between items-center">
-<p class="tracking-[0.9em] text-[11px] opacity-60">PO80.COM — WORLD — TOP 1%</p>
-<div class="flex gap-2">
-<select id="lang" class="card rounded-full px-6 py-2.5 mono text-[10px]"><option value="en">🌐 ENGLISH</option><option value="es">ESPAÑOL</option><option value="zh">中文</option><option value="ru">РУССКИЙ</option></select>
-<div class="bg-white text-black rounded-full px-5 py-2.5 mono text-[9px] font-bold">FOUNDER: JHON GONZALES</div>
+<p class="tracking-[0.6em] text-[11px]">PO80.COM — REAL</p>
+<div class="flex gap-2"><select id="lang" class="card rounded-full px-4 py-2 mono text-[10px]"><option value="en">EN</option><option value="es">ES</option><option value="zh">中文</option><option value="ru">RU</option></select><div class="bg-white text-black rounded-full px-4 py-2 mono text-[9px] font-bold">JHON GONZALES</div></div>
+</div>
+
+<h1 class="mt-10 text-[48px] md:text-[80px] leading-[0.85] font-bold">Your phone<br>is now <span class="text-[#F7931A]">infinite.</span></h1>
+<p class="mt-4 opacity-60 max-w-[700px]">Turn any free WiFi into offline internet you own forever. No bills. No SIM. Works in 195 countries.</p>
+
+<div class="mt-10 grid lg:grid-cols-2 gap-6">
+
+<div class="space-y-5">
+
+<div class="card rounded-[32px] p-7">
+<p class="mono text-[10px] tracking-[0.4em] opacity-40">REAL SYSTEM — POWER / RECHARGE / OFFLINE</p>
+
+<div class="mt-5 flex justify-between items-center bg-black rounded-2xl p-5">
+<span id="powerLabel" class="font-bold">SISTEMA APAGADO</span>
+<label class="relative inline-flex cursor-pointer"><input type="checkbox" id="power" class="sr-only peer"><div class="w-[72px] h-[40px] bg-white/10 rounded-full peer peer-checked:bg-[#F7931A] after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-8 after:w-8 after:transition-all peer-checked:after:translate-x-[32px]"></div></label>
+</div>
+
+<div class="mt-4 bg-white text-black rounded-[24px] p-6">
+<div class="flex justify-between"><span class="mono text-[10px] opacity-50">STORAGE CREATED</span><span id="maxLabel" class="mono text-[10px] font-bold">5 GB MAX</span></div>
+<p id="stor" class="text-[44px] font-bold leading-none mt-2">0%</p>
+<p id="mb" class="mono text-[12px]">0 MB / 5 GB</p>
+<div class="w-full h-3 bg-black/10 rounded-full mt-3"><div id="bar" class="h-full bg-black rounded-full transition-all" style="width:0%"></div></div>
+<p id="wifiInfo" class="mono text-[10px] mt-3 opacity-60">Connect to real WiFi to recharge</p>
+</div>
+
+<button id="btnRecharge" class="w-full mt-4 bg-[#F7931A] text-black py-5 rounded-full font-bold">🔋 RECARGAR CON WIFI VERDADERO</button>
+<button id="btnOffline" class="w-full mt-3 card py-5 rounded-full font-bold mono text-[12px]">📴 USAR SIN DATOS NI WIFI</button>
+<p id="log" class="mono text-[10px] mt-3 opacity-50 text-center">Log: System ready</p>
+</div>
+
+<div class="card rounded-[32px] p-7">
+<p class="mono text-[10px] tracking-[0.4em] opacity-40">EXPANDIR ESPACIO — PAGA SI DESEAS MÁS</p>
+<p class="mt-3 font-bold">Empiezas gratis 5GB. Expande si quieres más espacio offline infinito. Un pago = para siempre.</p>
+
+<div class="mt-5 grid grid-cols-1 gap-3">
+<button onclick="setMax(5)" class="tierBtn w-full text-left border-2 border-white rounded-2xl p-4 flex justify-between"><span><b>5 GB STARTER</b><br><span class="mono text-[9px] opacity-50">Gratis</span></span><span class="bg-white text-black px-3 py-1 rounded-full text-[11px] font-bold">FREE</span></button>
+<button onclick="setMax(20)" class="tierBtn w-full text-left bg-white text-black rounded-2xl p-4 flex justify-between"><span><b>20 GB POPULAR 🔥</b></span><span>$15.99</span></button>
+<button onclick="setMax(50)" class="tierBtn w-full text-left card rounded-2xl p-4 flex justify-between"><span><b>50 GB BUILDER</b></span><span>$30.99</span></button>
+<button onclick="setMax(100)" class="tierBtn w-full text-left card rounded-2xl p-4 flex justify-between"><span><b>100 GB PRO</b></span><span>$60.99</span></button>
+<button onclick="setMax(1000)" class="tierBtn w-full text-left border-2 border-[#F7931A] rounded-2xl p-5 flex justify-between"><span><b class="text-[#F7931A]">1000 GB FOUNDER 1TB</b></span><span class="text-[#F7931A] font-bold">$666.99</span></button>
+</div>
+
+<div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-2 mono text-[10px] text-center">
+<div class="card p-3 rounded-xl">🏗️ Jobs Offline</div><div class="card p-3 rounded-xl">👥 Clients</div><div class="card p-3 rounded-xl">🗺️ Maps All Countries</div><div class="card p-3 rounded-xl">🚨 SOS GPS</div>
 </div>
 </div>
 
-<div class="mt-16 grid lg:grid-cols-[1.1fr_0.9fr] gap-10">
-
-<div>
-<h1 class="text-[13vw] md:text-[110px] leading-[0.8] font-bold" data-t="h1">Top<br>quality.<br>No bills.</h1>
-<p class="mt-6 text-[20px] opacity-60 max-w-[600px]" data-t="hero">Best software. Best system. No failures. Android + iPhone. Available in all countries. One payment for life.</p>
-
-<!-- SISTEMA REAL - BOTONES TOP -->
-<div class="mt-12 card top rounded-[40px] p-8">
-<div class="flex justify-between items-center"><p class="mono text-[10px] tracking-[0.5em] opacity-40">REAL SYSTEM — POWER + RECHARGE</p><div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div></div>
-
-<div class="mt-6 grid grid-cols-2 gap-4">
-<div class="bg-black rounded-[20px] p-5"><p class="mono text-[9px] opacity-50">SYSTEM</p><p id="sysState" class="font-bold mt-2">OFF</p><label class="relative inline-flex items-center cursor-pointer mt-3"><input type="checkbox" id="power" class="sr-only peer"><div class="w-14 h-8 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#F7931A]"></div></label></div>
-<div class="bg-white text-black rounded-[20px] p-5"><p class="mono text-[9px] opacity-50">STORAGE CREATED</p><p id="stor" class="font-bold text-[22px] mt-2">0%</p><div class="w-full h-2 bg-black/10 rounded-full mt-3"><div id="bar" class="h-full bg-black" style="width:0%"></div></div></div>
 </div>
 
-<div class="mt-6 grid grid-cols-1 gap-3">
-<button onclick="rechargeReal()" class="bg-[#F7931A] text-black py-5 rounded-full font-bold text-[13px] tracking-[0.1em]">🔋 RECHARGE WITH REAL WIFI — TAP TO RECHARGE</button>
-<button onclick="useOffline()" class="card py-5 rounded-full font-bold text-[11px] mono">📴 USE OFFLINE — NO DATA — NO WIFI — WORLDWIDE</button>
-</div>
+<div class="bg-[#111113] rounded-[40px] p-8 border border-white/10 h-fit">
+<p class="mono text-[10px] tracking-[0.5em] opacity-30 text-center">BITCOIN WALLET — PAY TO EXPAND</p>
 
-<p id="status" class="mono text-[10px] mt-4 opacity-60 text-center">System ready — Connect to free WiFi to recharge worldwide</p>
-</div>
-
-<!-- TODO EL CONTENIDO QUE TIENE LA APP -->
-<div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3 mono text-[10px]">
-<div class="card rounded-2xl p-4 text-center">🏗️<br>Jobs<br>Offline</div>
-<div class="card rounded-2xl p-4 text-center">👥<br>Clients<br>Worldwide</div>
-<div class="card rounded-2xl p-4 text-center">🗺️<br>Maps<br>All Countries</div>
-<div class="card rounded-2xl p-4 text-center">🚨<br>SOS<br>GPS Real</div>
-<div class="card rounded-2xl p-4 text-center">💰<br>Budgets<br>Offline</div>
-<div class="card rounded-2xl p-4 text-center">📸<br>Photos<br>Offline</div>
-<div class="card rounded-2xl p-4 text-center">👷<br>Workers<br>Manage</div>
-<div class="card rounded-2xl p-4 text-center">💬<br>Chat<br>Offline</div>
-</div>
-</div>
-
-<!-- PAGO + DESCARGAS TOP -->
-<div class="space-y-6">
-
-<div class="bg-[#0f0f10] rounded-[40px] p-8 border border-white/10 top">
-<p class="mono text-[10px] tracking-[0.6em] opacity-30 text-center">OFFICIAL PAYMENT — WORLDWIDE</p>
-<div class="bg-white rounded-[28px] p-4 mt-6 flex justify-center"><img src="qr_real.jpg" class="w-[240px] rounded-xl"></div>
-<p class="mono text-[11px] break-all text-center mt-4 opacity-80">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
-<div class="bg-[#2a1f0f] rounded-full px-4 py-3 mt-4 flex gap-2 text-[10px] mono"><span>⚠️</span><span>Envía solo activos de Bitcoin a esta dirección. Los demás activos se perderán para siempre.</span></div>
-
-<div class="mt-8">
-<p class="mono text-[10px] tracking-[0.4em] opacity-40">ONE PAYMENT — LIFETIME — NO BILLS — ALL COUNTRIES</p>
-<div class="mt-4 grid grid-cols-2 gap-2">
-<div class="card rounded-2xl p-4 text-center"><b>$4.99</b><br><span class="mono text-[9px] opacity-50">5 GB</span></div>
-<div class="bg-white text-black rounded-2xl p-4 text-center"><b>$15.99</b><br><span class="mono text-[9px]">20 GB POPULAR</span></div>
-<div class="card rounded-2xl p-4 text-center"><b>$30.99</b><br><span class="mono text-[9px] opacity-50">50 GB</span></div>
-<div class="bg-[#F7931A] text-black rounded-2xl p-4 text-center"><b>$666.99</b><br><span class="mono text-[9px]">1000 GB FOUNDER 1TB</span></div>
-</div>
-</div>
-
-<button onclick="downloadTop()" class="mt-8 w-full bg-white text-black py-5 rounded-full font-bold mono text-[12px]">⬇ TOP DOWNLOAD — ANDROID APK + IPHONE PWA — WORLDWIDE</button>
-<p class="mono text-[8px] opacity-30 text-center mt-3">AVAILABLE IN 195 COUNTRIES — NO PLAYSTORE — NO APP STORE — PRIVATE FROM PO80.COM — BEST QUALITY</p>
-</div>
-
-</div>
-</div>
-</div>
-
-<script>
-const ADDR="bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s";
-let stor=parseInt(localStorage.getItem('po80_top')||'0');
-let on=localStorage.getItem('po80_on')==='1';
-document.getElementById('power').checked=on;
-function upd(){document.getElementById('stor').textContent=stor+'%';document.getElementById('bar').style.width=stor+'%';document.getElementById('sysState').textContent=on?'ON — READY':'OFF';}
-upd();
-
-document.getElementById('power').addEventListener('change',e=>{
-on=e.target.checked;localStorage.setItem('po80_on',on?'1':'0');
-document.getElementById('status').textContent=on?'SISTEMA PRENDIDO — DETECTANDO WIFI REAL MUNDIAL':'SISTEMA APAGADO — TODO GUARDADO OFFLINE LISTO';
-upd();
-});
-
-function rechargeReal(){
-if(!on){alert('PRENDE EL SISTEMA PRIMERO — BOTÓN POWER');return;}
-if(!navigator.onLine){alert('CONÉCTATE A WIFI REAL GRATIS — CASA, CAFÉ, TRABAJO — EN CUALQUIER PAÍS');return;}
-stor=Math.min(100,stor+10);localStorage.setItem('po80_top',stor);upd();
-document.getElementById('status').textContent='RECARGADO +10% CON WIFI VERDADERO — '+stor+'% OFFLINE — TOP QUALITY';
-if('caches' in window)caches.open('po80-top').then(c=>c.add('/'));
-}
-
-function useOffline(){
-if(stor==0){alert('RECARGA PRIMERO CON WIFI REAL');return;}
-alert('OFFLINE MODE TOP — '+stor+'% — FUNCIONA SIN DATOS NI WIFI EN TODOS LOS PAÍSES — JOBS, MAPS, CLIENTS, SOS LISTO');
-}
-
-function downloadTop(){
-alert('DESCARGA TOP MUNDIAL:\n\nANDROID: po80.com/download/po80-top.apk — Instalación directa privada\nIPHONE: po80.com en Safari -> Compartir -> Añadir a pantalla de inicio — PWA Top sin App Store\n\nPAGO: '+ADDR+'\n\nUn pago, sin fallos, mejor calidad, todos los países.');
-}
-
-const T={
-en:{h1:"Top<br>quality.<br>No bills.",hero:"Best software. Best system. No failures. Android + iPhone. Available in all countries. One payment for life."},
-es:{h1:"Máxima<br>calidad.<br>Sin biles.",hero:"El mejor software. El mejor sistema. Sin fallos. Android + iPhone. Disponible en todos los países. Un pago de por vida."},
-zh:{h1:"顶级<br>质量。<br>无账单。",hero:"最好的软件。最好的系统。无故障。安卓 + iPhone。全球195个国家可用。一次付费，终身使用。"},
-ru:{h1:"Топ<br>качество.<br>Без счетов.",hero:"Лучшее ПО. Лучшая система. Без сбоев. Android + iPhone. Доступно во всех странах мира. Один платеж на всю жизнь."}
-};
-document.getElementById('lang
+<div class="mt-6 bg-white text-black rounded-[24px] p-6">
+<p class="mono text-[10px] opacity-50">BILLETERA / WALLET</p>
+<p class="font-bold mt-1">Bitcoin</p>
+<p class="mono text-[10px] opacity-50 mt-4">BTC ADDRESS</p>
+<p id="btcAddr" class="mono text-[13px] break-all mt-2 font-bold">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p
