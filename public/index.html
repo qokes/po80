@@ -2,70 +2,98 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM - REAL SYSTEM</title>
+<title>PO80.COM — Offline Construction System</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<style>body{font-family:'Bricolage Grotesque';background:#08080a;color:#fff}.mono{font-family:'JetBrains Mono',monospace}.card{background:rgba(255,255,255,0.07);backdrop-filter:blur(60px);border:1px solid rgba(255,255,255,0.1)}</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff}.mono{font-family:monospace}.card{background:#141414;border:1px solid #222}</style>
 </head>
-<body class="max-w-[1400px] mx-auto px-5 py-6">
+<body>
 
+<div class="max-w-[1280px] mx-auto px-6 py-8">
+
+<header class="flex justify-between items-center border-b border-white/10 pb-6">
+<div><p class="text-[12px] tracking-[0.4em] opacity-50">PO80.COM</p><p class="text-[11px] opacity-30 mono">Founder: Jhon Gonzales — Private System — Worldwide</p></div>
+<div class="flex gap-3"><select id="lang" class="card rounded-full px-4 py-2 text-[11px]"><option>ENGLISH</option><option>ESPAÑOL</option><option>中文</option><option>РУССКИЙ</option></select></div>
+</header>
+
+<div class="mt-12 grid lg:grid-cols-[1.15fr_0.85fr] gap-10">
+
+<div>
+<h1 class="text-[56px] leading-[0.9] font-bold tracking-[-0.03em]">Offline system for construction. No monthly bills.</h1>
+<p class="mt-6 text-[16px] leading-[1.6] opacity-70 max-w-[600px]">PO80 is a private operating system for construction companies. Scan real WiFi at your location, convert it into offline storage, and work without mobile data or WiFi. Jobs, clients, budgets, photos, offline maps for 195 countries, SOS with real GPS. One payment, lifetime license, no stores.</p>
+
+<div class="mt-10 card rounded-[24px] p-7">
 <div class="flex justify-between items-center">
-<p class="tracking-[0.6em] text-[11px]">PO80.COM — REAL</p>
-<div class="flex gap-2"><select id="lang" class="card rounded-full px-4 py-2 mono text-[10px]"><option value="en">EN</option><option value="es">ES</option><option value="zh">中文</option><option value="ru">RU</option></select><div class="bg-white text-black rounded-full px-4 py-2 mono text-[9px] font-bold">JHON GONZALES</div></div>
+<p class="mono text-[11px] tracking-[0.3em] opacity-40">SYSTEM CONTROL — REAL</p>
+<span id="sysStatus" class="mono text-[10px] bg-white text-black px-3 py-1 rounded-full font-bold">OFFLINE READY</span>
 </div>
 
-<h1 class="mt-10 text-[48px] md:text-[80px] leading-[0.85] font-bold">Your phone<br>is now <span class="text-[#F7931A]">infinite.</span></h1>
-<p class="mt-4 opacity-60 max-w-[700px]">Turn any free WiFi into offline internet you own forever. No bills. No SIM. Works in 195 countries.</p>
-
-<div class="mt-10 grid lg:grid-cols-2 gap-6">
-
-<div class="space-y-5">
-
-<div class="card rounded-[32px] p-7">
-<p class="mono text-[10px] tracking-[0.4em] opacity-40">REAL SYSTEM — POWER / RECHARGE / OFFLINE</p>
-
-<div class="mt-5 flex justify-between items-center bg-black rounded-2xl p-5">
-<span id="powerLabel" class="font-bold">SISTEMA APAGADO</span>
-<label class="relative inline-flex cursor-pointer"><input type="checkbox" id="power" class="sr-only peer"><div class="w-[72px] h-[40px] bg-white/10 rounded-full peer peer-checked:bg-[#F7931A] after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-8 after:w-8 after:transition-all peer-checked:after:translate-x-[32px]"></div></label>
+<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-black border border-white/10 rounded-xl p-5">
+<p class="mono text-[10px] opacity-50">SYSTEM POWER</p>
+<div class="flex justify-between items-center mt-3">
+<span id="powerText" class="font-bold">System Off</span>
+<label class="relative inline-flex cursor-pointer"><input type="checkbox" id="power" class="sr-only peer"><div class="w-14 h-8 bg-[#222] rounded-full peer peer-checked:bg-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:peer-checked:bg-black after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:after:translate-x-6"></div></label>
 </div>
-
-<div class="mt-4 bg-white text-black rounded-[24px] p-6">
-<div class="flex justify-between"><span class="mono text-[10px] opacity-50">STORAGE CREATED</span><span id="maxLabel" class="mono text-[10px] font-bold">5 GB MAX</span></div>
-<p id="stor" class="text-[44px] font-bold leading-none mt-2">0%</p>
-<p id="mb" class="mono text-[12px]">0 MB / 5 GB</p>
-<div class="w-full h-3 bg-black/10 rounded-full mt-3"><div id="bar" class="h-full bg-black rounded-full transition-all" style="width:0%"></div></div>
-<p id="wifiInfo" class="mono text-[10px] mt-3 opacity-60">Connect to real WiFi to recharge</p>
 </div>
-
-<button id="btnRecharge" class="w-full mt-4 bg-[#F7931A] text-black py-5 rounded-full font-bold">🔋 RECARGAR CON WIFI VERDADERO</button>
-<button id="btnOffline" class="w-full mt-3 card py-5 rounded-full font-bold mono text-[12px]">📴 USAR SIN DATOS NI WIFI</button>
-<p id="log" class="mono text-[10px] mt-3 opacity-50 text-center">Log: System ready</p>
-</div>
-
-<div class="card rounded-[32px] p-7">
-<p class="mono text-[10px] tracking-[0.4em] opacity-40">EXPANDIR ESPACIO — PAGA SI DESEAS MÁS</p>
-<p class="mt-3 font-bold">Empiezas gratis 5GB. Expande si quieres más espacio offline infinito. Un pago = para siempre.</p>
-
-<div class="mt-5 grid grid-cols-1 gap-3">
-<button onclick="setMax(5)" class="tierBtn w-full text-left border-2 border-white rounded-2xl p-4 flex justify-between"><span><b>5 GB STARTER</b><br><span class="mono text-[9px] opacity-50">Gratis</span></span><span class="bg-white text-black px-3 py-1 rounded-full text-[11px] font-bold">FREE</span></button>
-<button onclick="setMax(20)" class="tierBtn w-full text-left bg-white text-black rounded-2xl p-4 flex justify-between"><span><b>20 GB POPULAR 🔥</b></span><span>$15.99</span></button>
-<button onclick="setMax(50)" class="tierBtn w-full text-left card rounded-2xl p-4 flex justify-between"><span><b>50 GB BUILDER</b></span><span>$30.99</span></button>
-<button onclick="setMax(100)" class="tierBtn w-full text-left card rounded-2xl p-4 flex justify-between"><span><b>100 GB PRO</b></span><span>$60.99</span></button>
-<button onclick="setMax(1000)" class="tierBtn w-full text-left border-2 border-[#F7931A] rounded-2xl p-5 flex justify-between"><span><b class="text-[#F7931A]">1000 GB FOUNDER 1TB</b></span><span class="text-[#F7931A] font-bold">$666.99</span></button>
-</div>
-
-<div class="mt-5 grid grid-cols-2 md:grid-cols-4 gap-2 mono text-[10px] text-center">
-<div class="card p-3 rounded-xl">🏗️ Jobs Offline</div><div class="card p-3 rounded-xl">👥 Clients</div><div class="card p-3 rounded-xl">🗺️ Maps All Countries</div><div class="card p-3 rounded-xl">🚨 SOS GPS</div>
+<div class="bg-white text-black rounded-xl p-5">
+<p class="mono text-[10px] opacity-50">STORAGE CREATED</p>
+<p id="stor" class="text-[32px] font-bold">0%</p>
+<p id="detail" class="mono text-[11px] opacity-60">0 MB / 5 GB — Real offline</p>
+<div class="w-full h-2 bg-black/10 rounded-full mt-2"><div id="bar" class="h-full bg-black rounded-full" style="width:0%"></div></div>
 </div>
 </div>
 
+<button id="recharge" class="w-full mt-5 bg-white text-black py-4 rounded-full font-bold text-[13px]">RECHARGE WITH REAL WIFI — DETECTS REAL WIFI IN YOUR LOCATION</button>
+<button id="offline" class="w-full mt-3 card py-4 rounded-full font-bold text-[13px]">USE OFFLINE WITHOUT DATA OR WIFI — WORLDWIDE</button>
+<p id="log" class="mono text-[10px] opacity-40 mt-3 text-center">System ready — Professional version — No failures</p>
 </div>
 
-<div class="bg-[#111113] rounded-[40px] p-8 border border-white/10 h-fit">
-<p class="mono text-[10px] tracking-[0.5em] opacity-30 text-center">BITCOIN WALLET — PAY TO EXPAND</p>
+<div class="mt-8 card rounded-[24px] p-7">
+<p class="mono text-[11px] opacity-40">STORAGE EXPANSION — PAY IF YOU WANT MORE SPACE</p>
+<h3 class="text-[20px] font-bold mt-3">Start free with 5 GB. Pay only if you want to expand your offline internet space.</h3>
+<p class="text-[13px] opacity-60 mt-2">This is how you make real money: Client installs free, then pays to expand. One payment expands forever. No monthly subscription. This is the professional model used worldwide.</p>
 
-<div class="mt-6 bg-white text-black rounded-[24px] p-6">
-<p class="mono text-[10px] opacity-50">BILLETERA / WALLET</p>
+<div class="mt-6 space-y-2">
+<button onclick="setTier(5)" class="tier w-full flex justify-between items-center border border-white/20 rounded-xl p-4 hover:bg-white hover:text-black transition"><span><b>5 GB Starter</b> — Free to start</span><span class="font-bold">FREE</span></button>
+<button onclick="setTier(20)" class="tier w-full flex justify-between items-center bg-white text-black rounded-xl p-4"><span><b>20 GB Professional</b> — Most popular for contractors</span><span class="font-bold">$15.99</span></button>
+<button onclick="setTier(50)" class="tier w-full flex justify-between items-center border border-white/20 rounded-xl p-4 hover:bg-white hover:text-black transition"><span><b>50 GB Builder</b> — Jobs + Photos + Clients</span><span class="font-bold">$30.99</span></button>
+<button onclick="setTier(100)" class="tier w-full flex justify-between items-center border border-white/20 rounded-xl p-4 hover:bg-white hover:text-black transition"><span><b>100 GB Company</b> — Offline maps for all countries</span><span class="font-bold">$60.99</span></button>
+<button onclick="setTier(1000)" class="tier w-full flex justify-between items-center border-2 border-white rounded-xl p-5 hover:bg-white hover:text-black transition"><span><b>1000 GB Founder 1TB — Unlimited</b></span><span class="font-bold">$666.99</span></button>
+</div>
+</div>
+</div>
+
+<div class="space-y-6">
+
+<div class="card rounded-[24px] p-7">
+<p class="mono text-[10px] tracking-[0.3em] opacity-30">PAYMENT — BITCOIN WALLET</p>
+
+<div class="mt-6 bg-black rounded-xl p-5 border border-white/10">
+<p class="mono text-[10px] opacity-50">WALLET / BILLETERA</p>
 <p class="font-bold mt-1">Bitcoin</p>
-<p class="mono text-[10px] opacity-50 mt-4">BTC ADDRESS</p>
-<p id="btcAddr" class="mono text-[13px] break-all mt-2 font-bold">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p
+<p class="mono text-[10px] opacity-50 mt-4">BTC ADDRESS — OFFICIAL</p>
+<p class="mono text-[12px] break-all mt-2 leading-[1.6]">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
+<p class="mono text-[9px] mt-3 opacity-40">Envía solo activos de Bitcoin a esta dirección. Los demás activos se perderán para siempre.</p>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-4">
+<button id="copy" class="bg-white text-black py-3 rounded-full mono text-[11px] font-bold">COPY ADDRESS</button>
+<button id="pay" class="border border-white/20 py-3 rounded-full mono text-[11px] font-bold">PAY WITH BITCOIN</button>
+</div>
+
+<div class="mt-6 mono text-[10px] opacity-50 leading-[2]">
+<p>✓ Android APK — Real WiFi scan with WifiManager</p>
+<p>✓ iPhone PWA — Private, Add to Home Screen, no App Store</p>
+<p>✓ Offline maps, jobs, clients, budgets, SOS GPS</p>
+<p>✓ One payment = lifetime license — No monthly bills</p>
+<p>✓ Available in 195 countries — Top quality, no failures</p>
+</div>
+
+<button id="download" class="w-full mt-6 bg-white text-black py-4 rounded-full font-bold text-[12px]">DOWNLOAD PROFESSIONAL APK + IPHONE SYSTEM</button>
+<p id="current" class="mono text-[9px] opacity-30 text-center mt-3">Current: 5 GB — 0% used — Ready to make real money</p>
+</div>
+
+<div class="card rounded-[24px] p-7">
+<p class="mono text-[11px] opacity-40">HOW YOU MAKE REAL MONEY — PROFESSIONAL MODEL</p>
+<p class="mt-4 text-[13px] leading-[1.7] opacity-70">1. Client downloads APK private
