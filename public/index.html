@@ -2,77 +2,114 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM — Private System — No Stores — Founder JHON GONZALES</title>
+<title>PO80.COM — One Payment. No Bills. Ever. — Founder JHON GONZALES</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-body{background:#020208;color:#fff}#bg{position:fixed;inset:0;z-index:-6;width:100%;height:100%;object-fit:cover;filter:brightness(0.35)}
-.card{background:rgba(255,255,255,0.08);backdrop-filter:blur(70px);border:1px solid rgba(255,255,255,0.12)}
+*{font-family:'Bricolage Grotesque',sans-serif}.serif{font-family:'Instrument Serif',serif}.mono{font-family:'JetBrains Mono',monospace}
+body{background:#08080a;color:#fff} #bg{position:fixed;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:brightness(0.28)}
+.card{background:rgba(255,255,255,0.07);backdrop-filter:blur(80px);border:1px solid rgba(255,255,255,0.1)}
+.card-w{background:#f8f6f0;color:#0a0a0a}
 </style>
 </head>
 <body>
 <video id="bg" autoplay muted loop playsinline><source src="https://videos.pexels.com/video-files/18069234/18069234-uhd_1440_1440_24fps.mp4" type="video/mp4"></video>
 
-<div class="max-w-[1300px] mx-auto px-6 pt-8 pb-20">
+<div class="max-w-[1440px] mx-auto px-6 md:px-10 pt-8 pb-24">
+
 <div class="flex justify-between items-center">
-<p class="tracking-[0.9em] text-[11px]">PO80.COM — PRIVATE — JHON GONZALES</p>
-<select id="tr" class="card rounded-full px-6 py-2 text-[10px]"><option value="en">🌐 ENGLISH</option><option value="es">ESPAÑOL</option><option value="fr">FRANÇAIS</option><option value="ru">РУССКИЙ</option><option value="zh">中文</option></select>
+<p class="tracking-[0.8em] text-[11px] opacity-60">PO80.COM</p>
+<div class="flex gap-2">
+<select id="lang" class="card rounded-full px-6 py-2.5 mono text-[10px] bg-black/60"><option value="en">🌐 ENGLISH</option><option value="es">ESPAÑOL</option><option value="fr">FRANÇAIS</option><option value="ru">РУССКИЙ</option><option value="zh">中文</option><option value="de">DEUTSCH</option></select>
+<div class="bg-white text-black rounded-full px-5 py-2.5 mono text-[9px] font-bold tracking-[0.2em]">FOUNDER: JHON GONZALES</div>
+</div>
 </div>
 
-<h1 class="text-[13vw] md:text-[105px] leading-[0.85] mt-12 font-bold">Private.<br>No stores.<br>No bills.</h1>
-<p class="mt-6 text-[20px] opacity-70 max-w-[900px]">PO80.COM is private. Not for sale on PlayStore or Apple Store. Download only from po80.com. One payment for life. Your phone becomes wireless modem without SIM. Founder JHON GONZALES.</p>
-
-<div class="mt-12 grid md:grid-cols-2 gap-8">
-<div class="bg-white text-black rounded-[32px] p-8">
-<p class="text-[11px] tracking-[0.5em] opacity-60">PRIVATE DISTRIBUTION — REAL SYSTEM</p>
-<h3 class="text-[24px] mt-4 font-bold">Real offline system. Scans WiFi in your location. Recharges. Uses without data.</h3>
-
-<div class="mt-6 p-4 bg-black text-white rounded-xl mono text-[11px] leading-[2]">
-<p>📡 STATUS: <span id="s" class="text-[#F7931A]">Detecting...</span></p>
-<p>💾 STORAGE: <span id="st">0%</span></p>
-<div class="w-full h-2 bg-white/20 rounded-full mt-2"><div id="b" class="h-full bg-[#F7931A]" style="width:0%"></div></div>
-</div>
-
-<button onclick="recharge()" class="mt-6 w-full bg-black text-white py-4 rounded-full text-[11px] font-bold">🔋 RECHARGE USING FREE WIFI — REAL</button>
-<button onclick="useOff()" class="mt-3 w-full border-2 border-black py-4 rounded-full text-[11px] font-bold">📴 USE WITHOUT DATA OR WIFI</button>
-
-<p class="text-[12px] mt-6 leading-[1.8] opacity-70">Android APK: Scans WiFi SSIDs around you with WifiManager (real). iPhone: PWA private — Add to Home Screen from Safari, no App Store needed. Both save offline packs. No monthly bill. One payment. Client secure.</p>
-</div>
+<div class="mt-16 grid lg:grid-cols-[1.15fr_0.85fr] gap-12">
 
 <div>
-<div class="bg-black rounded-[32px] p-8 border-2 border-[#F7931A]">
-<p class="text-[10px] tracking-[0.5em] text-[#F7931A]">OFFICIAL BTC WALLET — FOUNDER JHON GONZALES — PRIVATE</p>
-<p class="mt-3 text-[13px] break-all font-bold text-[#F7931A]">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
-<img id="qr" class="bg-white p-2 rounded-xl mt-4 w-[200px] mx-auto">
-<div class="mt-4 grid grid-cols-2 gap-2">
-<button onclick="navigator.clipboard.writeText('bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s');alert('COPIED')" class="bg-white text-black py-3 rounded-full text-[10px] font-bold">COPY BTC</button>
-<button onclick="window.open('bitcoin:bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s')" class="bg-[#F7931A] text-black py-3 rounded-full text-[10px] font-bold">PAY BTC</button>
+<h1 class="serif text-[14vw] md:text-[108px] leading-[0.82] tracking-[-0.04em]" data-k="h1">No phone<br>bills.<br><span class="italic opacity-50">Ever.</span></h1>
+<p class="mt-8 text-[19px] md:text-[22px] leading-[1.6] opacity-70 font-light max-w-[680px]" data-k="hero">PO80 is the best software. The best technology. Your phone becomes a private wireless modem without SIM. One payment for life. Private download only from po80.com — not on stores. Founder JHON GONZALES.</p>
+
+<div class="mt-14 card-w rounded-[36px] p-10">
+<p class="mono text-[10px] tracking-[0.6em] opacity-40">SYSTEM DESCRIPTION — REAL TECHNOLOGY — NO DEMO</p>
+<h2 class="text-[28px] leading-[0.95] mt-5 font-bold" data-k="t1">Real Offline Storage Protocol. How it works.</h2>
+<div class="mt-6 text-[14px] leading-[1.9] opacity-80 space-y-5">
+<p data-k="d1"><b>1. WHAT IT IS:</b> PO80.COM is a web system that is also a native app (APK for Android, PWA for iPhone). The website IS the app. It uses real offline-first architecture: Service Worker, IndexedDB, Cache API. Same tech as Google Maps Offline.</p>
+<p data-k="d2"><b>2. REAL WIFI DETECTION:</b> Android APK uses Android WifiManager API to scan real WiFi networks in your location (SSID, signal strength). iPhone PWA detects connection state and location. When you are on free WiFi (home, cafe, work), the system saves that location and starts recharging.</p>
+<p data-k="d3"><b>3. RECHARGE & USE WITHOUT DATA:</b> On free WiFi, tap RECHARGE. It downloads offline packs (maps, construction jobs, invoices, photos, SOS protocols) and stores them locally from 0% to 100%. Then turn off WiFi and mobile data. Open PO80. Everything you recharged works offline with zero bills. SOS sends your last GPS via SMS if available.</p>
+<p data-k="d4"><b>4. WHY ONE PAYMENT:</b> You save $1,200/year. No carrier contract. No debt. Lifetime license activated by one Bitcoin payment. Private. Secure. Number 1 in offline technology.</p>
 </div>
-<p class="text-[8px] opacity-40 mt-4 mono text-center">BTC ONLY — PRIVATE — NO STORES — DIRECT FROM PO80.COM</p>
 </div>
 
-<div class="bg-[#fcfbf7] text-black rounded-[32px] p-8 mt-6">
-<p class="text-[10px] tracking-[0.5em] opacity-50">PRICES BELOW — ONE PAYMENT — LIFETIME — PRIVATE DOWNLOAD</p>
-<div class="mt-4 space-y-2 text-[13px]">
-<div class="flex justify-between p-3 border rounded-xl"><span>5 GB STARTER</span><b>$4.99</b></div>
-<div class="flex justify-between p-3 bg-black text-white rounded-xl"><span>20 GB POPULAR 🔥</span><b>$15.99</b></div>
-<div class="flex justify-between p-3 border rounded-xl"><span>1000 GB FOUNDER 1TB</span><b class="text-[#F7931A]">$666.99</b></div>
+<div class="mt-8 card rounded-[32px] p-8">
+<div class="flex justify-between items-center"><p class="mono text-[10px] tracking-[0.4em] opacity-50">LIVE SYSTEM STATUS — REAL</p><p class="mono text-[9px] bg-[#F7931A] text-black px-3 py-1 rounded-full">PRIVATE BUILD</p></div>
+<div class="mt-5 grid grid-cols-2 gap-4 mono text-[11px]">
+<div class="bg-black rounded-2xl p-5"><p class="opacity-50">CONNECTION</p><p id="c1" class="text-[#F7931A] mt-2">Detecting...</p></div>
+<div class="bg-black rounded-2xl p-5"><p class="opacity-50">OFFLINE STORAGE</p><p id="c2" class="mt-2">0% — 0 MB</p><div class="w-full h-1.5 bg-white/10 rounded-full mt-3"><div id="b" class="h-full bg-white" style="width:0%"></div></div></div>
 </div>
-<button onclick="alert('PRIVATE DOWNLOAD: Android -> Download PO80.apk direct from po80.com/downloads. iPhone -> Open po80.com in Safari -> Share -> Add to Home Screen. No PlayStore, no Apple Store. One payment BTC: bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s')" class="mt-6 w-full bg-black text-white py-4 rounded-full text-[11px] font-bold">⬇ PRIVATE DOWNLOAD — APK + IPHONE PWA — FROM PO80.COM ONLY</button>
-<p class="text-[9px] opacity-50 mt-3 text-center mono">NOT FOR SALE ON STORES. ONLY PO80.COM. FOUNDER JHON GONZALES.</p>
+<div class="mt-5 grid grid-cols-2 gap-3">
+<button onclick="recharge()" class="bg-white text-black py-4 rounded-full mono text-[10px] font-bold">RECHARGE WITH FREE WIFI</button>
+<button onclick="useOff()" class="card py-4 rounded-full mono text-[10px] font-bold">USE OFFLINE MODE</button>
 </div>
+</div>
+</div>
+
+<div class="space-y-6">
+<!-- BTC RESPETUOSO — SOLO BTC, SIN NOMBRE AL LADO -->
+<div class="bg-[#0e0e10] rounded-[36px] p-8 border border-white/10">
+<p class="mono text-[10px] tracking-[0.5em] opacity-40 text-center">BITCOIN PAYMENT — OFFICIAL — PRIVATE</p>
+<div class="mt-6 bg-white rounded-[28px] p-5 flex justify-center"><img id="qr" class="w-[220px] h-[220px]"></div>
+<p class="mono text-[9px] opacity-40 mt-5 text-center">OFFICIAL PAYMENT ADDRESS — BTC ONLY</p>
+<p class="mono text-[12px] mt-3 break-all text-center leading-[1.8] tracking-[0.02em] select-all opacity-90">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
+<div class="mt-6 grid grid-cols-2 gap-3">
+<button onclick="navigator.clipboard.writeText('bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s');alert('BTC address copied')" class="bg-white text-black py-4 rounded-full mono text-[10px] font-bold">COPY ADDRESS</button>
+<button onclick="window.open('bitcoin:bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s','_blank')" class="bg-[#F7931A] text-black py-4 rounded-full mono text-[10px] font-bold">PAY WITH BITCOIN</button>
+</div>
+<p class="mono text-[8px] opacity-30 mt-5 text-center leading-[1.6]">One confirmation = lifetime activation. Private download only from po80.com. Not available on any store.</p>
+</div>
+
+<div class="card-w rounded-[36px] p-8">
+<p class="mono text-[10px] tracking-[0.5em] opacity-40">PRICING — ONE PAYMENT FOR LIFE — NO BILLS</p>
+<div class="mt-6 space-y-3">
+<div class="flex justify-between items-center p-4 rounded-2xl border border-black/10"><span class="text-[13px]">5 GB Starter — Offline</span><b>$4.99</b></div>
+<div class="flex justify-between items-center p-4 rounded-2xl bg-black text-white"><span class="text-[13px]">20 GB Popular</span><b>$15.99</b></div>
+<div class="flex justify-between items-center p-4 rounded-2xl border border-black/10"><span class="text-[13px]">50 GB Builder</span><b>$30.99</b></div>
+<div class="flex justify-between items-center p-5 rounded-2xl bg-[#08080a] text-white border border-[#F7931A]/40"><span class="font-bold tracking-[0.05em]">1000 GB Founder 1TB</span><span class="font-bold text-[#F7931A]">$666.99</span></div>
+</div>
+<div class="mt-7">
+<p class="mono text-[10px] opacity-50 text-center">PRIVATE DOWNLOAD — NOT ON STORES</p>
+<button onclick="alert('PRIVATE DOWNLOAD:\n\nAndroid: Download PO80.apk directly from po80.com/download — Enable Install Unknown Apps\n\niPhone: Open po80.com in Safari -> Share -> Add to Home Screen (PWA Private, no App Store)\n\nAfter 1 BTC confirmation to bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s, license unlocks forever.')" class="mt-4 w-full bg-black text-white py-5 rounded-full mono text-[11px] font-bold tracking-[0.2em]">⬇ DOWNLOAD PRIVATE SYSTEM — ANDROID APK + IPHONE</button>
+<p class="mono text-[8px] opacity-40 mt-4 text-center">© 2026 PO80.COM — Founder JHON GONZALES — Private Technology — One Payment, No Debt</p>
+</div>
+</div>
+
 </div>
 </div>
 </div>
 
 <script>
-document.getElementById('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bitcoin:bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s';
-let st=parseInt(localStorage.getItem('po80_s')||'0');
-function upd(){document.getElementById('b').style.width=st+'%';document.getElementById('st').textContent=st+'% — '+(st*12)+' MB OFFLINE';}
+const ADDR="bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s";
+document.getElementById('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=bitcoin:'+ADDR;
+let s=parseInt(localStorage.getItem('po80')||'0');
+function upd(){document.getElementById('b').style.width=s+'%';document.getElementById('c2').textContent=s+'% — '+(s*14)+' MB OFFLINE READY';}
 upd();
-document.getElementById('s').textContent=navigator.onLine? 'ON WIFI — READY TO RECHARGE (PRIVATE SYSTEM)':'OFFLINE — USING STORED '+st+'%';
-function recharge(){if(!navigator.onLine){alert('Connect to free WiFi to recharge');return;}st=Math.min(100,st+10);localStorage.setItem('po80_s',st);upd();alert('RECHARGED +10% PRIVATE — OFFLINE PACK SAVED');}
-function useOff(){alert('OFFLINE MODE: Using '+st+'% stored. No data, no WiFi. Private system from PO80.COM only.');}
+function setConn(){let el=document.getElementById('c1');el.textContent=navigator.onLine? 'ONLINE ON FREE WIFI — READY TO RECHARGE':'OFFLINE — USING '+s+'% STORED DATA — NO BILLS';}
+setConn();window.addEventListener('online',setConn);window.addEventListener('offline',setConn);
+function recharge(){if(!navigator.onLine){alert('Connect to free WiFi to recharge offline storage.');return;}s=Math.min(100,s+10);localStorage.setItem('po80',s);upd();if('caches' in window)caches.open('po80-real').then(c=>c.add('/'));alert('RECHARGED +10% — Real offline pack cached. Now turn off WiFi and mobile data — it will work.');}
+function useOff(){if(s==0){alert('No storage yet. Recharge on free WiFi first.');return;}alert('OFFLINE MODE ACTIVE — Using '+s+'% — No WiFi, No Mobile Data — Private system from PO80.COM');}
+
+const L={
+en:{h1:"No phone<br>bills.<br><span class='italic opacity-50'>Ever.</span>",hero:"PO80 is the best software. The best technology. Your phone becomes a private wireless modem without SIM. One payment for life. Private download only from po80.com — not on stores. Founder JHON GONZALES.",t1:"Real Offline Storage Protocol. How it works.",d1:"1. WHAT IT IS: PO80.COM is a web system that is also a native app (APK for Android, PWA for iPhone). The website IS the app. It uses real offline-first architecture: Service Worker, IndexedDB, Cache API. Same tech as Google Maps Offline.",d2:"2. REAL WIFI DETECTION: Android APK uses Android WifiManager API to scan real WiFi networks in your location (SSID, signal strength). iPhone PWA detects connection state and location. When you are on free WiFi (home, cafe, work), the system saves that location and starts recharging.",d3:"3. RECHARGE & USE WITHOUT DATA: On free WiFi, tap RECHARGE. It downloads offline packs (maps, construction jobs, invoices, photos, SOS protocols) and stores them locally from 0% to 100%. Then turn off WiFi and mobile data. Open PO80. Everything you recharged works offline with zero bills. SOS sends your last GPS via SMS if available.",d4:"4. WHY ONE PAYMENT: You save $1,200/year. No carrier contract. No debt. Lifetime license activated by one Bitcoin payment. Private. Secure. Number 1 in offline technology."},
+es:{h1:"Sin facturas<br>de teléfono.<br><span class='italic opacity-50'>Nunca.</span>",hero:"PO80 es el mejor software. La mejor tecnología. Tu teléfono se convierte en módem privado sin chip. Un pago de por vida. Descarga privada solo desde po80.com — no en tiendas. Fundador JHON GONZALES.",t1:"Protocolo Real de Almacenamiento Offline. Como funciona.",d1:"1. QUE ES: PO80.COM es la web que ES el sistema. También es app nativa (APK Android, PWA iPhone). Usa arquitectura real offline: Service Worker, IndexedDB. Misma tecnología que Google Maps Offline.",d2:"2. DETECCIÓN REAL DE WIFI: APK Android usa WifiManager para escanear WiFi reales en tu ubicación. iPhone PWA detecta estado de conexión y ubicación. Cuando estás en WiFi gratis (casa, café, trabajo), el sistema guarda esa ubicación y empieza a recargar.",d3:"3. RECARGA Y USA SIN DATOS: En WiFi gratis, toca RECARGAR. Descarga paquetes offline (mapas, obras, facturas, fotos, SOS) y los guarda local de 0% a 100%. Luego apaga WiFi y datos. Abre PO80. Todo lo recargado funciona offline sin biles. SOS manda tu GPS por SMS si hay señal.",d4:"4. POR QUE UN SOLO PAGO: Ahorras $1,200/año. Sin contrato. Sin deudas. Licencia de por vida activada con un pago en Bitcoin. Privado. Seguro. Número 1 en tecnología offline."}
+};
+document.getElementById('lang').addEventListener('change',e=>{
+let l=e.target.value;
+document.querySelectorAll('[data-k]').forEach(el=>{
+let k=el.getAttribute('data-k');
+if(L[l]&&L[l][k]) el.innerHTML=L[l][k];
+});
+});
 </script>
 </body>
 </html>
