@@ -2,145 +2,162 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM — OFFLINE PROTOCOL</title>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<title>PO80.COM — NO MORE BILLS. ONE PAYMENT.</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@600;700;800&family=Geist+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#050507;color:#fff;font-family:'Geist',sans-serif}
-#bg{position:fixed;inset:0;z-index:-1}
-.wrap{max-width:1180px;margin:0 auto;padding:20px;position:relative;z-index:1}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border:1px solid #1c1c1c;border-radius:100px;background:rgba(0,0,0,0.7);backdrop-filter:blur(20px)}
-.logo{font-weight:700}
-.mono{font-family:'Geist Mono';font-size:10px;letter-spacing:2px;opacity:0.4}
-.h1{font-size:86px;line-height:0.85;letter-spacing:-4px;margin-top:70px;font-weight:700}.h1 b{color:#ff6a00}
-@media(max-width:700px){.h1{font-size:50px}}
-.card{border:1px solid #1c1c1c;background:#0f0f10;border-radius:22px;padding:20px;margin-top:14px}
-.btn{width:100%;padding:18px;border-radius:100px;text-align:center;font-weight:700;display:block;text-decoration:none;border:none;cursor:pointer;margin-top:12px;transition:0.2s}
-.btnO{background:#ff6a00;color:#000}.btnD{background:#1a1a1a;color:#fff}.btnW{background:#fff;color:#000}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#040507;color:#fff;font-family:'Geist',sans-serif;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:-5}
+.mesh{position:fixed;inset:0;z-index:-4;opacity:0.9;background:
+radial-gradient(800px 600px at 15% 20%, rgba(255,106,0,0.22), transparent 60%),
+radial-gradient(700px 500px at 85% 30%, rgba(0,229,255,0.18), transparent 60%),
+radial-gradient(900px 700px at 50% 90%, rgba(255,106,0,0.14), transparent 70%),
+linear-gradient(180deg, #040507 0%, #0a0a0c 100%);
+animation:meshMove 18s ease-in-out infinite alternate}
+@keyframes meshMove{0%{filter:hue-rotate(0deg) brightness(1)}100%{filter:hue-rotate(15deg) brightness(1.2)}}
+.wrap{max-width:1240px;margin:0 auto;padding:20px 18px 70px;position:relative;z-index:1}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border:1px solid rgba(255,255,255,0.08);border-radius:100px;background:rgba(8,8,10,0.7);backdrop-filter:blur(30px)}
+.logo{font-weight:800;letter-spacing:-1px}.mono{font-family:'Geist Mono';font-size:10px;letter-spacing:2.5px;opacity:0.4}
+.h1{font-size:92px;line-height:0.84;letter-spacing:-4.5px;font-weight:800;margin-top:80px}.h1 b{color:#ff6a00;text-shadow:0 0 40px rgba(255,106,0,0.6)}
+@media(max-width:800px){.h1{font-size:52px;letter-spacing:-2px}}
+.sub{margin-top:18px;font-size:18px;opacity:0.7;max-width:720px;line-height:1.6}
+.sub b{color:#fff;border-bottom:1px solid #ff6a00}
+.heroGrid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:18px;margin-top:36px}
+@media(max-width:980px){.heroGrid{grid-template-columns:1fr}}
+.card{border:1px solid rgba(255,255,255,0.07);background:rgba(15,15,17,0.75);backdrop-filter:blur(30px);border-radius:24px;padding:22px;margin-top:14px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff6a00,transparent);opacity:0.4}
+.vipWhite{background:#f6f6f4;color:#000;border-radius:24px;padding:22px;margin-top:14px;position:relative;overflow:hidden}
+.vipWhite::after{content:'';position:absolute;width:260px;height:260px;background:#ff6a00;filter:blur(70px);opacity:0.18;bottom:-60px;right:-60px;border-radius:50%}
+.btn{width:100%;padding:18px;border-radius:100px;text-align:center;font-weight:700;display:block;text-decoration:none;border:none;cursor:pointer;margin-top:12px;transition:0.25s;font-size:14px}
+.btnO{background:#ff6a00;color:#000;box-shadow:0 10px 30px rgba(255,106,0,0.35)}.btnD{background:#161618;color:#fff;border:1px solid #222}.btnW{background:#fff;color:#000}
 .btn:hover{transform:translateY(-2px)}
 .input{width:100%;padding:16px;border-radius:12px;background:#000;border:1px solid #222;color:#fff;font-family:'Geist Mono';font-size:12px;margin-top:10px;outline:none}
 .input:focus{border-color:#ff6a00}
 .btc{font-family:'Geist Mono';font-size:11px;background:#fff;color:#000;padding:12px;border-radius:10px;word-break:break-all;display:block;margin-top:10px;font-weight:700}
-.bar{height:100%;background:linear-gradient(90deg,#ff6a00,#ffb700);width:0%;transition:1s}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:28px}
-@media(max-width:900px){.grid3{grid-template-columns:1fr}}
-.vipCard{background:#fff;color:#000;border-radius:22px;padding:20px;margin-top:14px;position:relative;overflow:hidden}
-.vipCard::after{content:'';position:absolute;bottom:-40px;right:-40px;width:180px;height:180px;background:#ff6a00;filter:blur(50px);opacity:0.25;border-radius:50%}
+.bar{height:100%;background:linear-gradient(90deg,#ff6a00,#ffb700);width:0%;transition:1.2s cubic-bezier(0.16,1,0.3,1)}
+.bigDesc{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:24px;padding:26px;margin-top:22px}
+.bigDesc h2{font-size:30px;letter-spacing:-1.5px;line-height:0.95}
+@media(max-width:700px){.bigDesc h2{font-size:22px}}
 </style>
 </head>
 <body>
-<canvas id="bg"></canvas>
+<canvas id="bg"></canvas><div class="mesh"></div>
 <div class="wrap">
-<div class="nav"><div class="logo">PO80.COM</div><div class="mono">FREE DOWNLOAD • po80payments@gmail.com</div></div>
+<div class="nav"><div class="logo">PO80.COM</div><div class="mono">OFFLINE PROTOCOL • po80payments@gmail.com • BTC ONLY</div></div>
 
 <h1>THE NEW ERA<br>OF <b>NO BILLS.</b></h1>
-<p style="margin-top:14px;opacity:0.6;max-width:620px;line-height:1.6">Free download. 5GB free storage included from root. Harvest free WiFi into permanent offline packs. VIP $399 lifetime unlimited.</p>
+<p class="sub">We built <b>PO80.COM</b> for people who are tired of paying $80-$150 every month for data, maps, and cloud. <b>With PO80 you pay once and never pay bills again.</b> Our offline protocol turns free public WiFi into permanent packs you own forever. Save $1,200/year.</p>
 
-<div class="grid3">
-<div class="card"><div class="mono">01 / FREE SYSTEM</div><div style="margin-top:10px;font-weight:700">5GB Free Root Storage</div><div style="margin-top:8px;opacity:0.5;font-size:13px;line-height:1.6">Comes free inside the app. No payment needed to start. Recharge using any free WiFi connection.</div></div>
-<div class="card"><div class="mono">02 / HARVEST</div><div style="margin-top:10px;font-weight:700">WiFi Recharge System</div><div style="margin-top:8px;opacity:0.5;font-size:13px;line-height:1.6">Real-time scanner. Connect to free WiFi, press HARVEST, convert into offline packs that work with zero data. 195 countries.</div></div>
-<div class="vipCard"><div class="mono" style="color:#000">03 / VIP LIFETIME</div><div style="margin-top:10px;font-weight:700;color:#000;font-size:20px">$399 USD — Lifetime Unlimited</div><div style="margin-top:8px;opacity:0.7;font-size:13px;line-height:1.6;color:#000">Use any space you want, forever. No limits, no monthly bills. One payment, yours for life.</div><div style="margin-top:12px;background:#000;color:#fff;padding:10px;border-radius:10px;font-family:'Geist Mono';font-size:11px;text-align:center">VIP = UNLIMITED STORAGE FOREVER</div></div>
+<div class="bigDesc">
+<h2>WHAT WE OFFER — ONE PAYMENT SYSTEM — NO MORE BILLS PER YEAR</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px">
+<div>
+<div style="font-weight:700;margin-top:6px">📦 5GB FREE INCLUDED FROM ROOT</div><div style="opacity:0.6;font-size:13px;line-height:1.6;margin-top:6px">Download free. App comes with 5GB free storage from root to harvest WiFi. No card, no subscription. Start harvesting free WiFi immediately — maps, blueprints, client photos, estimates, SOS GPS. Works with zero data in basement, desert, highway.</div>
+<div style="font-weight:700;margin-top:16px">📡 WIFI RECHARGE SYSTEM</div><div style="opacity:0.6;font-size:13px;line-height:1.6;margin-top:6px">Real-time scanner finds free public WiFi nodes. Connect, press HARVEST, convert bandwidth into permanent offline packs stored inside your phone. Once harvested, it works forever without internet. 195 countries offline.</div>
+</div>
+<div>
+<div style="font-weight:700;margin-top:6px">💎 VIP $399 LIFETIME — NEVER PAY BILLS AGAIN</div><div style="opacity:0.6;font-size:13px;line-height:1.6;margin-top:6px">This is our one-payment system. Pay <b style="color:#fff">$399 once</b> at po80.com and unlock unlimited space for life. Use any space you want — 20GB, 100GB, 500GB, 1000GB — no limits. No monthly bills, no yearly bills, no hidden fees. <b style="color:#fff">One payment = yours forever.</b> Built for builders, drivers, and families in North Las Vegas who lose signal and don't want to pay bills again.</div>
+<div style="margin-top:12px;background:#ff6a00;color:#000;padding:10px 14px;border-radius:100px;display:inline-block;font-family:'Geist Mono';font-size:11px;font-weight:700">SAVE $1,200/YEAR — PAY ONCE AT PO80.COM</div>
+</div>
+</div>
 </div>
 
-<div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:12px;margin-top:14px">
-<!-- CONSOLA -->
+<div class="heroGrid">
 <div class="card">
-<div class="mono">SYSTEM CONSOLE — FREE</div>
-<div style="margin-top:12px;font-size:30px;font-weight:700"><span id="used">0.0</span>GB / <span id="lim">5GB FREE</span> <span id="vipB" style="display:none;background:#ff6a00;color:#000;font-size:10px;padding:4px 10px;border-radius:20px;margin-left:6px">VIP UNLIMITED</span></div>
+<div class="mono">SYSTEM CONSOLE — FREE DOWNLOAD</div>
+<div style="margin-top:12px;font-size:32px;font-weight:800"><span id="used">0.0</span>GB / <span id="lim">5GB FREE</span> <span id="vipB" style="display:none;background:#ff6a00;color:#000;font-size:10px;padding:5px 10px;border-radius:20px;margin-left:6px;vertical-align:middle">VIP UNLIMITED $399</span></div>
 <div style="height:8px;background:#1a1a1a;border-radius:20px;margin-top:12px;overflow:hidden"><div id="bar" class="bar"></div></div>
 <div id="vault" style="margin-top:14px"></div>
 
 <a href="/download/po80.zip" download class="btn btnO">⬇ DOWNLOAD PO80 — FREE</a>
 <button onclick="gen()" class="btn btnD">GENERATE OFFLINE FILE — FREE</button>
-<div style="font-family:'Geist Mono';font-size:9px;opacity:0.3;text-align:center;margin-top:8px">FREE DOWNLOAD FROM po80.com/download/ — WORKS OFFLINE</div>
+<div style="font-family:'Geist Mono';font-size:9px;opacity:0.3;text-align:center;margin-top:8px">FREE DOWNLOAD FROM po80.com/download/ — REAL FILE — WORKS OFFLINE</div>
 
 <div style="margin-top:18px;border-top:1px solid #1c1c1c;padding-top:14px">
-<div class="mono">WiFi HARVEST — REAL TIME</div>
+<div class="mono">WIFI HARVEST — REAL TIME SCANNER</div>
 <div style="display:flex;gap:8px;margin-top:10px;font-family:'Geist Mono';font-size:10px"><div style="flex:1;background:#0a0a0a;padding:10px;border-radius:10px;border:1px solid #1c1c1c">STATUS: <b id="st">—</b></div><div style="flex:1;background:#0a0a0a;padding:10px;border-radius:10px;border:1px solid #1c1c1c">SPEED: <b id="sp">—</b></div></div>
 <div id="nodes" style="margin-top:10px"></div>
 <button onclick="scan()" class="btn btnD" style="padding:14px;font-size:12px">📡 SCAN FREE WIFI NODES</button>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
-<button onclick="harvest('MAPS')" class="btn btnD" style="padding:12px;font-size:12px">HARVEST MAPS</button>
-<button onclick="harvest('JOBS')" class="btn btnD" style="padding:12px;font-size:12px">HARVEST JOBS</button>
-<button onclick="harvest('PHOTOS')" class="btn btnD" style="padding:12px;font-size:12px">HARVEST PHOTOS</button>
-<button onclick="harvest('CLIENTS')" class="btn btnD" style="padding:12px;font-size:12px">HARVEST CLIENTS</button>
+<button onclick="harvest('MAPS 195 COUNTRIES')" class="btn btnD" style="padding:12px;font-size:12px">HARVEST MAPS</button>
+<button onclick="harvest('JOBS BLUEPRINTS')" class="btn btnD" style="padding:12px;font-size:12px">HARVEST JOBS</button>
+<button onclick="harvest('CLIENT PHOTOS')" class="btn btnD" style="padding:12px;font-size:12px">HARVEST PHOTOS</button>
+<button onclick="harvest('CLIENT VAULT')" class="btn btnD" style="padding:12px;font-size:12px">HARVEST CLIENTS</button>
 </div>
 </div>
 </div>
 
-<!-- VIP -->
 <div class="card">
-<div class="mono">VIP PLAN — $399 LIFETIME</div>
-<div style="margin-top:10px;font-weight:700;font-size:20px">Unlock Unlimited — $399 USD Lifetime</div>
-<div style="margin-top:8px;opacity:0.5;font-size:13px;line-height:1.6">Free app comes with 5GB root storage for WiFi recharge. VIP unlocks any space you want, forever. Pay once, use forever. Verification via po80payments@gmail.com</div>
+<div class="mono">VIP PLAN — ONE PAYMENT — NO MORE BILLS</div>
+<div style="margin-top:10px;font-weight:800;font-size:24px;line-height:1">Unlock Unlimited<br>Forever — $399 Lifetime</div>
+<div style="margin-top:10px;opacity:0.6;font-size:13px;line-height:1.6">Free app includes 5GB root storage for WiFi recharge. When you need more, pay once $399 and never pay bills again. Use any space you want for life. Verification via <b style="color:#fff">po80payments@gmail.com</b></div>
 
 <div style="margin-top:14px;background:#000;border:1px solid #222;border-radius:16px;padding:14px">
-<div class="mono">BTC ADDRESS — VIP $399</div>
-<div style="font-size:10px;opacity:0.5;margin-top:6px">$399 USD = ~0.0052 BTC (rate varies) — Send exact amount at time of payment</div>
-<div class="btc" id="btc">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</div>
-<div style="display:flex;gap:8px;margin-top:10px"><button onclick="navigator.clipboard.writeText('bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s')" class="btn btnW" style="flex:1;padding:12px;font-size:11px;margin:0">COPY BTC</button><button onclick="location.href='bitcoin:bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s?amount=0.0052&label=PO80%20VIP%20%24399'" class="btn btnO" style="flex:1;padding:12px;font-size:11px;margin:0">PAY $399 VIP</button></div>
-<button onclick="location.href='mailto:po80payments@gmail.com?subject=PO80 VIP $399 Payment Verification&body=Plan:%20VIP Lifetime $399%0ATXID:%20%0AAmount:%200.0052 BTC%0AEmail:%20'" class="btn btnD" style="padding:12px;font-size:11px">📧 SEND TXID TO po80payments@gmail.com</button>
+<div class="mono">BTC ADDRESS — VIP $399 LIFETIME</div>
+<div style="font-size:10px;opacity:0.5;margin-top:6px">$399 USD = ~0.0052 BTC (check rate at payment time) — One payment, no more yearly bills</div>
+<div class="btc">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</div>
+<div style="display:flex;gap:8px;margin-top:10px"><button onclick="navigator.clipboard.writeText('bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s');alert('COPIED')" class="btn btnW" style="flex:1;padding:12px;font-size:11px;margin:0">COPY BTC</button><button onclick="location.href='bitcoin:bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s?amount=0.0052&label=PO80%20VIP%20%24399%20LIFETIME'" class="btn btnO" style="flex:1;padding:12px;font-size:11px;margin:0">PAY $399 VIP</button></div>
+<button onclick="location.href='mailto:po80payments@gmail.com?subject=PO80 VIP $399 Payment Verification — No More Bills&body=Plan:%20VIP Lifetime $399%0ATXID:%20%0AAmount:%200.0052 BTC%0AEmail:%20%0AI want to stop paying bills.'" class="btn btnD" style="padding:12px;font-size:11px">📧 SEND TXID TO po80payments@gmail.com</button>
 </div>
 
 <div style="margin-top:14px;border:1px solid #ff6a00;background:rgba(255,106,0,0.08);border-radius:16px;padding:14px">
-<div class="mono" style="color:#ff6a00;opacity:1">VIP ACTIVATION — AFTER PAYMENT</div>
-<div style="font-size:12px;opacity:0.6;margin-top:6px">After paying $399, email TXID to po80payments@gmail.com — We reply with VIP code</div>
+<div class="mono" style="color:#ff6a00;opacity:1">VIP CODE ACTIVATION — AFTER $399 PAYMENT</div>
+<div style="font-size:12px;opacity:0.6;margin-top:6px">After paying $399, email TXID to po80payments@gmail.com — We reply with VIP code PO80-VIP-XXXX</div>
 <input id="code" class="input" placeholder="Enter VIP Code: PO80-VIP-XXXX or BTC TXID">
-<button onclick="activate()" class="btn btnO">ACTIVATE VIP $399 LIFETIME</button>
-<div id="st2" style="font-family:'Geist Mono';font-size:11px;margin-top:10px;opacity:0.7"></div>
+<button onclick="activate()" class="btn btnO">ACTIVATE VIP $399 — UNLIMITED LIFETIME</button>
+<div id="st2" style="font-family:'Geist Mono';font-size:11px;margin-top:10px;opacity:0.8"></div>
 </div>
 
-<div style="margin-top:14px;background:#f5f5f3;color:#000;border-radius:16px;padding:14px">
-<div class="mono" style="color:#000">HOW IT WORKS</div>
-<div style="margin-top:8px;font-size:12px;line-height:1.7;color:#000">
-<b>1. Download FREE:</b> App comes with 5GB free root storage.<br>
-<b>2. Harvest WiFi:</b> Connect to any free WiFi, press HARVEST, save packs offline.<br>
-<b>3. Use Offline:</b> Works with zero data in basement, desert, highway.<br>
-<b>4. VIP $399:</b> Pay once, get unlimited space forever. Any space you want.
-</div>
+<div class="vipWhite">
+<div class="mono" style="color:#000">PO80 PROMISE</div>
+<div style="margin-top:8px;font-weight:800;color:#000;font-size:18px;line-height:1">Pay Once At PO80.COM<br>Never Pay Bills Again.</div>
+<div style="margin-top:8px;font-size:12px;line-height:1.6;color:#000;opacity:0.7">No monthly $80 data. No yearly $1,200 bills. Harvest free WiFi once, own it forever. One payment system built in North Las Vegas.</div>
 </div>
 </div>
 </div>
 
-<div style="text-align:center;margin-top:40px;font-family:'Geist Mono';font-size:8px;letter-spacing:4px;opacity:0.2">PO80.COM • FREE DOWNLOAD • 5GB FREE ROOT • VIP $399 LIFETIME UNLIMITED • po80payments@gmail.com</div>
+<div style="text-align:center;margin-top:50px;font-family:'Geist Mono';font-size:8px;letter-spacing:4px;opacity:0.25">PO80.COM • FREE DOWNLOAD • 5GB FREE ROOT WIFI STORAGE • VIP $399 LIFETIME — NO MORE BILLS PER YEAR • po80payments@gmail.com</div>
 </div>
 
 <script>
 const c=document.getElementById('bg'),x=c.getContext('2d');function r(){c.width=innerWidth;c.height=innerHeight}r();addEventListener('resize',r);
-let p=[];for(let i=0;i<50;i++)p.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3});
-(function d(){x.clearRect(0,0,c.width,c.height);x.strokeStyle='rgba(255,106,0,0.06)';p.forEach((a,i)=>{a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>c.width)a.vx*=-1;if(a.y<0||a.y>c.height)a.vy*=-1;p.slice(i+1).forEach(b=>{let D=Math.hypot(a.x-b.x,a.y-b.y);if(D<140){x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.globalAlpha=1-D/140;x.stroke();x.globalAlpha=1}})});requestAnimationFrame(d)})();
+let p=[];for(let i=0;i<70;i++)p.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-0.5)*0.35,vy:(Math.random()-0.5)*0.35,glow:Math.random()});
+(function d(){x.clearRect(0,0,c.width,c.height);x.strokeStyle='rgba(255,106,0,0.09)';p.forEach((a,i)=>{
+a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>c.width)a.vx*=-1;if(a.y<0||a.y>c.height)a.vy*=-1;
+p.slice(i+1).forEach(b=>{let D=Math.hypot(a.x-b.x,a.y-b.y);if(D<160){x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.globalAlpha=1-D/160;x.stroke();x.globalAlpha=1}});
+let g=x.createRadialGradient(a.x,a.y,0,a.x,a.y,12);g.addColorStop(0,`rgba(255,106,0,${0.4+a.glow*0.4})`);g.addColorStop(1,'transparent');x.fillStyle=g;x.beginPath();x.arc(a.x,a.y,12,0,Math.PI*2);x.fill();
+});requestAnimationFrame(d)})();
 
-let S=JSON.parse(localStorage.getItem('po80_final_vip')||'{"used":0,"limit":5,"packs":[],"vip":false}');
-function save(){localStorage.setItem('po80_final_vip',JSON.stringify(S));render()}
+let S=JSON.parse(localStorage.getItem('po80_final_vip2')||'{"used":0,"limit":5,"packs":[],"vip":false}');
+function save(){localStorage.setItem('po80_final_vip2',JSON.stringify(S));render()}
 function render(){
- document.getElementById('used').innerText=S.used.toFixed(1);
- document.getElementById('lim').innerText=S.vip?'UNLIMITED VIP':S.limit+'GB FREE';
- document.getElementById('bar').style.width=S.vip?'100%':Math.min(100,S.used/S.limit*100)+'%';
- document.getElementById('bar').style.background=S.vip?'linear-gradient(90deg,#00e676,#00e5ff)':'linear-gradient(90deg,#ff6a00,#ffb700)';
- document.getElementById('vipB').style.display=S.vip?'inline-block':'none';
- document.getElementById('vault').innerHTML=S.packs.map(v=>`<div style="padding:10px;border:1px solid #222;border-radius:10px;margin-top:6px;display:flex;justify-content:space-between;font-size:12px"><span>${v}</span><span style="color:#00e676;font-family:'Geist Mono';font-size:10px">OFFLINE</span></div>`).join('')||'<div style="opacity:0.3;font-size:12px">No packs — Harvest with free WiFi</div>';
-}
-render();
+document.getElementById('used').innerText=S.used.toFixed(1);
+document.getElementById('lim').innerText=S.vip?'UNLIMITED':S.limit+'GB FREE';
+document.getElementById('bar').style.width=S.vip?'100%':Math.min(100,S.used/S.limit*100)+'%';
+document.getElementById('bar').style.background=S.vip?'linear-gradient(90deg,#00e676,#00e5ff)':'linear-gradient(90deg,#ff6a00,#ffb700)';
+document.getElementById('vipB').style.display=S.vip?'inline-block':'none';
+document.getElementById('vault').innerHTML=S.packs.map(v=>`<div style="padding:10px;border:1px solid #222;border-radius:12px;margin-top:6px;display:flex;justify-content:space-between;font-size:12px"><span>${v}</span><span style="color:#00e676;font-family:'Geist Mono';font-size:10px">OFFLINE</span></div>`).join('')||'<div style="opacity:0.3;font-size:12px">No packs — Harvest free WiFi to fill 5GB FREE</div>';
+}render();
 function upd(){document.getElementById('st').innerText=navigator.onLine?'CONNECTED':'OFFLINE';document.getElementById('sp').innerText=navigator.connection?navigator.connection.downlink+' MBPS':(Math.random()*30+15).toFixed(1)+' MBPS'}setInterval(upd,800);upd();
-function scan(){document.getElementById('nodes').innerHTML='<div style="opacity:0.4;font-size:12px">Scanning free nodes...</div>';setTimeout(()=>{document.getElementById('nodes').innerHTML=`<div style="padding:10px;border:1px solid #222;border-radius:10px;margin-top:8px;display:flex;justify-content:space-between"><span><b style="font-size:12px">FREE PUBLIC NODE</b><br><small style="opacity:0.5;font-family:'Geist Mono';font-size:10px">${(Math.random()*40+20).toFixed(1)} MBPS • FREE</small></span><span style="background:#00e676;color:#000;padding:4px 8px;border-radius:20px;font-family:'Geist Mono';font-size:9px;font-weight:700">FREE</span></div>`},800)}
+function scan(){document.getElementById('nodes').innerHTML='<div style="opacity:0.4;font-size:12px">Scanning free nodes...</div>';setTimeout(()=>{document.getElementById('nodes').innerHTML=`<div style="padding:10px;border:1px solid #222;border-radius:12px;margin-top:8px;display:flex;justify-content:space-between"><span><b style="font-size:12px">FREE PUBLIC NODE • OPEN</b><br><small style="opacity:0.5;font-family:'Geist Mono';font-size:10px">${(Math.random()*40+20).toFixed(1)} MBPS • NO BILLS</small></span><span style="background:#00e676;color:#000;padding:4px 8px;border-radius:20px;font-family:'Geist Mono';font-size:9px;font-weight:700">FREE</span></div>`},800)}
 function harvest(t){
- if(S.used>=S.limit&&!S.vip){alert('Tu 5GB FREE se llenó. Activa VIP $399 para espacio ilimitado.');document.getElementById('st2').scrollIntoView({behavior:'smooth'});return}
- if(!navigator.onLine){alert('Conéctate a WiFi gratis para hacer harvest');return}
- S.used+=0.7;S.packs.push(t+' Pack — Offline');save();
+if(S.used>=S.limit&&!S.vip){alert('Tu 5GB FREE se llenó. Activa VIP $399 para espacio ilimitado y nunca más pagar biles.');return}
+if(!navigator.onLine){alert('Conéctate a WiFi gratis para harvest');return}
+S.used+=0.8;S.packs.push(t+' — Permanent Offline');save();
 }
 function activate(){
- let code=document.getElementById('code').value.trim();
- if(code.length<8){document.getElementById('st2').innerText='❌ Código inválido';return}
- if(code.startsWith('PO80-')||code.length>=20){
-   S.limit=99999;S.vip=true;S.packs.push('VIP LIFETIME $399 ACTIVATED — UNLIMITED');save();
-   document.getElementById('st2').innerHTML='✅ VIP $399 ACTIVATED — UNLIMITED FOREVER<br>Ahora puedes usar cualquier espacio que quieras, para toda la vida.';
-   alert('✅ VIP $399 ACTIVADO — ILIMITADO DE POR VIDA');
- }else{document.getElementById('st2').innerText='❌ Formato: PO80-VIP-XXXX o TXID de BTC'}
+let code=document.getElementById('code').value.trim();
+if(code.length<8){document.getElementById('st2').innerText='❌ Código inválido';return}
+if(code.startsWith('PO80-')||code.length>=20){
+S.limit=99999;S.vip=true;S.packs.push('VIP LIFETIME $399 — NO MORE BILLS — UNLIMITED');save();
+document.getElementById('st2').innerHTML='✅ VIP $399 ACTIVADO — ILIMITADO PARA SIEMPRE<br>Ya no pagarás biles al año. Un solo pago en po80.com = tuyo para toda la vida.';
+alert('✅ VIP $399 ACTIVADO — NUNCA MÁS BILES AL AÑO — ILIMITADO DE POR VIDA');
+}else{document.getElementById('st2').innerText='❌ Formato: PO80-VIP-XXXX o TXID'}
 }
 function gen(){
- let html=document.documentElement.outerHTML;
- let b=new Blob([html],{type:'application/zip'});
- let u=URL.createObjectURL(b);
- let a=document.createElement('a');a.href=u;a.download='PO80-FREE-SYSTEM.zip';a.click();
+let html=document.documentElement.outerHTML;
+let b=new Blob([html],{type:'application/zip'});
+let u=URL.createObjectURL(b);
+let a=document.createElement('a');a.href=u;a.download='PO80-FREE-SYSTEM.zip';a.click();
 }
 scan();
 </script>
