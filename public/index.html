@@ -1,140 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PO80.COM — OFFLINE PROTOCOL</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#040507;color:#e8e8e8;font-family:'Space Grotesk',system-ui;overflow-x:hidden}
-canvas#net{position:fixed;inset:0;z-index:-5}
-.grid-bg{position:fixed;inset:0;z-index:-4;background:
-linear-gradient(rgba(255,122,24,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,122,24,0.03) 1px, transparent 1px);
-background-size:50px 50px;mask-image:radial-gradient(ellipse at center, black 40%, transparent 80%)}
-.glow{position:fixed;z-index:-3;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle, rgba(255,122,24,0.18), transparent 70%);top:-300px;left:-300px;filter:blur(20px)}
-.glow2{position:fixed;z-index:-3;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle, rgba(0,229,255,0.15), transparent 70%);bottom:-200px;right:-200px;filter:blur(20px)}
-
-.wrap{max-width:1240px;margin:0 auto;padding:24px 20px 80px}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border:1px solid rgba(255,255,255,0.06);border-radius:100px;background:rgba(12,12,14,0.6);backdrop-filter:blur(40px)}
-.logo{font-weight:700;letter-spacing:-1px;font-size:20px;display:flex;align-items:center;gap:10px}
-.dot{width:8px;height:8px;background:#ff7a18;border-radius:50%;box-shadow:0 0 20px #ff7a18;animation:pulse 2s infinite}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
-.navR{font-family:'JetBrains Mono';font-size:9px;letter-spacing:3px;opacity:0.5}
-
-.hero{margin-top:90px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:32px}
-@media(max-width:980px){.hero{grid-template-columns:1fr}.h1{font-size:58px!important}}
-.h1{font-size:110px;line-height:0.8;font-weight:700;letter-spacing:-5px;text-transform:uppercase}
-.h1 em{font-style:normal;color:#ff7a18;text-shadow:0 0 40px rgba(255,122,24,0.6)}
-.sub{margin-top:24px;font-size:18px;line-height:1.5;opacity:0.7;max-width:640px;font-weight:400}
-.sub b{color:#fff;border-bottom:1px solid #ff7a18}
-
-.panel{border:1px solid rgba(255,255,255,0.07);background:rgba(16,16,19,0.7);backdrop-filter:blur(40px);border-radius:28px;padding:26px;position:relative;overflow:hidden}
-.panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#ff7a18,transparent);opacity:0.5}
-.mono{font-family:'JetBrains Mono';font-size:9px;letter-spacing:3px;opacity:0.4;text-transform:uppercase}
-.t{font-size:21px;font-weight:700;margin-top:14px;letter-spacing:-0.5px}
-.d{font-size:13px;opacity:0.55;line-height:1.7;margin-top:10px}
-
-.grid3{margin-top:28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-@media(max-width:980px){.grid3{grid-template-columns:1fr}}
-
-.white{border-radius:28px;padding:26px;background:#f5f5f3;color:#0a0a0a;position:relative;overflow:hidden}
-.white::after{content:'';position:absolute;bottom:-50px;right:-50px;width:200px;height:200px;background:#ff7a18;filter:blur(60px);opacity:0.2;border-radius:50%}
-
-.progress{height:6px;background:rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;margin-top:16px}
-.progressW{height:6px;background:rgba(0,0,0,0.08);border-radius:20px;overflow:hidden;margin-top:16px}
-.bar{height:100%;background:linear-gradient(90deg,#ff7a18,#ffb800);width:0%;transition:1s cubic-bezier(0.16,1,0.3,1);box-shadow:0 0 20px rgba(255,122,24,0.6)}
-
-.btn{width:100%;padding:18px;border-radius:100px;font-weight:700;font-size:14px;border:none;display:block;text-align:center;text-decoration:none;cursor:pointer;letter-spacing:-0.3px;transition:0.3s cubic-bezier(0.16,1,0.3,1);position:relative;overflow:hidden}
-.btn:hover{transform:translateY(-2px) scale(1.01)}
-.btn:active{transform:scale(0.98)}
-.btnDark{background:#0a0a0a;color:#fff;border:1px solid rgba(255,255,255,0.1)}
-.btnOrange{background:#ff7a18;color:#000;box-shadow:0 10px 30px rgba(255,122,24,0.3)}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#040507;color:#fff;font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
+canvas{position:fixed;inset:0;z-index:-5}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 18px 60px;position:relative;z-index:1}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border:1px solid rgba(255,255,255,0.08);border-radius:100px;background:rgba(10,10,12,0.7);backdrop-filter:blur(30px)}
+.logo{font-weight:700;font-size:19px}.badge{font-family:'JetBrains Mono';font-size:8px;letter-spacing:3px;opacity:0.4}
+.h1{font-size:88px;line-height:0.82;letter-spacing:-4px;margin-top:70px;font-weight:700}.h1 span{color:#ff7a18}
+@media(max-width:800px){.h1{font-size:52px}}
+.sub{margin-top:18px;font-size:16px;opacity:0.6;max-width:620px;line-height:1.5}
+.card{border:1px solid rgba(255,255,255,0.07);background:rgba(18,18,20,0.75);backdrop-filter:blur(30px);border-radius:24px;padding:22px;margin-top:14px}
+.mono{font-family:'JetBrains Mono';font-size:9px;letter-spacing:3px;opacity:0.35;text-transform:uppercase}
+.t{font-size:20px;font-weight:700;margin-top:12px}
+.d{font-size:13px;opacity:0.5;line-height:1.7;margin-top:8px}
+.btn{width:100%;padding:18px;border-radius:100px;font-weight:700;font-size:14px;border:none;display:block;text-align:center;text-decoration:none;cursor:pointer;margin-top:12px;transition:0.25s}
+.btnOrange{background:#ff7a18;color:#000;box-shadow:0 10px 30px rgba(255,122,24,0.35)}
+.btnDark{background:#0e0e10;color:#fff;border:1px solid rgba(255,255,255,0.1)}
 .btnWhite{background:#fff;color:#000}
-
-.node{display:flex;justify-content:space-between;align-items:center;padding:14px 14px;border:1px solid rgba(255,255,255,0.06);border-radius:14px;margin-top:10px;background:rgba(255,255,255,0.02);transition:0.3s}
-.node:hover{border-color:rgba(255,122,24,0.3);background:rgba(255,122,24,0.05)}
-.tag{font-family:'JetBrains Mono';font-size:9px;background:#00e676;color:#000;padding:4px 8px;border-radius:20px;font-weight:700}
-
-.foot{margin-top:80px;text-align:center;font-family:'JetBrains Mono';font-size:8px;letter-spacing:4px;opacity:0.2}
+.bar{height:100%;background:linear-gradient(90deg,#ff7a18,#ffb700);width:0%;transition:1s}
+.monoBtc{font-family:'JetBrains Mono';font-size:11px;background:#fff;color:#000;padding:12px;border-radius:10px;word-break:break-all;display:block;font-weight:700}
+.input{width:100%;padding:16px;border-radius:14px;border:1px solid #222;background:#0a0a0a;color:#fff;font-family:'JetBrains Mono';font-size:12px;margin-top:10px;outline:none}
+.input:focus{border-color:#ff7a18}
+.vip{border:1px solid #ff7a18;background:linear-gradient(180deg,rgba(255,122,24,0.15),rgba(255,122,24,0.02));border-radius:20px;padding:16px;margin-top:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:24px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<canvas id="net"></canvas>
-<div class="grid-bg"></div><div class="glow"></div><div class="glow2"></div>
-
+<canvas id="c"></canvas>
 <div class="wrap">
-<div class="nav"><div class="logo"><div class="dot"></div>PO80.COM</div><div class="navR">OFFLINE PROTOCOL // 195 NODES // 2026</div></div>
+<div class="nav"><div class="logo">PO80.COM</div><div class="badge">OFFLINE PROTOCOL • BTC ONLY • po80payments@gmail.com</div></div>
 
-<div class="hero">
-<div>
-<div class="h1">THE NEW<br>ERA OF<br><em>NO BILLS.</em></div>
-<div class="sub">PO80 is a <b>offline protocol</b> that transforms free public WiFi into permanent offline packs. Maps, blueprints, client vault — works with <b>0 data</b>. Built in North Las Vegas for builders who lose signal. 5GB free to start.</div>
+<div class="h1">THE NEW<br>ERA OF<br><span>NO BILLS.</span></div>
+<div class="sub">Offline protocol that turns free public WiFi into permanent packs. 5GB free. Pay in BTC, activate VIP with code. Built in North Las Vegas.</div>
 
-<div class="grid3" style="margin-top:32px">
-<div class="panel"><div class="mono">Protocol 01</div><div class="t">WiFi Harvest</div><div class="d">Real-time scanner that captures free public networks and converts bandwidth into permanent offline storage inside your device.</div></div>
-<div class="panel"><div class="mono">Protocol 02</div><div class="t">Offline Vault</div><div class="d">195 countries offline. Blueprints, client photos, estimates, SOS GPS. Works in basement, desert, highway with no signal.</div></div>
-<div class="white"><div class="mono" style="opacity:0.4">Protocol 03</div><div class="t">Own Forever</div><div class="d" style="opacity:0.7">5GB free included. Expand once, keep forever. No subscriptions.<br><br><b>20GB — $15.99</b><br><b>100GB — $60.99</b><br><b>1000GB Founder — $666.99</b></div></div>
+<div class="grid">
+<div class="card"><div class="mono">01 / Harvest</div><div class="t">WiFi to Offline</div><div class="d">Real-time scanner finds free public networks and converts them into permanent offline storage.</div></div>
+<div class="card"><div class="mono">02 / Vault</div><div class="t">195 Countries Offline</div><div class="d">Maps, jobs, photos, estimates, SOS GPS. Works with zero data in basement, desert, highway.</div></div>
+<div class="card" style="background:#f4f4f2;color:#000"><div class="mono" style="color:#000;opacity:0.4">03 / VIP Ownership — BTC ONLY</div><div class="t" style="color:#000">Pay in BTC — Activate VIP</div>
+<div style="font-family:'JetBrains Mono';font-size:11px;margin-top:12px;line-height:2.2;background:rgba(0,0,0,0.05);padding:12px;border-radius:12px">
+5GB FREE<br>
+20GB Builder — 0.00021 BTC<br>
+100GB Pro — 0.00079 BTC<br>
+1000GB Founder Infinite — 0.0088 BTC<br>
+</div>
+<div style="font-size:10px;opacity:0.6;margin-top:8px">Verification: po80payments@gmail.com</div>
 </div>
 </div>
 
-<div class="panel" style="height:fit-content">
-<div class="mono">System Console — Live</div>
-<div class="t" style="font-size:28px"><span id="used">0.0</span>GB / <span id="limit" style="opacity:0.4">5GB FREE</span></div>
-<div class="progress"><div id="bar" class="bar"></div></div>
-<div style="display:flex;justify-content:space-between;margin-top:10px;font-family:'JetBrains Mono';font-size:10px;opacity:0.5"><span id="packsCount">0 PACKS</span><span id="liveStatus">● LIVE</span></div>
+<div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:14px;margin-top:14px">
+<div class="card">
+<div class="mono">System Console</div>
+<div class="t" style="font-size:32px"><span id="used">0.0</span>GB / <span id="lim">5GB FREE</span> <span id="vipBadge" style="display:none;background:#ff7a18;color:#000;font-size:10px;padding:4px 8px;border-radius:20px;margin-left:8px">VIP ACTIVE</span></div>
+<div style="height:8px;background:rgba(255,255,255,0.08);border-radius:20px;margin-top:12px;overflow:hidden"><div id="bar" class="bar"></div></div>
+<div id="vault" style="margin-top:14px"></div>
 
-<a href="/download/po80.apk" id="dl" class="btn btnOrange" style="margin-top:20px">⬇ DOWNLOAD PO80 PROTOCOL — 24MB</a>
-<button onclick="generateSystem()" class="btn btnDark" style="margin-top:10px">◍ GENERATE OFFLINE SYSTEM</button>
-
-<div style="margin-top:18px;border-top:1px solid rgba(255,255,255,0.06);padding-top:18px">
-<div class="mono">WiFi Nodes — Real Time</div>
-<div style="display:flex;gap:8px;margin-top:10px;font-family:'JetBrains Mono';font-size:10px">
-<div style="flex:1;background:rgba(255,255,255,0.04);padding:10px;border-radius:10px">LINK: <b id="link">—</b></div>
-<div style="flex:1;background:rgba(255,255,255,0.04);padding:10px;border-radius:10px">SPEED: <b id="speed">—</b></div>
-</div>
-<div id="nodes" style="margin-top:12px"></div>
-<button onclick="scan()" id="scanBtn" class="btn btnWhite" style="margin-top:12px">SCAN FREE NODES</button>
+<a href="/download/po80-protocol.zip" class="btn btnOrange" id="dl">⬇ DOWNLOAD PO80 PROTOCOL — REAL FILE</a>
+<button onclick="generateReal()" class="btn btnDark">GENERATE MY OFFLINE SYSTEM</button>
 </div>
 
-<div style="margin-top:18px;border-top:1px solid rgba(255,255,255,0.06);padding-top:18px">
-<div class="mono">Harvest Console</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
-<button onclick="harvest('maps')" class="btn btnDark" style="padding:12px;font-size:12px">MAPS PROTOCOL</button>
-<button onclick="harvest('jobs')" class="btn btnDark" style="padding:12px;font-size:12px">JOBS PROTOCOL</button>
-</div>
-<div id="vault" style="margin-top:10px"></div>
-</div>
-
-<div id="btcBox" style="display:none;margin-top:18px;background:#0a0a0a;border:1px solid #222;border-radius:16px;padding:14px">
-<div class="mono">Expansion Node — BTC</div>
-<div style="font-family:'JetBrains Mono';font-size:10px;background:#fff;color:#000;padding:10px;border-radius:8px;margin-top:8px;word-break:break-all;font-weight:700">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</div>
-</div>
-</div>
-</div>
-
-<div class="foot">PO80.COM — OFFLINE PROTOCOL — NORTH LAS VEGAS — 2026 — BUILT FOR MILLIONS</div>
-</div>
-
-<script>
-// NETWORK CANVAS
-const c=document.getElementById('net'),x=c.getContext('2d');
-function resize(){c.width=innerWidth;c.height=innerHeight}resize();window.addEventListener('resize',resize);
-let pts=[];for(let i=0;i<70;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-0.5)*0.6,vy:(Math.random()-0.5)*0.6});
-function draw(){
- x.clearRect(0,0,c.width,c.height);
- x.strokeStyle='rgba(255,122,24,0.08)';pts.forEach((p,i)=>{
-   p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;
-   pts.slice(i+1).forEach(q=>{let d=Math.hypot(p.x-q.x,p.y-q.y);if(d<160){x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.globalAlpha=1-d/160;x.stroke();x.globalAlpha=1;}});
-   x.fillStyle='rgba(255,122,24,0.4)';x.beginPath();x.arc(p.x,p.y,1.2,0,Math.PI*2);x.fill();
- });requestAnimationFrame(draw)}draw();
-
-// SYSTEM
-let S=JSON.parse(localStorage.getItem('po80_tech')||'{"used":0,"limit":5,"packs":[]}');
-function save(){localStorage.setItem('po80_tech',JSON.stringify(S));render()}
-function render(){
- document.getElementById('used').innerText=S.used.toFixed(1);
- document.getElementById('bar').style.width=Math.min(100,S.used/S.limit*100)+'%';
- document.getElementById('packsCount').innerText=S.packs.length+' PACKS OFFLINE';
- document.getElementById('vault').innerHTML=S.packs.map(p=>`<div class="node"><span>◍ ${p.n} — ${p.s}GB</span><span class="tag">OFFLINE</span></div>`).join('')||`<div style="opacity:0.3;font-size:12
+<div class="card">
+<div class="mono">BTC Payment & VIP Activation</div>
+<div class="t">Pay → Get Code → Activate VIP</div>
+<div class="d">1. Pay exact
