@@ -1,31 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM | The New Era — Internet Without Bills</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>PO80.COM | THE NEW ERA OF NO BILLS</title>
 <style>
-body{font-family:'Inter',sans-serif;background:#000;color:#fff;overflow-x:hidden}
-h1,h2,h3{font-family:'Syne'}
-.bg-move{position:fixed;inset:-25%;z-index:-4;background:url('cyberpunk_global_network_hero.webp') center/cover no-repeat;animation:bgMove 30s ease-in-out infinite alternate;filter:brightness(0.5) saturate(1.3)}
-@keyframes bgMove{0%{transform:scale(1) translate(-3%,-3%) rotate(0deg)}100%{transform:scale(1.35) translate(3%,3%) rotate(1deg)}}
-.glow{position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 20% 30%,rgba(247,147,26,0.18),transparent 40%),radial-gradient(circle at 80% 70%,rgba(0,220,255,0.18),transparent 40%);animation:pulse 6s infinite alternate}
-@keyframes pulse{0%{opacity:0.6}100%{opacity:1}}
-.glass{backdrop-filter:blur(40px);background:rgba(10,10,12,0.6);border:1px solid rgba(255,255,255,0.1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family: -apple-system, BlinkMacSystemFont, sans-serif;background:#000;color:#fff;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-3;background:linear-gradient(120deg,#000 0%,#1a0a00 20%,#001a1f 50%,#0a0a00 80%,#000 100%);background-size:300% 300%;animation:bgMove 15s ease infinite}
+@keyframes bgMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.lights{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.lights div{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(80px);opacity:0.35;animation:float 20s infinite alternate}
+.l1{background:#ff7a00;top:-100px;left:-100px;animation-delay:0s}
+.l2{background:#00d1ff;bottom:10%;right:-100px;animation-delay:3s}
+.l3{background:#ff0055;top:40%;left:50%;animation-delay:6s}
+@keyframes float{0%{transform:translate(0,0) scale(1)}100%{transform:translate(50px,80px) scale(1.3)}}
+.wrap{max-width:1150px;margin:0 auto;padding:18px 16px 40px;position:relative}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.12)}
+.logo{font-weight:900;font-size:26px;letter-spacing:-1.5px}
+.badge{font-size:8px;letter-spacing:3px;opacity:0.7;border:1px solid rgba(255,255,255,0.2);padding:7px 12px;border-radius:30px}
+.hero{margin-top:46px}
+.hero h1{font-size:52px;line-height:0.86;font-weight:900;letter-spacing:-3px;text-transform:uppercase}
+.hero h1 span{color:#ff7a00}
+.hero p{margin-top:18px;font-size:16.5px;line-height:1.45;max-width:720px;opacity:0.85}
+.hero p b{color:#fff;background:#fff;color:#000;padding:1px 6px;border-radius:4px}
+.box{background:rgba(18,18,20,0.9);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:20px}
+.box-white{background:#fff;color:#000;border-radius:22px;padding:20px}
+.grid{margin-top:26px;display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:850px){.grid{grid-template-columns:1fr 1fr 1fr}.hero h1{font-size:96px}}
+.title{font-size:10px;letter-spacing:3.5px;opacity:0.5;text-transform:uppercase}
+.h3{font-size:18px;font-weight:800;margin-top:10px;line-height:1}
+.p{font-size:13px;opacity:0.65;margin-top:10px;line-height:1.6}
+.btn{width:100%;display:block;padding:17px;border-radius:100px;font-weight:800;text-align:center;text-decoration:none;border:none;font-size:14px;cursor:pointer}
+.btn-black{background:#000;color:#fff}
+.btn-white{background:#fff;color:#000}
+.btn-orange{background:#ff7a00;color:#000}
+.btc{font-family:monospace;font-size:11px;background:#f2f2f2;color:#000;padding:10px;border-radius:10px;word-break:break-all;display:block;margin-top:8px}
+.alert{font-size:10px;background:#fff8c2;color:#000;padding:8px;border-radius:8px;margin-top:8px}
+.footer{text-align:center;font-size:9px;letter-spacing:2px;opacity:0.25;margin-top:40px;line-height:1.6}
 </style>
 </head>
 <body>
-<div class="bg-move"></div><div class="glow"></div>
+<div class="bg"></div>
+<div class="lights"><div class="l1"></div><div class="l2"></div><div class="l3"></div></div>
+<div class="wrap">
 
-<div class="max-w-[1400px] mx-auto px-6 py-10 relative">
-
-<!-- HEADER -->
-<div class="flex justify-between items-center">
-<div class="text-[34px] font-[800] tracking-tighter">PO80.COM</div>
-<div class="glass px-6 py-2 rounded-full text-[9px] tracking-[0.5em]">NEW ERA 2026 — OFFLINE INTERNET SYSTEM</div>
+<div class="top">
+<div class="logo">PO80.COM</div>
+<div class="badge">NEW ERA 2026 — 195 COUNTRIES</div>
 </div>
 
-<!-- HERO -->
-<h1 class="mt-20 text-[12vw] md:text-[120px] leading-[0.82] font-[800] tracking-tighter">THE NEW ERA<br>OF <span class="text-[#F7931A]">NO BILLS.</span></h1>
-<p class="mt-8 text-[20px] md:text-[26px] max-w-[950px] leading-[1.2] font-[600]">PO80.COM is the
+<div class="hero">
+<h1>THE NEW ERA<br>OF <span>NO BILLS.</span></h1>
+<p><b>PO80.COM</b> is the world's first Offline Internet System for builders. We turn any FREE WiFi into offline packs you OWN FOREVER. No more $80, $120, $150 phone bills just to see maps and job photos. Save $1,200 a year.</p>
+</div>
+
+<div class="grid">
+<div class="box"><div class="title">SERVICE 01 — WIFI CAPTURE</div><div class="h3">Turn Free WiFi Into Your Internet</div><div class="p">Our real WiFi scanner finds free WiFi at McDonald's, Home Depot, Starbucks, client house. Press RECHARGE and PO80 downloads your job as offline storage. Real GB, yours forever.</div></div>
+<div class="box"><div class="title">SERVICE 02 — OFFLINE WORLD</div><div class="h3">195 Countries — No Signal Needed</div><div class="p">Maps offline USA, Mexico, Guatemala, El Salvador, Honduras, Colombia, Peru, China, Russia, India, Europe. Blueprints, client photos, estimates, SOS GPS — all works with 0 data.</div></div>
+<div class="box-white"><div class="title" style="color:#000;opacity:0.5">SERVICE 03 — MOST IMPORTANT</div><div class="h3">Stop Paying Monthly Bills</div><div class="p" style="opacity:0.7">Start with 5GB FREE. Expand once with Bitcoin and keep it forever. No subscriptions.<br><br><b>20GB Builder — $15.99</b><br><b>100GB Pro World — $60.99</b><br><b style="color:#ff7a00">1000GB Founder Infinite — $666.99</b><br><br>One payment = forever. That's the new era without exaggerated payments.</div></div>
+</div>
+
+<div class="box" style="margin-top:14px">
+<div class="title">HOW TO USE — FORMA DE USO COMPLETA</div>
+<div style="margin-top:14px;display:grid;grid-template-columns:1fr;gap:16px;font-size:13px;line-height:1.7">
+<div><b style="color:#ff7a00">STEP 1 — DOWNLOAD & TURN ON:</b> Press DOWNLOAD APK below. Install on Android. iPhone: Open po80.com in Safari > Share > Add to Home Screen. Open app, press SCAN.</div>
+<div><b style="color:#ff7a00">STEP 2 — RECHARGE:</b> When you have free WiFi, press RECHARGE. Choose what to save offline: Las Vegas maps, job photos, client list, invoices. 2 minutes and it's saved as real storage inside your phone.</div>
+<div><b style="color:#ff7a00">STEP 3 — GO OFF-GRID & SAVE:</b> Go to basement, desert, highway, no signal area. Open PO80.COM. Everything works. No data used. You can use cheap $15 prepaid instead of $120 postpaid. Save money every month.</div>
+</div>
+</div>
+
+<div style="margin-top:14px;display:grid;grid-template-columns:1fr;gap:14px">
+<div class="box-white">
+<div class="title" style="color:#000;opacity:0.5">DOWNLOAD — SISTEMA REAL</div>
+<a href="/download/po80.apk" download class="btn btn-black" style="margin-top:14px">⬇ DOWNLOAD APK — PO80.COM OFFICIAL</a>
+<div class="p" style="text-align:center">Real APK with WiFi scanner + Offline Engine v2.1. For iPhone use PWA.</div>
+
+<div style="margin-top:18px;background:#0a0a0a;color:#fff;border-radius:16px;padding:16px">
+<div class="title">BTC WALLET — BITCOIN ONLY</div>
+<div style="margin-top:10px;font-size:11px;opacity:0.6">Wallet Type</div>
+<div style="font-weight:800;font-size:13px">Bitcoin</div>
+<span class="btc" id="btc">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</span>
+<div class="alert">⚠️ Send only Bitcoin (BTC) to this address. Other assets will be lost forever.</div>
+<div style="display:flex;gap:8px;margin-top:12px">
+<button onclick="copyBtc()" class="btn btn-white" style="margin:0;flex:1;font-size:11px;padding:13px">COPY BTC</button>
+<button onclick="payBtc()" class="btn btn-orange" style="margin:0;flex:1;font-size:11px;padding:13px">PAY NOW</button>
+</div>
+<div class="p" style="color:#fff;opacity:0.5;text-align:center;margin-top:10px">One payment expands your space forever. No monthly bills.</div>
+</div>
+</div>
+
+<div class="box">
+<div class="title">CREATOR — TERMS — SYSTEM</div>
+<div class="h3">Built by Jhon Gonzales</div>
+<div class="p">North Las Vegas, NV — USA — Construction builder 15+ years. Created PO80.COM to stop paying exaggerated phone bills. Real software.<br><br>
+<b>Software:</b> Android APK + iPhone PWA + Offline Engine + WiFi Scanner + Bill Saver 90%<br><br>
+<b>Terms:</b> PO80 is an offline storage & offline maps system. Not a carrier, not a hack. We help you save data by using offline mode. No stealing from carriers. Bitcoin payments are irreversible. Support: po80.com
+<br><br>
+<b>Countries:</b> USA • Mexico • Guatemala • El Salvador • Honduras • Colombia • Peru • Ecuador • China • Russia • India • Philippines • Europe • Canada — 195 total offline maps.</div>
+</div>
+</div>
+
+<div class="footer">PO80.COM © 2026 — ALL RIGHTS RESERVED — THE NEW ERA WITHOUT EXAGGERATED PAYMENTS — BUILT IN NORTH LAS VEGAS FOR MILLIONS WHO ARE TIRED OF PAYING BILLS</div>
+
+</div>
+<script>
+const BTC="bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s";
+function copyBtc(){navigator.clipboard.writeText(BTC).then(()=>alert("✅ BTC COPIED: "+BTC)).catch(()=>alert(BTC));}
+function payBtc(){window.location.href="bitcoin:"+BTC+"?amount=0.0002&label=PO80%20Expansion";}
+</script>
+</body>
+</html>
