@@ -1,76 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM - WiFi Cloud</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
-body{height:100vh;overflow:hidden;background:#000;color:#fff}
-.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:linear-gradient(45deg,#000,#0a0a2a,#001a33,#000);background-size:400% 400%;animation:grad 8s ease infinite}
-@keyframes grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
-.p{position:absolute;width:3px;height:3px;background:#00f2ff;border-radius:50%;animation:float 10s linear infinite;opacity:0.7}
-@keyframes float{0%{transform:translateY(100vh) translateX(0)}100%{transform:translateY(-10vh) translateX(100px)}}
-.center{display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column}
-.logo{font-size:70px;font-weight:900;letter-spacing:5px;background:linear-gradient(90deg,#00f2ff,#0080ff,#00f2ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 2s ease-in-out infinite}
-@keyframes glow{0%,100%{filter:drop-shadow(0 0 20px #00f2ff)}50%{filter:drop-shadow(0 0 40px #00f2ff)}}
-.sub{color:#888;letter-spacing:8px;margin-top:-5px;font-size:12px}
-.box{background:rgba(10,10,30,0.8);border:1px solid #00f2ff44;padding:30px;border-radius:15px;margin-top:30px;width:350px;backdrop-filter:blur(10px);box-shadow:0 0 30px #00f2ff22}
-input{width:100%;padding:14px;background:#000;border:1px solid #333;color:#fff;border-radius:8px;margin-bottom:12px;outline:none}
-input:focus{border-color:#00f2ff}
-button{width:100%;padding:14px;background:linear-gradient(90deg,#00f2ff,#0080ff);border:none;color:#000;font-weight:900;border-radius:8px;cursor:pointer;letter-spacing:1px}
-#panel{width:90%;max-width:600px}
-textarea{width:100%;height:80px;background:#000;border:1px solid #333;color:#fff;padding:12px;border-radius:8px}
-pre{background:#000;border:1px solid #222;padding:12px;border-radius:8px;margin-top:15px;max-height:200px;overflow:auto;white-space:pre-wrap;font-size:12px}
+body{margin:0;overflow:hidden;background:#000;font-family:Arial}
+.bg{
+  position:fixed;inset:0;
+  background:url('https://images.pexels.com/videos/2169880/2169880-hd_1920_1080_30fps.mp4') center/cover;
+  background-image:url('./mountain.jpg'); /* usa la que te generé */
+  animation: zoom 25s infinite alternate ease-in-out;
+  filter: brightness(0.7);
+}
+@keyframes zoom{
+  0%{transform:scale(1) translateY(0)}
+  100%{transform:scale(1.15) translateY(-20px)}
+}
+.login{
+  position:relative;z-index:2;
+  height:100vh;display:flex;align-items:center;justify-content:center;
+}
+.box{
+  background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);
+  padding:30px;border-radius:15px;width:300px;text-align:center
+}
+input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none;outline:none}
+button{width:100%;padding:12px;border:none;border-radius:8px;background:white;color:black;font-weight:bold;cursor:pointer}
+h1{color:white;letter-spacing:3px}
 </style>
 </head>
 <body>
 <div class="bg"></div>
-<div class="particles" id="particles"></div>
-
-<div class="center">
-<div class="logo">PO80.COM</div>
-<div class="sub">WIFI CLOUD SAVE SYSTEM</div>
-
-<div class="box" id="login">
-<input id="u" placeholder="Usuario" value="1971">
-<input id="p" type="password" placeholder="Password" value="1971">
-<button onclick="login()">ENTRAR // 1971</button>
-<p id="msg" style="color:#f55;margin-top:10px;text-align:center;font-size:12px"></p>
+<div class="login">
+  <div class="box">
+    <h1>PO80.COM</h1>
+    <input id="user" type="text" placeholder="Usuario">
+    <input id="pass" type="password" placeholder="Contraseña">
+    <button onclick="entrar()">ENTRAR</button>
+  </div>
 </div>
-
-<div class="box" id="panel" style="display:none;width:90%;max-width:700px">
-<input id="id" placeholder="ID / VIN / NOMBRE WIFI">
-<textarea id="data" placeholder="Datos a guardar en la nube PO80..."></textarea><br><br>
-<button onclick="guardar()">GUARDAR EN NUBE PO80</button>
-<button onclick="ver()" style="margin-top:10px;background:#111;color:#00f2ff;border:1px solid #00f2ff">VER TODO LO GUARDADO</button>
-<pre id="res">Sistema listo LENOX...</pre>
-</div>
-
-</div>
-
 <script>
-// particulas
-for(let i=0;i<40;i++){
- let d=document.createElement('div'); d.className='p';
- d.style.left=Math.random()*100+'%'; d.style.animationDelay=Math.random()*10+'s';
- d.style.animationDuration=(5+Math.random()*10)+'s';
- document.getElementById('particles').appendChild(d);
-}
-
-async function login(){
- let r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({u:document.getElementById('u').value,p:document.getElementById('p').value})});
- let d=await r.json();
- if(d.ok){document.getElementById('login').style.display='none';document.getElementById('panel').style.display='block';}
- else document.getElementById('msg').innerText='Error: usa 1971 / 1971';
-}
-async function guardar(){
- let r=await fetch('/api/guardar',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:document.getElementById('id').value,data:document.getElementById('data').value})});
- document.getElementById('res').innerText=JSON.stringify(await r.json(),null,2);
-}
-async function ver(){
- let r=await fetch('/api/todo'); document.getElementById('res').innerText=JSON.stringify(await r.json(),null,2);
+function entrar(){
+  let u=document.getElementById('user').value.trim();
+  let p=document.getElementById('pass').value.trim();
+  if(u===atob('MTk3MQ==') && p===atob('MTk3MQ==')){
+    localStorage.setItem('po80_auth','ok');
+    location.href='/home.html';
+  }else alert('Datos incorrectos');
 }
 </script>
 </body>
