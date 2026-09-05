@@ -2,126 +2,130 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM — SISTEMA QUE CAMBIA EL MUNDO DE DEUDAS — JHON GONZALES</title>
+<title>PO80.COM — SISTEMA LLAMATIVO — JHON GONZALES</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;300;400;600;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200;400;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{font-family:'Bricolage Grotesque',sans-serif}.serif{font-family:'Instrument Serif',serif}.mono{font-family:'JetBrains Mono',monospace}
 body{background:#020203;color:#fff;overflow-x:hidden}
-#bg{position:fixed;inset:0;z-index:-5;width:100%;height:100%;object-fit:cover;filter:brightness(0.38) contrast(1.2)}
-#fog{position:fixed;inset:0;z-index:-4;background:radial-gradient(100% 60% at 50% 0%, rgba(255,255,255,0.16), transparent 60%), linear-gradient(to bottom, rgba(0,0,0,0.1), #020203 92%)}
-.orb{position:fixed;width:700px;height:700px;background:radial-gradient(circle, rgba(255,255,255,0.11), transparent 70%);z-index:-3;filter:blur(55px);animation:float 22s infinite alternate}
-@keyframes float{0%{transform:translate(-10%,-10%)}100%{transform:translate(12%,15%)}}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.095), rgba(255,255,255,0.03));backdrop-filter:blur(60px);border:1px solid rgba(255,255,255,0.12);box-shadow:0 0 90px rgba(255,255,255,0.07), inset 0 1px 0 rgba(255,255,255,0.15)}
-.card-w{background:#fcfbf8;color:#080808;box-shadow:0 40px 140px rgba(0,0,0,0.85)}
-.shock{background:linear-gradient(180deg,#fff 20%, rgba(255,255,255,0.28) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.bar{transition:width 1.2s cubic-bezier(0.16,1,0.3,1)}
-.btc{background:linear-gradient(135deg,#F7931A,#FFB347);color:#000}
+#bg{position:fixed;inset:0;z-index:-6;width:100%;height:100%;object-fit:cover;filter:brightness(0.35)}
+#fog{position:fixed;inset:0;z-index:-5;background:linear-gradient(to bottom, transparent 10%, #020203 92%)}
+.orb{position:fixed;filter:blur(60px);z-index:-4;animation:float 25s infinite alternate}
+@keyframes float{0%{transform:translate(-8%,-8%) scale(1)}100%{transform:translate(10%,12%) scale(1.2)}}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));backdrop-filter:blur(70px);border:1px solid rgba(255,255,255,0.12)}
+.card-w{background:#fcfbf8;color:#050505}
+.shock{background:linear-gradient(180deg,#fff 10%, rgba(255,255,255,0.25) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.bar{transition:width 1.3s cubic-bezier(0.16,1,0.3,1)}
 </style>
 </head>
 <body>
 
 <video id="bg" autoplay muted loop playsinline><source src="https://videos.pexels.com/video-files/18069234/18069234-uhd_1440_1440_24fps.mp4" type="video/mp4"></video>
-<div id="fog"></div><div class="orb" style="left:5%;top:5%"></div><div class="orb" style="right:5%;bottom:10%;background:radial-gradient(circle, rgba(247,147,26,0.14), transparent 70%); width:900px; height:900px"></div>
+<div id="fog"></div>
+<div class="orb" style="left:0;top:0;width:800px;height:800px;background:radial-gradient(circle, rgba(255,255,255,0.13), transparent 70%)"></div>
+<div class="orb" style="right:0;bottom:0;width:1000px;height:1000px;background:radial-gradient(circle, rgba(247,147,26,0.15), transparent 70%)"></div>
 
-<div class="max-w-[1440px] mx-auto px-6 md:px-12 pt-10 pb-40">
+<div class="max-w-[1440px] mx-auto px-6 md:px-10 pt-10 pb-20">
 
-<div class="flex justify-between items-center">
-<p class="text-[13px] tracking-[0.8em]">PO80.COM</p>
-<div class="flex gap-3"><div class="card rounded-full px-5 py-2"><p class="text-[9px] tracking-[0.4em]">SIN DEUDAS • SIN TELEFONÍA</p></div><div class="bg-white text-black rounded-full px-5 py-2"><p class="text-[9px] font-bold tracking-[0.2em]">FUNDADOR: JHON GONZALES</p></div></div>
+<div class="flex justify-between"><p class="tracking-[0.8em] text-[13px]">PO80.COM</p><p class="bg-white text-black px-5 py-2 rounded-full mono text-[9px] font-bold">FUNDADOR: JHON GONZALES • LENOX JG</p></div>
+
+<h1 class="serif text-[20vw] md:text-[150px] leading-[0.76] tracking-[-0.06em] mt-12 shock">Sin<br>telefonía<br><span class="italic" style="-webkit-text-fill-color:rgba(255,255,255,0.35)">para siempre.</span></h1>
+
+<!-- SISTEMA RESUMIDO ARRIBA -->
+<div class="mt-16 grid md:grid-cols-3 gap-5 max-w-[1100px]">
+<div class="card rounded-[28px] p-7"><p class="mono text-[9px] opacity-40">01 / ALMACENAS</p><p class="mt-3 text-[14px] leading-[1.6]">Wifi gratis de casa, cafetería, comedor. Barra sube 0%→100% poco a poco. Sin chip.</p></div>
+<div class="card rounded-[28px] p-7"><p class="mono text-[9px] opacity-40">02 / GUARDAS</p><p class="mt-3 text-[14px] leading-[1.6]">Tu teléfono es tu módem PO80. Guardas todo. Sin número, sin compañía.</p></div>
+<div class="bg-white text-black rounded-[28px] p-7"><p class="mono text-[9px] opacity-50">03 / USAS SIN DEUDAS</p><p class="mt-3 text-[14px] leading-[1.6] font-bold">Apagas todo y lo guardado se consume como datos. Desierto, mar, montaña. Un solo pago.</p></div>
 </div>
 
-<h1 class="serif text-[18vw] md:text-[132px] leading-[0.78] tracking-[-0.06em] mt-12 shock">Cambiamos<br><span class="italic font-light" style="-webkit-text-fill-color:rgba(255,255,255,0.4)">el mundo</span><br>de deudas<br>sin pagar<br>telefonía.</h1>
-
-<p class="max-w-[820px] mt-8 text-[17px] md:text-[19px] leading-[1.7] font-light opacity-70">PO80.COM es tu módem inalámbrico sin chip. Almacenamos el wifi gratis de tu casa, cafetería o comedor y lo usas como datos en lugares sin señal. Para emergencias, para obra, para vivir sin deudas de telefonía. Un solo pago en la vida. Solo Bitcoin. Marca única fundada por JHON GONZALES aka LENOX JG.</p>
-
-<div class="mt-20 grid lg:grid-cols-[1.4fr_0.6fr] gap-8">
-
-<!-- SISTEMA DETALLADO -->
-<div class="card rounded-[44px] p-10 md:p-14">
-<p class="mono text-[10px] tracking-[0.6em] opacity-40">01 / SISTEMA COMPLETO PO80 — DETALLE LLAMATIVO</p>
-<h2 class="text-[28px] md:text-[42px] leading-[1.05] mt-6 font-light">Tu teléfono es tu módem. Guarda wifi gratis. Úsalo sin señal. <span class="serif italic opacity-50">Sin bill mensual nunca más.</span></h2>
-
-<div class="mt-12 grid md:grid-cols-3 gap-4">
-<div class="bg-white/[0.06] rounded-[26px] p-6 border border-white/10"><p class="serif text-[44px] italic opacity-20">01</p><p class="text-[13.5px] leading-[1.7] mt-2"><b class="text-white">ALMACENAS WIFI GRATIS</b><br>En tu casa pagas wifi. En la cafetería y comedor te lo dan gratis. Pones la contraseña en PO80 y tu barra sube poco a poco 0% a 100%. No gastas chip.</p></div>
-<div class="bg-white/[0.06] rounded-[26px] p-6 border border-white/10"><p class="serif text-[44px] italic opacity-20">02</p><p class="text-[13.5px] leading-[1.7] mt-2"><b class="text-white">TU MÓDEM INALÁMBRICO</b><br>Tu app guarda ese wifi. Sin número, sin compañía. Tu teléfono se convierte en módem PO80. Privado, tuyo.</p></div>
-<div class="bg-white text-black rounded-[26px] p-6"><p class="serif text-[44px] italic opacity-20">03</p><p class="text-[13.5px] leading-[1.7] mt-2"><b>USAS SIN SEÑAL NI DEUDAS</b><br>Apagas wifi y datos. Abres PO80.COM. Lo guardado se consume poco a poco como datos. En desierto, mar, montaña. Shock.</p></div>
+<!-- DEMO + PRECIOS -->
+<div class="mt-16 grid lg:grid-cols-2 gap-8">
+<div class="card-w rounded-[36px] p-8">
+<p class="mono text-[10px] tracking-[0.5em] opacity-50">DEMO — ALMACENA WIFI GRATIS</p>
+<input id="wifiPass" type="password" placeholder="Contraseña wifi gratis del lugar..." class="mt-5 w-full bg-black/5 border border-black/10 rounded-full px-7 py-5 outline-none">
+<div class="mt-5 h-[14px] bg-black/10 rounded-full p-1.5"><div id="bar" class="bar h-full bg-black w-[0%] rounded-full"></div></div>
+<div class="flex justify-between mt-3 mono text-[11px]"><p id="porc">0%</p><p id="gb">0.00 / 1 GB</p></div>
+<button onclick="recargar()" class="mt-6 w-full bg-black text-white py-5 rounded-full mono text-[11px] tracking-[0.3em] font-bold">RECARGAR ESTE WIFI GRATIS</button>
 </div>
-
-<div class="mt-12 grid md:grid-cols-2 gap-4 text-[13px] leading-[1.8]">
-<div class="card rounded-[22px] p-6"><b class="text-white block mb-2">🚨 SOS EMERGENCIA SIN SEÑAL</b> Botón que manda tu ubicación exacta a tu familia cuando no hay señal. Salva vidas en desierto, montaña, océano. Sin pagar telefonía.</div>
-<div class="card rounded-[22px] p-6"><b class="text-white block mb-2">🏗️ GESTIÓN DE OBRAS COMPLETA</b> Crea obras, clientes, trabajadores, presupuestos, fotos, facturas, notas de voz. Todo offline con lo almacenado.</div>
-<div class="card rounded-[22px] p-6"><b class="text-white block mb-2">🗺️ MAPAS OFFLINE + UBICACIÓN</b> Mapas que funcionan sin internet usando tu almacén. Comparte ubicación en tiempo real sin chip.</div>
-<div class="card rounded-[22px] p-6"><b class="text-white block mb-2">💸 LIBERACIÓN DE DEUDAS TELEFÓNICAS</b> Una familia paga $1,200 al año en bill. Con PO80 pagas una sola vez $4.99 a $666.99 y nunca más. Solo BTC, sin bancos.</div>
-<div class="card rounded-[22px] p-6"><b class="text-white block mb-2">🔋 RECARGA INTELIGENTE</b> Detecta wifi gratis del lugar, recarga poco a poco hasta 100%. Barra premium con animación real.</div>
-<div class="card rounded-[22px] p-6"><b class="text-white block mb-2">🔒 MARCA ÚNICA PO80.COM</b> Sin marcas registradas de nadie. Sistema único del fundador JHON GONZALES. Solo Bitcoin.</div>
+<div class="card rounded-[36px] p-8 border border-[#F7931A]/30">
+<p class="mono text-[10px] tracking-[0.5em] text-[#F7931A]">PAGA UN SOLO PAGO — BTC ONLY</p>
+<h3 class="text-[32px] leading-[0.9] mt-4">Un pago en la vida y libre.</h3>
+<div class="mt-6 space-y-2 mono text-[12px]">
+<div onclick="setGB(5)" class="flex justify-between p-4 rounded-full bg-white/5 cursor-pointer"><span>5 GB</span><span>$4.99</span></div>
+<div onclick="setGB(20)" class="flex justify-between p-4 rounded-full bg-white text-black font-bold cursor-pointer"><span>20 GB POPULAR</span><span>$15.99</span></div>
+<div onclick="setGB(1000)" class="flex justify-between p-5 rounded-[20px] bg-[#F7931A] text-black font-bold cursor-pointer"><span>1000 GB FOUNDER 1TB SHOCK</span><span>$666.99</span></div>
 </div>
-
-<div class="mt-12 card-w rounded-[32px] p-8">
-<div class="flex justify-between items-center"><p class="mono text-[10px] tracking-[0.5em] opacity-50">DEMO REAL — ALMACENA WIFI GRATIS AHORA</p><p class="mono text-[10px] bg-black text-white px-3 py-1 rounded-full">PO80 LIVE</p></div>
-<input id="wifiPass" type="password" placeholder="Contraseña del wifi gratis de casa, cafetería, comedor..." class="mt-6 w-full bg-black/[0.05] border border-black/10 rounded-full px-7 py-5 text-[14px] outline-none">
-<div class="mt-6 h-[16px] bg-black/10 rounded-full p-1.5 overflow-hidden"><div id="barReal" class="bar h-full bg-black w-[0%] rounded-full"></div></div>
-<div class="flex justify-between mt-4 mono"><p id="porc" class="text-[12px] font-bold">0% — VACÍO</p><p id="gbTxt" class="text-[12px] opacity-60">0.00 / 1.00 GB GRATIS</p></div>
-<button onclick="recargarPoco()" class="mt-7 w-full bg-black text-white py-6 rounded-full text-[12px] tracking-[0.4em] font-bold">ALMACENAR ESTE WIFI GRATIS</button>
-<p class="mono text-[9px] opacity-40 mt-3 text-center">Recargas con wifi del lugar. Luego apagas todo y usas PO80 como datos. Sin chip, sin bill.</p>
+<div class="mt-6 bg-black rounded-[20px] p-5">
+<p class="mono text-[9px] opacity-50">BILLETERA OFICIAL BTC</p>
+<p class="mono text-[12px] mt-2 break-all select-all text-[#F7931A]">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
+<img id="qr" class="mt-4 bg-white p-2 rounded-xl mx-auto w-[160px]">
+<div class="mt-4 grid grid-cols-2 gap-2"><button onclick="copyBTC()" class="bg-white text-black py-3 rounded-full mono text-[10px] font-bold">COPIAR</button><button onclick="openBTC()" class="bg-[#F7931A] text-black py-3 rounded-full mono text-[10px] font-bold">PAGAR ₿</button></div>
 </div>
-
-</div>
-
-<!-- PRECIOS CON TU WALLET -->
-<div class="space-y-6">
-
-<div class="card-w rounded-[44px] p-9">
-<p class="mono text-[10px] tracking-[0.5em] opacity-40">PRECIOS — UN SOLO PAGO EN LA VIDA — BTC ONLY</p>
-<h3 class="serif text-[38px] leading-[0.9] mt-5">Un pago<br><span class="italic opacity-40">libre de deudas para siempre</span></h3>
-
-<div class="mt-8 space-y-3">
-<div onclick="setGB(5)" class="flex justify-between items-center p-5 rounded-[20px] border border-black/10 hover:bg-black hover:text-white transition cursor-pointer"><div><p class="font-bold text-[14px]">5 GB STARTER</p><p class="mono text-[10px] opacity-60">0.000076 BTC • Prueba</p></div><p class="font-bold">$4.99</p></div>
-<div onclick="setGB(20)" class="flex justify-between items-center p-5 rounded-[20px] bg-black text-white cursor-pointer"><div><p class="font-bold text-[14px]">20 GB POPULAR 🔥</p><p class="mono text-[10px] opacity-60">0.000246 BTC • Más usado</p></div><p class="font-bold">$15.99</p></div>
-<div onclick="setGB(50)" class="flex justify-between items-center p-5 rounded-[20px] border border-black/10 hover:bg-black hover:text-white transition cursor-pointer"><div><p class="font-bold text-[14px]">50 GB BUILDER</p><p class="mono text-[10px] opacity-60">0.000476 BTC</p></div><p class="font-bold">$30.99</p></div>
-<div onclick="setGB(100)" class="flex justify-between items-center p-5 rounded-[20px] border border-black/10 hover:bg-black hover:text-white transition cursor-pointer"><div><p class="font-bold text-[14px]">100 GB PRO</p><p class="mono text-[10px] opacity-60">0.000938 BTC</p></div><p class="font-bold">$60.99</p></div>
-<div onclick="setGB(1000)" class="flex justify-between items-center p-6 rounded-[26px] bg-[#080808] text-white border-2 border-[#F7931A] shadow-[0_0_60px_rgba(247,147,26,0.4)] cursor-pointer"><div><p class="font-bold tracking-[0.1em]">1000 GB FOUNDER 1TB</p><p class="mono text-[10px] opacity-60">0.01026 BTC • TOP SHOCK</p></div><p class="text-[22px] font-bold text-[#F7931A]">$666.99</p></div>
-</div>
-
-<div class="mt-8 bg-[#111] text-white rounded-[24px] p-6 border border-[#F7931A]/30">
-<div class="flex justify-between items-center"><p class="mono text-[10px] tracking-[0.4em] text-[#F7931A]">BILLETERA OFICIAL BTC — PO80.COM</p><span class="btc px-3 py-1 rounded-full text-[10px] font-bold mono">BTC ONLY</span></div>
-<p id="btcAddr" class="mono text-[13px] mt-4 break-all leading-[1.5] select-all">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
-<div id="qrBox" class="mt-5 bg-white rounded-[18px] p-4 flex justify-center"><img id="qrImg" alt="QR BTC" class="w-[180px] h-[180px]"></div>
-<div class="mt-5 grid grid-cols-2 gap-3">
-<button onclick="copyBTC()" class="bg-white text-black py-4 rounded-full text-[11px] font-bold tracking-[0.2em]">COPIAR DIRECCIÓN</button>
-<button onclick="openBTC()" class="btc py-4 rounded-full text-[11px] font-bold tracking-[0.2em]">PAGAR AHORA ₿</button>
-</div>
-<p class="mono text-[9px] opacity-50 mt-4 text-center leading-[1.6]">Envía el monto exacto. 1 confirmación y tu almacén se activa automático para siempre. Sin bancos, sin tarjeta. Fundador: JHON GONZALES.</p>
-</div>
-
-</div>
-
-<div class="card rounded-[32px] p-8 border border-white/10">
-<p class="mono text-[10px] tracking-[0.5em] opacity-30">FUNDADOR — MARCA ÚNICA</p>
-<div class="mt-6 flex gap-4 items-center">
-<div class="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center font-bold text-[14px]">JG</div>
-<div><p class="font-bold tracking-[0.2em]">JHON GONZALES</p><p class="mono text-[10px] opacity-60">aka LENOX JG — Artista — Fundador PO80.COM</p></div>
-</div>
-<p class="text-[13.5px] leading-[1.8] opacity-70 mt-6">Creé PO80.COM porque yo también pagaba deudas de telefonía y en obra me quedaba sin señal. Ahora almacenamos el wifi gratis que ya existe en cada casa y lo usamos donde no hay nada. Sin pagar cada mes. Un solo pago en la vida. Esa es mi marca única, cambiando el mundo de deudas.</p>
-</div>
-
 </div>
 </div>
 
-<p class="text-center mono text-[10px] tracking-[0.8em] opacity-20 mt-32">PO80.COM © 2026 — MARCA ÚNICA CAMBIANDO EL MUNDO DE DEUDAS — FUNDADOR JHON GONZALES — BTC: bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
+<!-- DESCRIPCIÓN LLAMATIVA FINAL — LA QUE EXPLICA TODO -->
+<div class="mt-32 card rounded-[48px] p-10 md:p-[70px] border border-white/15 shadow-[0_0_120px_rgba(255,255,255,0.08)]">
+
+<div class="max-w-[1050px]">
+<p class="mono text-[11px] tracking-[0.8em] text-[#F7931A]">02 / SISTEMA QUE ESTAMOS CREANDO — EXPLICACIÓN COMPLETA LLAMATIVA — LEAN ESTO</p>
+<h2 class="serif text-[46px] md:text-[78px] leading-[0.85] tracking-[-0.05em] mt-8">PO80.COM no es internet.<br>Es tu libertad<br><span class="italic opacity-30">sin deudas de telefonía.</span></h2>
+
+<div class="mt-14 space-y-12 text-[15px] md:text-[17px] leading-[1.9] font-light opacity-85">
+
+<p class="text-[20px] md:text-[24px] leading-[1.5] text-white font-normal">JHON GONZALES creó PO80 porque estaba cansado de pagar $100, $150 al mes por telefonía que se acaba y te deja sin señal donde más la necesitas: en el desierto, en la obra, en el mar, en la montaña.</p>
+
+<div class="grid md:grid-cols-2 gap-10 pt-6 border-t border-white/10">
+
+<div>
+<p class="mono text-[11px] tracking-[0.4em] text-white mb-4">¿QUÉ ES PO80 REALMENTE?</p>
+<p>PO80.COM convierte tu teléfono en un <b class="text-white">módem inalámbrico sin chip, sin número, sin compañía telefónica.</b> No dependes de nadie. Tú almacenas el wifi gratis que ya existe en cada casa, en cada cafetería, en cada comedor. Ese wifi que te regalan con una contraseña. Lo pones en PO80 y tu sistema lo guarda poco a poco, 0% a 100% como si cargaras una batería. Cuando sales, apagas tu wifi, apagas tus datos móviles, abres PO80.COM y TODO funciona: tus mapas, tu ubicación, tus obras, tus clientes, tus fotos. Lo que guardaste se va consumiendo como si fueran datos móviles, pero tú no pagaste telefonía. <b class="text-white">Es wifi gratis convertido en datos.</b></p>
+</div>
+
+<div>
+<p class="mono text-[11px] tracking-[0.4em] text-white mb-4">¿CÓMO CAMBIAMOS EL MUNDO DE DEUDAS?</p>
+<p>El mundo paga deudas eternas: $1,200 al año por persona en telefonía. Una familia de 4 paga $4,800. En 10 años $48,000 tirados. PO80 rompe eso. <b class="text-white">Un solo pago en la vida. Desde $4.99 hasta $666.99 por 1TB.</b> Un pago y tu módem es tuyo para siempre. Recargas gratis en cualquier lugar con wifi gratis. Ya no pagas bill. Ya no debes. Esa es la revolución de deudas que estamos creando. Solo Bitcoin, sin bancos, sin que nadie te rastree, 100% privado, marca única PO80.COM.</p>
+</div>
+
+<div>
+<p class="mono text-[11px] tracking-[0.4em] text-white mb-4">¿DÓNDE FUNCIONA? — USOS QUE SALVAN VIDAS</p>
+<ul class="space-y-3">
+<li>🚨 <b class="text-white">SOS SIN SEÑAL:</b> En desierto de Arizona, montaña de Utah, mar abierto. Sin señal telefónica. Un botón en PO80 manda tu ubicación exacta por satélite a tu familia. Salva vidas. Sin pagar telefonía.</li>
+<li>🏗️ <b class="text-white">CONSTRUCTORES SIN WIFI:</b> En obra no hay wifi. Con PO80 ves planos, presupuestos, fotos, clientes, facturas, todo offline con lo que almacenaste en la mañana en la cafetería.</li>
+<li>🗺️ <b class="text-white">MAPAS OFFLINE:</b> Google Maps sin internet, con lo almacenado. Tu ubicación en tiempo real sin chip.</li>
+<li>💼 <b class="text-white">GESTIÓN COMPLETA:</b> Crea obras, clientes, trabajadores, notas de voz, todo dentro de PO80, sin internet.</li>
+</ul>
+</div>
+
+<div>
+<p class="mono text-[11px] tracking-[0.4em] text-white mb-4">¿POR QUÉ ES MÁS LLAMATIVO QUE TODO?</p>
+<p>Porque nadie lo ha hecho. Todos pagan telefonía cara. Nosotros dijimos: el wifi gratis ya está en todos lados. ¿Por qué no guardarlo y usarlo después? <b class="text-white">PO80.COM es el primer módem inalámbrico que almacena wifi gratis del lugar y lo convierte en datos sin chip.</b> Es llamativo porque la gente entra y ve una barra que sube poco a poco con la contraseña del comedor. Y luego apaga todo y sigue conectado. Se quedan en shock. Y es más llamativo porque es <b class="text-white">un solo pago en la vida con Bitcoin.</b> No suscripción. No deudas. Tu billetera oficial es <span class="text-[#F7931A] mono">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</span> y con eso liberas tu vida.</p>
+</div>
+
+</div>
+
+<div class="mt-16 bg-white text-black rounded-[32px] p-10 md:p-12">
+<p class="mono text-[11px] tracking-[0.6em] opacity-50">MANIFIESTO FINAL — SISTEMA QUE ESTAMOS CREANDO — JHON GONZALES</p>
+<p class="serif text-[28px] md:text-[42px] leading-[1.05] mt-6">Estamos creando un mundo donde nadie pague telefonía. Donde almacenes el wifi gratis de tu casa y lo uses en el desierto. Donde una madre mande su ubicación sin señal. Donde un constructor trabaje sin deudas. Un solo pago en BTC. Esa es PO80.COM. Marca única. Hecha por JHON GONZALES para el pueblo.</p>
+<div class="mt-8 flex gap-3 flex-wrap"><span class="bg-black text-white px-6 py-2 rounded-full mono text-[10px]">SIN CHIP</span><span class="bg-black text-white px-6 py-2 rounded-full mono text-[10px]">SIN BILL</span><span class="bg-black text-white px-6 py-2 rounded-full mono text-[10px]">SIN DEUDAS</span><span class="bg-[#F7931A] text-black px-6 py-2 rounded-full mono text-[10px] font-bold">SOLO BTC — bc1qep3...4776s</span></div>
+</div>
+
+</div>
+</div>
+
+<p class="text-center mono text-[10px] tracking-[0.8em] opacity-20 mt-20">PO80.COM — SISTEMA LLAMATIVO QUE CAMBIA EL MUNDO DE DEUDAS — FUNDADOR JHON GONZALES — BTC: bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</p>
 
 </div>
 
 <script>
-const BTC_ADDR="bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s";
-let nivel=parseFloat(localStorage.getItem('po80_nivel')||'0');let gbMax=parseFloat(localStorage.getItem('po80_gbMax')||'1');
-function upd(){document.getElementById('barReal').style.width=nivel+'%';document.getElementById('porc').innerText=nivel.toFixed(0)+'% — '+(nivel<100?'ALMACENANDO WIFI GRATIS...':'¡ALMACÉN LLENO — PO80!');document.getElementById('gbTxt').innerText=(nivel/100*gbMax).toFixed(2)+' / '+gbMax.toFixed(0)+' GB';localStorage.setItem('po80_nivel',nivel);localStorage.setItem('po80_gbMax',gbMax);}
-function recargarPoco(){let pw=document.getElementById('wifiPass').value;if(!pw){alert('Pon la contraseña del wifi gratis del lugar (casa, cafetería, comedor)');return;}nivel+=18;if(nivel>100)nivel=100;upd();if(nivel>=100)alert('¡100% LLENO — PO80.COM!\n\nAlmacenaste wifi gratis.\nAhora apaga wifi y datos y abre PO80.\nSin chip, sin deudas, sin telefonía.\nFundador: JHON GONZALES');}
-function setGB(gb){gbMax=gb;upd();window.scrollTo({top:0,behavior:'smooth'});let amounts={5:'0.000076 BTC ($4.99)',20:'0.000246 BTC ($15.99)',50:'0.000476 BTC ($30.99)',100:'0.000938 BTC ($60.99)',1000:'0.01026 BTC ($666.99)'};setTimeout(()=>alert('PLAN SELECCIONADO: '+gb+' GB\nMonto: '+amounts[gb]+'\n\nPaga a:\n'+BTC_ADDR+'\n\nUn solo pago en la vida.'),300);}
-function copyBTC(){navigator.clipboard.writeText(BTC_ADDR);alert('Dirección BTC copiada:\n'+BTC_ADDR);}
-function openBTC(){let btcMap={1:0.000076,5:0.000076,20:0.000246,50:0.000476,100:0.000938,1000:0.01026};let amount=btcMap[gbMax]||0.000246;window.open('bitcoin:'+BTC_ADDR+'?amount='+amount+'&label=PO80_'+gbMax+'GB','_blank');}
-function genQR(){document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bitcoin:'+BTC_ADDR;}
-genQR();upd();
+const ADDR="bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s";
+let nivel=0, gbMax=1;
+function upd(){document.getElementById('bar').style.width=nivel+'%';document.getElementById('porc').innerText=nivel+'%';document.getElementById('gb').innerText=(nivel/100*gbMax).toFixed(2)+' / '+gbMax+' GB'}
+function recargar(){let p=document.getElementById('wifiPass').value;if(!p){alert('Pon contraseña wifi gratis');return}nivel+=20;if(nivel>100)nivel=100;upd();if(nivel==100)alert('¡100% ALMACENADO PO80!\n\nSin chip, sin telefonía, sin deudas.\nFundador JHON GONZALES')}
+function setGB(g){gbMax=g;upd();alert(g+'GB seleccionado - Paga BTC a:\n'+ADDR)}
+function copyBTC(){navigator.clipboard.writeText(ADDR);alert('Copiado: '+ADDR)}
+function openBTC(){window.open('bitcoin:'+ADDR+'?amount=0.000246&label=PO80','_blank')}
+document.getElementById('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bitcoin:'+ADDR;upd();
 </script>
 </body>
 </html>
