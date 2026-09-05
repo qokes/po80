@@ -1,52 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PO80.COM - SISTEMA PRIVADO</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
-body{margin:0;overflow:hidden;background:#000;font-family:Arial}
-.bg{
-  position:fixed;inset:0;
-  background:url('https://images.pexels.com/videos/2169880/2169880-hd_1920_1080_30fps.mp4') center/cover;
-  background-image:url('./mountain.jpg'); /* usa la que te generé */
-  animation: zoom 25s infinite alternate ease-in-out;
-  filter: brightness(0.7);
-}
-@keyframes zoom{
-  0%{transform:scale(1) translateY(0)}
-  100%{transform:scale(1.15) translateY(-20px)}
-}
-.login{
-  position:relative;z-index:2;
-  height:100vh;display:flex;align-items:center;justify-content:center;
-}
-.box{
-  background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);
-  padding:30px;border-radius:15px;width:300px;text-align:center
-}
-input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none;outline:none}
-button{width:100%;padding:12px;border:none;border-radius:8px;background:white;color:black;font-weight:bold;cursor:pointer}
-h1{color:white;letter-spacing:3px}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+*{font-family:Inter}
+.mountain{position:fixed;inset:0;z-index:-2;background:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070') center/cover;animation:zoom 20s infinite alternate}
+@keyframes zoom{0%{transform:scale(1)}100%{transform:scale(1.15)}}
+.overlay{position:fixed;inset:0;z-index:-1;background:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.92))}
+.glass{background:rgba(15,15,15,0.7);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08)}
 </style>
 </head>
-<body>
-<div class="bg"></div>
-<div class="login">
-  <div class="box">
-    <h1>PO80.COM</h1>
-    <input id="user" type="text" placeholder="Usuario">
-    <input id="pass" type="password" placeholder="Contraseña">
-    <button onclick="entrar()">ENTRAR</button>
-  </div>
-</div>
-<script>
-function entrar(){
-  let u=document.getElementById('user').value.trim();
-  let p=document.getElementById('pass').value.trim();
-  if(u===atob('MTk3MQ==') && p===atob('MTk3MQ==')){
-    localStorage.setItem('po80_auth','ok');
-    location.href='/home.html';
-  }else alert('Datos incorrectos');
-}
-</script>
-</body>
-</html>
+<body class="text-white bg-black">
+
+<div class="mountain"></div><div class="overlay"></div>
+
+<!-- NAV -->
+<nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
+  <b class="tracking-[6px] text-xl">PO80.COM</b>
+  <button onclick="openLogin()" class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm">ACCESO PRIVADO</button>
+</nav>
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-6 pt-20 pb-16 grid md:grid-cols-2 gap-10 items-center">
+  <div>
+    <h1 class="text-5xl md:text-7xl font-black leading-none">SISTEMA<br>DE OBRA<br><span class="text-zinc-500">PO80</span></h1>
+    <p class="mt-6 text-zinc-300 leading-relaxed">Sistema privado de control de clientes, cuentas por
