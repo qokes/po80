@@ -1,27 +1,75 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PO80.COM — PRIVATE BY LENOX JG</title><script src="https://cdn.tailwindcss.com"></script><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"><style>*{font-family:'Bricolage Grotesque',sans-serif}.serif{font-family:'Instrument Serif',serif}body{background:#070707;color:#f5f5f5}.img{position:fixed;inset:0;z-index:-2;background:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2000') center/cover}.blur{position:fixed;inset:0;z-index:-1;background:radial-gradient(80% 60% at 50% 0%, rgba(255,255,255,0.07), transparent 60%), linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.92) 75%, #070707)}.card{background:rgba(255,255,255,0.06);backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.09)}#lockScreen{position:fixed;inset:0;z-index:9999;background:#070707;display:flex;align-items:center;justify-content:center;padding:24px}#main{display:none}</style></head><body><div class="img"></div><div class="blur"></div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PO80.COM — BY LENOX JG</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{font-family:'Bricolage Grotesque',sans-serif}
+.serif{font-family:'Instrument Serif',serif}
+body{background:#050507;color:#f5f5f5;overflow-x:hidden}
+#bgVideo{position:fixed;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;filter:brightness(0.6) saturate(1.1)}
+.overlay{position:fixed;inset:0;z-index:-2;background:radial-gradient(120% 80% at 50% 0%, rgba(255,255,255,0.12), transparent 60%),linear-gradient(to bottom, rgba(5,5,7,0.2), rgba(5,5,7,0.85) 70%, #050507 95%)}
+.mist{position:fixed;inset:0;z-index:-1;opacity:0.5;background:radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 40%),radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06), transparent 50%);animation:drift 20s infinite alternate}
+@keyframes drift{0%{transform:translate(0,0)}100%{transform:translate(-3%, -2%)}}
+.card{background:rgba(255,255,255,0.06);backdrop-filter:blur(40px);border:1px solid rgba(255,255,255,0.10)}
+.card-w{background:rgba(246,245,242,0.96);backdrop-filter:blur(30px);color:#0a0a0a;box-shadow:0 20px 80px rgba(0,0,0,0.5)}
+.price-card{transition:all 0.4s;cursor:pointer}.price-card:hover{transform:translateY(-6px) scale(1.02);background:#fff}
+.glow{box-shadow:0 0 40px rgba(255,255,255,0.15)}
+#lockScreen{position:fixed;inset:0;z-index:9999;background:#050507;display:flex;align-items:center;justify-content:center;padding:20px}
+#main{display:none}
+.bar{transition:width 1s cubic-bezier(0.16,1,0.3,1)}
+</style>
+</head>
+<body>
+
+<video id="bgVideo" autoplay muted loop playsinline>
+<source src="https://videos.pexels.com/video-files/18069234/18069234-uhd_1440_1440_24fps.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div><div class="mist"></div>
 
 <div id="lockScreen">
-<div class="card rounded-[32px] p-10 max-w-[400px] w-full text-center">
-<p class="text-[10px] tracking-[0.5em] opacity-30">PO80.COM — PRIVATE</p>
-<h2 class="serif text-[36px] mt-4 leading-[0.9]">Solo<br><span class="italic opacity-40">fundador</span></h2>
-<p class="text-[11px] opacity-40 mt-3">Sistema en creación por LENOX JG</p>
-<input id="user" placeholder="Usuario" class="mt-8 w-full bg-white/[0.06] border border-white/10 rounded-full px-5 py-3 text-[12px] outline-none text-center">
-<input id="pass" type="password" placeholder="Contraseña" class="mt-3 w-full bg-white/[0.06] border border-white/10 rounded-full px-5 py-3 text-[12px] outline-none text-center">
-<button onclick="login()" class="mt-5 w-full bg-white text-black py-4 rounded-full text-[11px] tracking-[0.2em] font-bold">ENTRAR</button>
-<p id="err" class="text-[10px] text-red-400 mt-3 hidden">Incorrecto</p>
+<div class="card rounded-[36px] p-10 max-w-[420px] w-full text-center glow">
+<p class="text-[10px] tracking-[0.6em] opacity-40">PO80.COM</p>
+<h2 class="serif text-[42px] leading-[0.9] mt-6">Sistema<br><span class="italic opacity-50">privado</span></h2>
+<p class="text-[11px] opacity-40 mt-4 tracking-[0.2em]">FUNDADO POR LENOX JG — JHON GONZALES</p>
+<input id="user" placeholder="Usuario" class="mt-10 w-full bg-white/[0.06] border border-white/10 rounded-full px-6 py-4 text-[13px] outline-none text-center">
+<input id="pass" type="password" placeholder="Contraseña" class="mt-3 w-full bg-white/[0.06] border border-white/10 rounded-full px-6 py-4 text-[13px] outline-none text-center">
+<button onclick="login()" class="mt-6 w-full bg-white text-black py-4 rounded-full text-[11px] tracking-[0.3em] font-bold">ENTRAR AL SISTEMA</button>
+<p id="err" class="text-[11px] text-red-400 mt-4 hidden">Usuario o contraseña incorrecto</p>
 </div>
 </div>
 
-<div id="main" class="max-w-[1200px] mx-auto px-6 md:px-10 pt-8 pb-24">
-<div class="flex justify-between"><p class="text-[12px] tracking-[0.5em]">PO80.COM</p><button onclick="logout()" class="card rounded-full px-5 py-2 text-[10px] opacity-60">CERRAR SESIÓN</button></div>
-<h1 class="serif text-[18vw] md:text-[110px] leading-[0.85] mt-16">Sistema<br><span class="italic opacity-40">privado</span></h1>
-<p class="mt-6 opacity-60">Contraseña actualizada: 197126 — Solo tú entras LENOX</p>
-<div class="mt-8 card rounded-[28px] p-8"><p>Ya tu sistema está protegido. Nadie lo ve sin usuario <b>lenox</b> y clave <b>197126</b></p></div>
+<div id="main" class="max-w-[1280px] mx-auto px-6 md:px-10 pt-8 pb-32">
+
+<div class="flex justify-between items-center">
+<p class="text-[13px] tracking-[0.6em] font-light">PO80.COM</p>
+<div class="flex gap-3">
+<div class="card rounded-full px-5 py-2 hidden md:block"><p class="text-[10px] tracking-[0.2em] opacity-60">MÓDEM INALÁMBRICO SIN CHIP</p></div>
+<button onclick="logout()" class="card rounded-full px-5 py-2 text-[10px] tracking-[0.2em]">CERRAR SESIÓN</button>
+</div>
 </div>
 
-<script>
-function login(){let u=document.getElementById('user').value.toLowerCase();let p=document.getElementById('pass').value;if(u==='lenox'&&p==='197126'){localStorage.setItem('po80_auth','1');document.getElementById('lockScreen').style.display='none';document.getElementById('main').style.display='block';}else{document.getElementById('err').style.display='block';}}
-function logout(){localStorage.removeItem('po80_auth');location.reload();}
-if(localStorage.getItem('po80_auth')==='1'){document.getElementById('lockScreen').style.display='none';document.getElementById('main').style.display='block';}
-</script>
-</body></html>
+<h1 class="serif text-[18vw] md:text-[130px] leading-[0.82] tracking-[-0.05em] mt-16">Tu módem<br><span class="italic opacity-40">inalámbrico</span><br>sin chip.</h1>
+
+<div class="mt-10 grid md:grid-cols-[1.3fr_0.7fr] gap-6">
+
+<div class="card rounded-[32px] p-8 md:p-10 glow">
+<p class="text-[10px] tracking-[0.5em] opacity-30">COMO FUNCIONA — TOP QUALITY</p>
+<h2 class="text-[26px] md:text-[30px] leading-[1.1] mt-6 font-light">Estás en tu casa, cafetería o comedor. Te dan la clave del wifi gratis. Recargas PO80 y lo usas donde quieras como datos.</h2>
+
+<div class="mt-8 space-y-3">
+<div class="flex gap-4 bg-white/[0.05] rounded-[20px] p-5"><span class="serif text-[22px] opacity-40">01</span><p class="text-[13px] leading-[1.6] opacity-70"><b class="text-white">En tu casa:</b> pones tu contraseña de wifi, le das RECARGAR y tu almacén se llena poco a poco como batería Tesla.</p></div>
+<div class="flex gap-4 bg-white/[0.05] rounded-[20px] p-5"><span class="serif text-[22px] opacity-40">02</span><p class="text-[13px] leading-[1.6] opacity-70"><b class="text-white">En cafetería / comedor:</b> te dan wifi gratis. Lo pones aquí, recargas sin usar chip, sin pagar bill de teléfono.</p></div>
+<div class="flex gap-4 bg-white/[0.05] rounded-[20px] p-5"><span class="serif text-[22px] opacity-40">03</span><p class="text-[13px] leading-[1.6] opacity-70"><b class="text-white">Se consume como datos:</b> sales, apagas wifi y datos, usas PO80.COM. Lo recargado se consume poco a poco. Tu app es tu módem.</p></div>
+</div>
+
+<div class="mt-8 card-w rounded-[28px] p-7">
+<p class="text-[10px] tracking-[0.4em] opacity-50">RECARGA TU ALMACÉN CON WIFI DEL LUGAR</p>
+<input id="wifiPass" type="password" placeholder="Contraseña del wifi (casa, cafetería, comedor...)" class="mt-5 w-full bg-black/[0.04] border border-black/10 rounded-full px-6 py-4 text-[13px] outline-none">
+<div class="mt-5 h-[8px] bg-black/10 rounded-full overflow-hidden"><div id="barReal" class="bar h-full bg-black w-[0%] rounded-full"></div></div>
+<div class="flex justify-between mt-3"><p id="porc" class="text-[11px] opacity-60">0% — Vacío</p><p id="gbTxt" class="text-[11px] font-bold">0.00 / 1.00 GB</p></div>
+<button onclick="recargarPoco()" class="mt-6 w-full bg-black text-white py-5 rounded-full text-[11px] tracking-[0.3em] font-bold">RECARGAR AHORA CON ESTE WIFI</button>
+<p class="text-[10px] opacity-40 text-center mt-3">
