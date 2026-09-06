@@ -4,14 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PO80.com  — Prepare Your Connection</title>
-
-  <meta name="description"
-    content="PO80 is a data reserve system designed to store data through Wi-Fi and use it later when connectivity is unavailable.">
-
-  <link rel="manifest" href="/manifest.json">
+  <title>PO80 — Personal Connectivity System</title>
+  <meta name="description" content="PO80 is a personal connectivity platform designed to store, manage and access previously available connectivity resources.">
+  <meta name="theme-color" content="#05070b">
 
   <style>
+    :root {
+      --bg: #05070b;
+      --bg2: #090d14;
+      --panel: rgba(255,255,255,.055);
+      --panel2: rgba(255,255,255,.035);
+      --border: rgba(255,255,255,.10);
+      --text: #f5f7fb;
+      --muted: #9aa5b5;
+      --accent: #69f0ae;
+      --accent2: #43d9ff;
+      --danger: #ff667d;
+      --max: 1180px;
+      --radius: 24px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -23,295 +35,711 @@
     }
 
     body {
-      background: #05070d;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(67,217,255,.10), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(105,240,174,.08), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
     }
 
     .container {
-      width: 92%;
-      max-width: 1100px;
+      width: min(var(--max), calc(100% - 40px));
       margin: auto;
     }
 
-    header {
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(5,7,11,.72);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner {
+      height: 76px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 24px 0;
-      border-bottom: 1px solid #172232;
+      justify-content: space-between;
+      gap: 30px;
     }
 
     .logo {
-      color: #63f5ff;
-      font-size: 30px;
+      font-size: 25px;
       font-weight: 900;
-      letter-spacing: 4px;
+      letter-spacing: -1.5px;
     }
 
-    .header-right {
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 28px;
+      color: #cbd3df;
+      font-size: 14px;
     }
 
-    .status {
-      color: #738198;
-      font-size: 11px;
-      letter-spacing: 1.5px;
+    .nav-links a:hover {
+      color: white;
     }
 
     .language {
-      background: #101725;
-      border: 1px solid #26384d;
-      color: #ffffff;
-      border-radius: 8px;
-      padding: 9px 10px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: white;
+      border-radius: 10px;
+      padding: 9px 12px;
       cursor: pointer;
-      font-size: 12px;
     }
+
+    /* HERO */
 
     .hero {
-      text-align: center;
-      padding: 85px 10px 65px;
+      min-height: 100vh;
+      padding: 150px 0 90px;
+      display: flex;
+      align-items: center;
+      position: relative;
     }
 
-    .badge {
-      display: inline-block;
-      border: 1px solid #20556a;
-      border-radius: 30px;
-      color: #63f5ff;
-      padding: 9px 18px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 28px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid rgba(105,240,174,.22);
+      background: rgba(105,240,174,.07);
+      color: var(--accent);
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .8px;
+      margin-bottom: 24px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 14px var(--accent);
     }
 
     h1 {
-      font-size: clamp(40px, 8vw, 78px);
-      line-height: 1.04;
-      letter-spacing: -3px;
-      margin-bottom: 25px;
+      font-size: clamp(54px, 7vw, 94px);
+      line-height: .94;
+      letter-spacing: -5px;
+      max-width: 760px;
+      margin-bottom: 28px;
     }
 
-    h1 span {
-      color: #63f5ff;
+    h1 .gradient {
+      background: linear-gradient(100deg, #fff, #8df5c1, #62dcff);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    .hero p {
-      max-width: 680px;
-      margin: auto;
-      color: #aab4c8;
-      font-size: 17px;
-      line-height: 1.7;
+    .hero-description {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 34px;
     }
 
-    .buttons {
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 50px;
+      padding: 0 21px;
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: .25s ease;
+      font-weight: 800;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #04100a;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(105,240,174,.18);
+    }
+
+    .btn-secondary {
+      background: var(--panel);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.09);
+      transform: translateY(-2px);
+    }
+
+    /* DEVICE */
+
+    .device-wrap {
+      position: relative;
       display: flex;
       justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 35px;
     }
 
-    .button {
-      display: inline-block;
-      padding: 15px 25px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 13px;
-      cursor: pointer;
-      border: 1px solid #26384d;
-      color: #ffffff;
-      background: #101725;
-      transition: .2s;
+    .device {
+      width: min(360px, 100%);
+      aspect-ratio: 9 / 18;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 42px;
+      padding: 12px;
+      background: linear-gradient(145deg, #161c25, #05070b);
+      box-shadow:
+        0 50px 100px rgba(0,0,0,.5),
+        0 0 80px rgba(67,217,255,.08);
+      transform: rotate(2deg);
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: .9;
+    .screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 31px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(105,240,174,.15), transparent 30%),
+        #070a10;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .button.primary {
-      background: #63f5ff;
-      color: #031016;
-      border: none;
-    }
-
-    .system {
-      background: #0b101a;
-      border: 1px solid #1c2a3b;
-      border-radius: 22px;
-      padding: 32px;
-      margin: 20px auto 75px;
-      max-width: 850px;
-    }
-
-    .system-title {
-      text-align: center;
-      color: #8d98ad;
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      color: #8591a3;
       font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 25px;
+      margin-bottom: 35px;
     }
 
-    .system-buttons {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+    .po80-big {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -4px;
     }
 
-    .system-button {
-      background: #111b29;
-      border: 1px solid #26384d;
-      border-radius: 12px;
-      padding: 23px 8px;
-      text-align: center;
-      color: #ffffff;
-      cursor: pointer;
-      font-weight: bold;
+    .online {
+      color: var(--accent);
       font-size: 12px;
-      transition: .2s;
+      font-weight: 800;
+      margin-bottom: 35px;
     }
 
-    .system-button:hover {
-      border-color: #63f5ff;
-      color: #63f5ff;
+    .storage {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
     }
 
-    .icon {
+    .storage-title {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .storage-number {
+      font-size: 38px;
+      font-weight: 900;
+      margin: 3px 0 12px;
+    }
+
+    .progress {
+      height: 6px;
+      border-radius: 20px;
+      background: #171e28;
+      overflow: hidden;
+    }
+
+    .progress span {
       display: block;
-      color: #63f5ff;
-      font-size: 26px;
-      margin-bottom: 10px;
+      width: 62%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
     }
 
-    .section-title {
+    .phone-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .phone-button {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 14px;
+      padding: 14px 5px;
       text-align: center;
-      font-size: 30px;
-      margin-bottom: 12px;
+      font-size: 11px;
+      font-weight: 800;
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: #8d98ad;
-      margin-bottom: 32px;
-      line-height: 1.6;
+    /* STATUS */
+
+    .status-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
     }
 
-    .benefits {
+    .status-inner {
+      min-height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #b9c2cf;
+      font-size: 13px;
+    }
+
+    .status-green {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 55px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 18px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-bottom: 75px;
+      gap: 18px;
     }
 
     .card {
-      background: #0b101a;
-      border: 1px solid #1c2a3b;
-      border-radius: 16px;
-      padding: 26px;
+      background: var(--panel2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: .3s ease;
     }
 
-    .card h3 {
-      color: #63f5ff;
-      font-size: 17px;
-      margin-bottom: 12px;
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(105,240,174,.22);
     }
 
-    .card p {
-      color: #aab4c8;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .about {
-      background: #0b101a;
-      border: 1px solid #1c2a3b;
-      border-radius: 18px;
-      padding: 35px;
-      margin-bottom: 75px;
-      text-align: center;
-    }
-
-    .about h2 {
-      margin-bottom: 15px;
-      font-size: 28px;
-    }
-
-    .about p {
-      max-width: 720px;
-      margin: auto;
-      color: #aab4c8;
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    .founder {
-      color: #63f5ff !important;
-      margin-top: 22px !important;
-      font-weight: bold;
-    }
-
-    .final {
-      text-align: center;
-      border-top: 1px solid #1c2a3b;
-      padding: 50px 10px;
-    }
-
-    .final h2 {
-      font-size: 30px;
-      margin-bottom: 15px;
-    }
-
-    .final p {
-      color: #8d98ad;
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(105,240,174,.09);
+      border: 1px solid rgba(105,240,174,.16);
+      color: var(--accent);
+      font-size: 20px;
       margin-bottom: 25px;
     }
 
-    footer {
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* HOW IT WORKS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .step {
+      border-top: 1px solid var(--border);
+      padding-top: 25px;
+    }
+
+    .step-number {
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      margin-bottom: 9px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* DASHBOARD */
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .dashboard-card {
+      border: 1px solid var(--border);
+      background: var(--panel2);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .dashboard-card.large {
+      min-height: 310px;
+    }
+
+    .metric {
+      font-size: 58px;
+      font-weight: 900;
+      letter-spacing: -3px;
+      margin: 15px 0;
+    }
+
+    .metric small {
+      font-size: 18px;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+
+    .mini-list {
+      list-style: none;
+      margin-top: 25px;
+    }
+
+    .mini-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      color: #bbc4d1;
+      font-size: 13px;
+    }
+
+    /* PLANS */
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 850px;
+    }
+
+    .plan {
+      position: relative;
+      border: 1px solid var(--border);
+      background: var(--panel2);
+      border-radius: 26px;
+      padding: 34px;
+    }
+
+    .plan.featured {
+      border-color: rgba(105,240,174,.38);
+      box-shadow: 0 0 60px rgba(105,240,174,.05);
+    }
+
+    .badge {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 10px;
+      color: #031008;
+      background: var(--accent);
+      padding: 6px 9px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .plan h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 42px;
+      font-weight: 900;
+      margin: 20px 0;
+    }
+
+    .price span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .plan ul {
+      list-style: none;
+      color: #b5bfcc;
+      font-size: 14px;
+      margin: 20px 0 28px;
+    }
+
+    .plan li {
+      padding: 7px 0;
+    }
+
+    /* SECURITY */
+
+    .security {
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(67,217,255,.06), rgba(105,240,174,.035)),
+        var(--panel2);
+      border-radius: 30px;
+      padding: 45px;
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .security h2 {
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .security p {
+      color: var(--muted);
+    }
+
+    .security-points {
+      display: grid;
+      gap: 12px;
+    }
+
+    .security-point {
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.14);
+      padding: 16px;
+      border-radius: 14px;
+      font-size: 13px;
+      color: #c5cdd8;
+    }
+
+    /* FOUNDER */
+
+    .founder {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .founder-box {
+      border: 1px solid var(--border);
+      background: var(--panel2);
+      border-radius: 28px;
+      padding: 35px;
+    }
+
+    .founder-name {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+
+    .founder-location {
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .founder p {
+      color: var(--muted);
+    }
+
+    /* CTA */
+
+    .cta {
       text-align: center;
-      color: #596579;
+      padding: 120px 20px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cta h2 {
+      font-size: clamp(40px, 6vw, 70px);
+      letter-spacing: -4px;
+      line-height: .95;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 30px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 45px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      color: #697483;
       font-size: 12px;
-      line-height: 1.8;
-      padding: 28px;
-      border-top: 1px solid #111b29;
     }
 
-    footer a {
-      color: #63f5ff;
-      text-decoration: none;
+    .footer-links {
+      display: flex;
+      gap: 22px;
+      color: #8e99a9;
+      font-size: 12px;
     }
 
-    @media (max-width: 700px) {
-      .header-right {
-        gap: 8px;
-      }
+    /* MOBILE */
 
-      .status {
+    @media (max-width: 900px) {
+
+      .nav-links {
         display: none;
       }
 
-      .system-buttons {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .benefits {
+      .hero-grid,
+      .security-grid,
+      .founder,
+      .dashboard {
         grid-template-columns: 1fr;
       }
 
       .hero {
-        padding-top: 55px;
+        padding-top: 125px;
+      }
+
+      .device-wrap {
+        margin-top: 20px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .plans {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+
+      .container {
+        width: min(100% - 28px, var(--max));
       }
 
       h1 {
-        letter-spacing: -1px;
+        letter-spacing: -3px;
       }
 
-      .about {
-        padding: 25px;
+      section {
+        padding: 80px 0;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .security {
+        padding: 28px;
+      }
+
+      .status-inner {
+        padding: 15px 0;
       }
     }
   </style>
@@ -319,250 +747,77 @@
 
 <body>
 
-  <div class="container">
+  <!-- NAVIGATION -->
 
-    <header>
-      <div class="logo">PO80</div>
+  <nav>
+    <div class="container nav-inner">
 
-      <div class="header-right">
-        <div class="status">DATA RESERVE SYSTEM</div>
-
-        <select class="language" id="language" onchange="changeLanguage()">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-        </select>
-      </div>
-    </header>
-
-    <main>
-
-      <section class="hero">
-
-        <div class="badge" data-en="THE NEXT WAY TO PREPARE YOUR CONNECTION"
-             data-es="UNA NUEVA FORMA DE PREPARAR TU CONEXIÓN">
-          THE NEXT WAY TO PREPARE YOUR CONNECTION
-        </div>
-
-        <h1 data-en="Recharge your connection.<br><span>Use it when you need it.</span>"
-            data-es="Recarga tu conexión.<br><span>Úsala cuando la necesites.</span>">
-          Recharge your connection.<br>
-          <span>Use it when you need it.</span>
-        </h1>
-
-        <p data-en="PO80 is a data reserve system designed to store data through Wi-Fi and use it later when connectivity is unavailable. Prepare your data before you travel, work, explore or go offline."
-           data-es="PO80 es un sistema de reserva de datos diseñado para almacenar datos mediante Wi-Fi y utilizarlos posteriormente cuando no haya conexión. Prepara tus datos antes de viajar, trabajar, explorar o quedarte sin conexión.">
-          PO80 is a data reserve system designed to store data through Wi-Fi
-          and use it later when connectivity is unavailable. Prepare your data
-          before you travel, work, explore or go offline.
-        </p>
-
-        <div class="buttons">
-          <a href="#system" class="button primary"
-             data-en="EXPLORE THE SYSTEM"
-             data-es="CONOCER EL SISTEMA">
-            EXPLORE THE SYSTEM
-          </a>
-
-          <a href="#benefits" class="button"
-             data-en="VIEW BENEFITS"
-             data-es="VER BENEFICIOS">
-            VIEW BENEFITS
-          </a>
-        </div>
-
-      </section>
-
-      <section class="system" id="system">
-
-        <div class="system-title"
-             data-en="PO80 SYSTEM · FOUR SIMPLE OPTIONS"
-             data-es="SISTEMA PO80 · CUATRO OPCIONES SIMPLES">
-          PO80 SYSTEM · FOUR SIMPLE OPTIONS
-        </div>
-
-        <div class="system-buttons">
-
-          <button class="system-button" onclick="recargar()">
-            <span class="icon">↻</span>
-            <span data-en="RECHARGE" data-es="RECARGAR">RECHARGE</span>
-          </button>
-
-          <button class="system-button" onclick="usar()">
-            <span class="icon">▶</span>
-            <span data-en="USE" data-es="USAR">USE</span>
-          </button>
-
-          <button class="system-button" onclick="apagar()">
-            <span class="icon">⏻</span>
-            <span data-en="TURN OFF" data-es="APAGAR">TURN OFF</span>
-          </button>
-
-          <button class="system-button" onclick="prender()">
-            <span class="icon">⏻</span>
-            <span data-en="TURN ON" data-es="PRENDER">TURN ON</span>
-          </button>
-
-        </div>
-      </section>
-
-      <section id="benefits">
-
-        <h2 class="section-title"
-            data-en="Your data. Your control."
-            data-es="Tus datos. Tu control.">
-          Your data. Your control.
-        </h2>
-
-        <p class="section-subtitle"
-           data-en="Make better use of the Wi-Fi connections already available to you."
-           data-es="Aprovecha mejor las conexiones Wi-Fi que ya tienes disponibles.">
-          Make better use of the Wi-Fi connections already available to you.
-        </p>
-
-        <div class="benefits">
-
-          <div class="card">
-            <h3 data-en="Recharge with Wi-Fi" data-es="Recarga con Wi-Fi">
-              Recharge with Wi-Fi
-            </h3>
-
-            <p data-en="Use Wi-Fi at home, work, hotels or public places to prepare your data in advance."
-               data-es="Utiliza el Wi-Fi de casa, trabajo, hoteles o lugares públicos para preparar tus datos con anticipación.">
-              Use Wi-Fi at home, work, hotels or public places to prepare your
-              data in advance.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 data-en="Use it later" data-es="Úsalo después">
-              Use it later
-            </h3>
-
-            <p data-en="Access previously stored data when you are away from home, traveling or in an area without connectivity."
-               data-es="Accede a los datos previamente almacenados cuando estés fuera de casa, viajando o en un lugar sin conexión.">
-              Access previously stored data when you are away from home,
-              traveling or in an area without connectivity.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 data-en="Reduce mobile data use" data-es="Reduce el consumo móvil">
-              Reduce mobile data use
-            </h3>
-
-            <p data-en="Prepare your data through Wi-Fi and reduce your dependence on traditional mobile data plans."
-               data-es="Prepara tus datos mediante Wi-Fi y reduce tu dependencia de los planes tradicionales de datos móviles.">
-              Prepare your data through Wi-Fi and reduce your dependence on
-              traditional mobile data plans.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      <section class="about">
-
-        <h2 data-en="About PO80" data-es="Sobre PO80">
-          About PO80
-        </h2>
-
-        <p data-en="PO80 is a technology project focused on creating a new way to prepare, store and manage data on personal devices. Its mission is to help people make better use of Wi-Fi and have previously stored data available when connectivity is limited or unavailable."
-           data-es="PO80 es un proyecto tecnológico enfocado en crear una nueva forma de preparar, almacenar y administrar datos en dispositivos personales. Su misión es ayudar a las personas a aprovechar mejor el Wi-Fi y disponer de datos previamente almacenados cuando la conexión sea limitada o no esté disponible.">
-          PO80 is a technology project focused on creating a new way to prepare,
-          store and manage data on personal devices. Its mission is to help
-          people make better use of Wi-Fi and have previously stored data
-          available when connectivity is limited or unavailable.
-        </p>
-
-        <p class="founder"
-           data-en="Founded and created by Jhon Gonzales · Born in Lima, Peru"
-           data-es="Fundado y creado por Jhon Gonzales · Nacido en Lima, Perú">
-          Founded and created by Jhon Gonzales · Born in Lima, Peru
-        </p>
-
-      </section>
-
-      <section class="final">
-
-        <h2 data-en="Prepare today. Stay ready tomorrow."
-            data-es="Prepárate hoy. Mantente listo mañana.">
-          Prepare today. Stay ready tomorrow.
-        </h2>
-
-        <p data-en="PO80 · Recharge · Use · Turn Off · Turn On"
-           data-es="PO80 · Recargar · Usar · Apagar · Prender">
-          PO80 · Recharge · Use · Turn Off · Turn On
-        </p>
-
-        <a href="#system" class="button primary"
-           data-en="EXPLORE PO80"
-           data-es="EXPLORAR PO80">
-          EXPLORE PO80
-        </a>
-
-      </section>
-
-    </main>
-
-  </div>
-
-  <footer>
-    <div>© 2026 PO80. All rights reserved.</div>
-    <div>
-      Founder & Creator: Jhon Gonzales · Lima, Peru
-    </div>
-    <div>
-      <a href="mailto:po80payments@gmail.com">
-        po80payments@gmail.com
+      <a href="#top" class="logo">
+        PO<span>80</span>
       </a>
+
+      <div class="nav-links">
+        <a href="#system">System</a>
+        <a href="#how">How it works</a>
+        <a href="#security">Security</a>
+        <a href="#plans">Plans</a>
+        <a href="#founder">Founder</a>
+      </div>
+
+      <select class="language" id="language">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+
     </div>
-  </footer>
+  </nav>
 
-  <script>
-    let currentLanguage = "en";
 
-    function changeLanguage() {
-      currentLanguage = document.getElementById("language").value;
+  <!-- HERO -->
 
-      document.querySelectorAll("[data-en]").forEach(function(element) {
-        element.innerHTML = element.getAttribute("data-" + currentLanguage);
-      });
+  <main id="top">
 
-      document.documentElement.lang = currentLanguage;
-    }
+    <section class="hero">
 
-    function recargar() {
-      const message = currentLanguage === "en"
-        ? "RECHARGE: Connect your device to a Wi-Fi network."
-        : "RECARGAR: Conecta tu dispositivo a una red Wi-Fi.";
+      <div class="container hero-grid">
 
-      alert(message);
-    }
+        <div>
 
-    function usar() {
-      const message = currentLanguage === "en"
-        ? "USE: The system will use previously stored data."
-        : "USAR: El sistema utilizará los datos previamente almacenados.";
+          <div class="eyebrow">
+            <span class="dot"></span>
+            PO80 SYSTEM ONLINE
+          </div>
 
-      alert(message);
-    }
+          <h1>
+            Your connectivity.
+            <span class="gradient">Stored differently.</span>
+          </h1>
 
-    function apagar() {
-      const message = currentLanguage === "en"
-        ? "PO80 is turned off."
-        : "PO80 está apagado.";
+          <p class="hero-description">
+            PO80 is a personal connectivity platform designed to help users
+            store, manage and access previously available connectivity
+            resources directly from their device.
+          </p>
 
-      alert(message);
-    }
+          <div class="actions">
 
-    function prender() {
-      const message = currentLanguage === "en"
-        ? "PO80 is turned on."
-        : "PO80 está encendido.";
+            <a href="#download" class="btn btn-primary">
+              DOWNLOAD PO80
+            </a>
 
-      alert(message);
-    }
-  </script>
+            <a href="#how" class="btn btn-secondary">
+              HOW IT WORKS
+            </a>
 
-</body>
-</html>
+          </div>
+
+        </div>
+
+
+        <div class="device-wrap">
+
+          <div class="device">
+
+            <div class="screen">
+
+              <div class="
