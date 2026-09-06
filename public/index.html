@@ -2,112 +2,136 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80 OS - WEB + APP + SISTEMA COMPLETO</title>
+<title>PO80.COM - ONE PAYMENT, NO MORE BILLS</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#ff6a00">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@700;800&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:Inter,Arial,sans-serif;overflow:hidden}
-#bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(800px at 20% 20%,rgba(255,106,0,0.25),transparent),radial-gradient(600px at 80% 40%,rgba(0,229,255,0.15),transparent),#050507}
-.top{position:fixed;top:0;left:0;right:0;height:36px;background:rgba(15,15,17,0.9);backdrop-filter:blur(20px);border-bottom:1px solid #1c1c1c;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:12px;z-index:100}
-.desk{position:absolute;top:36px;left:0;right:0;bottom:0;display:grid;grid-template-columns:220px 1fr 300px}
-.side{border-right:1px solid #1c1c1c;padding:12px;background:rgba(10,10,12,0.6)}
-.main{padding:14px;overflow-y:auto}
-.right{border-left:1px solid #1c1c1c;padding:12px;background:rgba(10,10,12,0.6);overflow-y:auto}
-.app{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;cursor:pointer;margin-top:6px;border:1px solid transparent}
-.app:hover{background:rgba(255,106,0,0.1);border-color:rgba(255,106,0,0.2)}
-.app.active{background:#ff6a00;color:#000;font-weight:800}
-.card{border:1px solid #1c1c1c;background:#0f0f11;border-radius:16px;padding:14px;margin-top:10px}
-.btn{width:100%;padding:14px;border-radius:100px;border:none;font-weight:800;margin-top:8px;cursor:pointer}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#050507;color:#fff;font-family:'Geist',sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border:1px solid #1c1c1c;border-radius:100px;background:rgba(0,0,0,0.7);backdrop-filter:blur(20px)}
+.hero{margin-top:70px}.hero h1{font-size:82px;line-height:0.85;letter-spacing:-4px;font-weight:800}.hero h1 b{color:#ff6a00}
+@media(max-width:700px){.hero h1{font-size:48px}}
+.mono{font-family:'Geist Mono';font-size:10px;letter-spacing:2px;opacity:0.4}
+.card{border:1px solid #1c1c1c;background:rgba(15,15,17,0.85);border-radius:20px;padding:20px;margin-top:14px}
+.btn{width:100%;padding:18px;border-radius:100px;border:none;font-weight:800;text-align:center;display:block;text-decoration:none;margin-top:10px;cursor:pointer}
 .btnO{background:#ff6a00;color:#000}.btnW{background:#fff;color:#000}.btnD{background:#1a1a1a;color:#fff;border:1px solid #222}
-.barWrap{height:10px;background:#111;border-radius:20px;overflow:hidden;margin-top:8px;border:1px solid #222}.bar{height:100%;background:linear-gradient(90deg,#ff6a00,#ffb700);width:0%;transition:1s}
-.file{display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid #1c1c1c;border-radius:10px;margin-top:6px;background:rgba(255,255,255,0.02)}
-.mono{font-family:monospace;font-size:10px;opacity:0.5;letter-spacing:1px}
-@media(max-width:900px){.desk{grid-template-columns:1fr}.side,.right{display:none}.mobileBar{display:flex!important}}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
+.badge{display:inline-block;padding:6px 12px;border-radius:20px;background:#ff6a00;color:#000;font-size:10px;font-weight:800}
+.barWrap{height:10px;background:#111;border-radius:20px;overflow:hidden;margin-top:10px;border:1px solid #222}.bar{height:100%;background:#ff6a00;width:0%}
 </style>
 </head>
 <body>
-<canvas id="bg" style="position:fixed;inset:0"></canvas>
-<div class="top"><div>PO80 OS v1.0 - WEB + APP + SISTEMA OPERATIVO - po80.com</div><div style="opacity:0.6" id="clock">--:--</div></div>
+<div class="wrap">
+<div class="nav"><div style="font-weight:800">PO80.COM</div><div class="mono">WEB OFICIAL • po80payments@gmail.com</div></div>
 
-<div class="desk">
-<div class="side">
-<div class="mono">SISTEMA OPERATIVO</div>
-<div class="app active" onclick="openApp('storage')">📡 WIFI STORAGE</div>
-<div class="app" onclick="openApp('explorer')">📁 EXPLORADOR</div>
-<div class="app" onclick="openApp('maps')">🗺 MAPS 195</div>
-<div class="app" onclick="openApp('jobs')">🔧 JOBS</div>
-<div class="app" onclick="openApp('photos')">🖼 FOTOS CLIENTES</div>
-<div class="app" onclick="openApp('sos')">🆘 SOS GPS</div>
-<div class="app" onclick="openApp('settings')">⚙ AJUSTES + VIP</div>
-<div style="margin-top:20px" class="mono">ALMACENAMIENTO</div>
-<div class="card" style="padding:10px"><div style="font-size:12px"><span id="used">0.0</span>GB / <span id="lim">5GB FREE</span></div><div class="barWrap"><div id="bar" class="bar"></div></div><div id="vipB" style="display:none;background:#ff6a00;color:#000;font-size:9px;padding:4px 8px;border-radius:20px;margin-top:6px;text-align:center;font-weight:800">VIP $399 ILIMITADO</div></div>
-<a href="po80.apk" download class="btn btnO" style="font-size:12px;display:block;text-align:center;text-decoration:none">⬇ APK REAL</a>
+<div class="hero">
+<div class="badge">DESCARGA GRATIS • 5GB FREE INCLUIDO</div>
+<h1>THE NEW ERA<br>OF <b>NO BILLS.</b></h1>
+<p style="margin-top:16px;opacity:0.6;max-width:700px;line-height:1.7;font-size:18px">PO80.COM es un <b style="color:#fff">SISTEMA DE ALMACENAMIENTO WIFI</b>. Descargas gratis la app, te regala 5GB de raíz para recargar. <b style="color:#fff">Pagas una sola vez $399 en po80.com y nunca más pagas biles al año.</b> Ahorras $1,200 al año.</p>
 </div>
 
-<div class="main" id="main"></div>
-
-<div class="right">
-<div class="mono">ACCIONES RAPIDAS</div>
-<button onclick="recargar()" class="btn btnO" style="padding:18px">📡 RECARGAR WIFI</button>
-<button onclick="usar()" class="btn btnW" style="padding:18px">▶ USAR OFFLINE</button>
-<div style="font-size:10px;opacity:0.4;text-align:center;margin-top:6px" class="mono">RECARGAR = Guarda WiFi gratis como GB reales<br>USAR = Usa sin internet, sin biles</div>
-
-<div class="card" style="background:#fff;color:#000;margin-top:14px">
-<div class="mono" style="color:#000">VIP $399 - UN PAGO - NUNCA MAS BILES</div>
-<div style="font-weight:800;color:#000;margin-top:4px">Un espacio que quieras, para toda la vida</div>
-<div style="background:#000;color:#fff;padding:8px;border-radius:8px;margin-top:8px;font-size:10px;word-break:break-all">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s</div>
-<input id="code" placeholder="PO80-VIP-XXXX o TXID" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-top:6px">
-<button onclick="activar()" class="btn btnO" style="background:#000;color:#fff">ACTIVAR VIP $399</button>
-<div id="msg" style="font-size:10px;margin-top:6px;color:#000"></div>
+<!-- QUE ES -->
+<div class="card" style="margin-top:30px;border-color:rgba(255,106,0,0.3)">
+<div class="mono" style="color:#ff6a00;opacity:1">¿QUE ES PO80 Y QUE OFRECE?</div>
+<div class="grid" style="margin-top:12px">
+<div><b>📦 DESCARGA GRATIS</b><br><span style="opacity:0.6;font-size:13px">La web te da la app gratis con 5GB FREE de raíz. Sin tarjeta, sin suscripción.</span></div>
+<div><b>💾 ALMACENAMIENTO WIFI REAL</b><br><span style="opacity:0.6;font-size:13px">Guarda WiFi gratis como GB reales. Lo usas sin WiFi, sin datos, sin señal. En basement, desierto, carretera.</span></div>
+<div><b>💎 VIP $399 DE POR VIDA</b><br><span style="opacity:0.6;font-size:13px">Un solo pago. Espacio ilimitado que quieras. Nunca más biles al año. Para siempre.</span></div>
+</div>
 </div>
 
+<!-- COMO FUNCIONA -->
+<div class="grid">
 <div class="card">
-<div class="mono">SISTEMA - QUE OFRECEMOS</div>
-<div style="font-size:11px;line-height:1.6;margin-top:6px;opacity:0.7">Descarga FREE. 5GB FREE de raíz. Sistema de recarga WiFi usando conexión WiFi real. VIP $399 toda la vida. Un solo pago en po80.com, nunca más biles al año. Ahorra $1200/año. Web + App + OS real offline.</div>
+<div class="mono">PASO 1 - RECARGAR</div>
+<h3 style="margin-top:8px">📡 RECARGAR - Necesita Internet</h3>
+<p style="opacity:0.6;font-size:13px;margin-top:6px;line-height:1.6">Conéctate a cualquier WiFi gratis. Presiona RECARGAR. El sistema convierte ese WiFi en GB reales offline de 0.8GB por recarga. Solo este botón necesita internet.</p>
+<div style="margin-top:10px;padding:10px;background:#000;border-radius:10px;border:1px solid #1c1c1c;font-size:11px" class="mono">NECESITA: WiFi gratis • NO NECESITA: datos propios</div>
+</div>
+<div class="card">
+<div class="mono">PASO 2 - USAR</div>
+<h3 style="margin-top:8px">▶ USAR - Sin Internet</h3>
+<p style="opacity:0.6;font-size:13px;margin-top:6px;line-height:1.6">Presiona USAR. Usa todo lo que recargaste sin WiFi, sin datos, sin señal. Maps 195 países, fotos clientes, jobs, SOS GPS. 100% offline.</p>
+<div style="margin-top:10px;padding:10px;background:#000;border-radius:10px;border:1px solid #1c1c1c;font-size:11px" class="mono">FUNCIONA: Sin WiFi • Sin datos • Sin biles</div>
+</div>
+<div class="card">
+<div class="mono">PASO 3 - SISTEMA QUE USARÁ</div>
+<h3 style="margin-top:8px">⚙ EL SISTEMA COMPLETO</h3>
+<p style="opacity:0.6;font-size:13px;margin-top:6px;line-height:1.6">App + Web + Almacenamiento. Explorador de archivos, vault de packs, maps offline, jobs blueprints, fotos. Todo guardado en tu teléfono, nada en la nube.</p>
+<div style="margin-top:10px;padding:10px;background:#000;border-radius:10px;border:1px solid #1c1c1c;font-size:11px" class="mono">INCLUYE: Maps, Jobs, Photos, Estimates, SOS</div>
 </div>
 </div>
+
+<!-- ALMACENAMIENTO INFO -->
+<div class="card">
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+<div>
+<div class="mono">ALMACENAMIENTO WIFI - COMO FUNCIONA</div>
+<h2 style="margin-top:6px">Usa sin WiFi. Recarga solo con WiFi.</h2>
+<p style="opacity:0.6;font-size:13px;margin-top:8px;max-width:700px;line-height:1.6">PO80 no gasta tus datos. Cuando estás en WiFi gratis, RECARGAR guarda ese internet como almacenamiento real. Después, en cualquier lugar sin internet, USAR abre ese contenido sin gastar nada. Por eso nunca más pagas biles al año.</p>
+</div>
+<div style="min-width:260px">
+<div style="display:flex;justify-content:space-between"><b><span id="used">0.0</span>GB / <span id="lim">5GB FREE</span></b><span class="mono" id="cnt">0 PACKS</span></div>
+<div class="barWrap"><div id="bar" class="bar"></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+<button onclick="recargar()" class="btn btnO" style="padding:14px;margin:0">📡 RECARGAR</button>
+<button onclick="usar()" class="btn btnW" style="padding:14px;margin:0">▶ USAR</button>
+</div>
+<div id="vault" style="margin-top:10px;max-height:160px;overflow-y:auto"></div>
+</div>
+</div>
+</div>
+
+<!-- VIP Y DESCARGA FINAL -->
+<div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:12px;margin-top:14px">
+<div class="card" style="background:#fff;color:#000">
+<div class="mono" style="color:#000">COMPRA OFICIAL - UN SOLO PAGO</div>
+<h2 style="color:#000;margin-top:6px;line-height:1">Paga $399 una vez.<br>Nunca más biles al año.</h2>
+<p style="color:#000;opacity:0.6;font-size:13px;margin-top:8px;line-height:1.6">App gratis viene con 5GB FREE. Cuando se llene, VIP $399 te da espacio ilimitado que quieras, para toda la vida. Un solo pago en po80.com. Verificación en po80payments@gmail.com</p>
+<div style="background:#000;color:#fff;padding:12px;border-radius:10px;margin-top:10px;word-break:break-all;font-family:monospace;font-size:11px">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s<br><span style="opacity:0.5">$399 = ~0.0052 BTC - Un pago, no más biles</span></div>
+<input id="code" placeholder="PO80-VIP-XXXX o TXID BTC" style="width:100%;padding:14px;border-radius:10px;background:#f2f2f2;border:1px solid #ddd;color:#000;margin-top:8px">
+<button onclick="activar()" class="btn btnO">ACTIVAR VIP $399 - ILIMITADO</button>
+<button onclick="location.href='mailto:po80payments@gmail.com?subject=PO80 VIP $399'" class="btn btnD" style="background:#000;color:#fff">📧 ENVIAR A po80payments@gmail.com</button>
+<div id="msg" style="font-size:11px;margin-top:8px;color:#000;font-family:monospace"></div>
+</div>
+
+<div class="card" style="border-color:rgba(255,106,0,0.35)">
+<div class="mono" style="color:#ff6a00;opacity:1">DESCARGAR - COMPATIBLE CON TODO</div>
+<h2 style="margin-top:6px">Web + App real</h2>
+<p style="opacity:0.6;font-size:13px;margin-top:6px;line-height:1.6">Esta misma web es la app. Funciona en Android, iPhone, Windows, Mac. Sin Play Store. Descarga directa.</p>
+
+<a href="po80.apk" download class="btn btnO" style="padding:20px;font-size:16px;text-decoration:none">⬇ DESCARGAR APP - ANDROID .APK</a>
+<a href="#" onclick="alert('En iPhone dale Compartir > Agregar a pantalla principal - Se instala como app real');return false" class="btn btnW" style="padding:16px;text-decoration:none">📱 DESCARGAR - iPHONE (PWA)</a>
+<a href="#" onclick="if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js');alert('App instalada - Ya funciona offline sin WiFi sin datos')}return false" class="btn btnD" style="padding:16px;text-decoration:none">💻 DESCARGAR - WINDOWS / MAC</a>
+
+<div style="margin-top:12px;padding:12px;background:#000;border-radius:12px;border:1px solid #1c1c1c">
+<div class="mono">COMPATIBILIDAD TOTAL</div>
+<div style="font-size:12px;margin-top:6px;line-height:1.6;opacity:0.7">✅ Android: APK directo + PWA<br>✅ iPhone: Agregar a pantalla principal<br>✅ Windows/Mac: Instalar como app<br>✅ 100% Offline después de recargar<br>✅ Sin WiFi, sin datos, sin biles</div>
+</div>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:40px;font-size:9px;opacity:0.2" class="mono">PO80.COM • FREE DOWNLOAD • 5GB FREE ROOT • RECARGAR CON INTERNET • USAR SIN WIFI SIN DATOS • VIP $399 LIFETIME ONE PAYMENT NO MORE BILLS • po80payments@gmail.com</div>
 </div>
 
 <script>
-const c=document.getElementById('bg'),x=c.getContext('2d');function r(){c.width=innerWidth;c.height=innerHeight}r();addEventListener('resize',r);
-let p=[];for(let i=0;i<40;i++)p.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-0.5)*0.2,vy:(Math.random()-0.5)*0.2});
-(function d(){x.clearRect(0,0,c.width,c.height);x.strokeStyle='rgba(255,106,0,0.06)';p.forEach((a,i)=>{a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>c.width)a.vx*=-1;if(a.y<0||a.y>c.height)a.vy*=-1;p.slice(i+1).forEach(b=>{let D=Math.hypot(a.x-b.x,a.y-b.y);if(D<130){x.beginPath();x.moveTo(a.x,a.y);x.lineTo(b.x,b.y);x.globalAlpha=1-D/130;x.stroke();x.globalAlpha=1}})});requestAnimationFrame(d)})();
-setInterval(()=>{document.getElementById('clock').innerText=new Date().toLocaleTimeString()},1000);
-
-let S=JSON.parse(localStorage.getItem('po80_os')||'{"used":0,"limit":5,"packs":[{"name":"MAPS North Las Vegas","size":"1.2","date":"'+new Date().toLocaleDateString()+'","status":"OFFLINE READY","type":"maps"},{"name":"JOBS Blueprints Demo","size":"0.8","date":"'+new Date().toLocaleDateString()+'","status":"OFFLINE READY","type":"jobs"},{"name":"CLIENT Photos Pack","size":"0.6","date":"'+new Date().toLocaleDateString()+'","status":"OFFLINE READY","type":"photos"}],"vip":false,"cur":null}');
-if(S.used==0){S.used=2.6}
-function save(){localStorage.setItem('po80_os',JSON.stringify(S));render();renderMain()}
+let S=JSON.parse(localStorage.getItem('po80_web')||'{"used":0,"limit":5,"packs":[],"vip":false}');
+function save(){localStorage.setItem('po80_web',JSON.stringify(S));render()}
 function render(){
  document.getElementById('used').innerText=S.used.toFixed(1);
  document.getElementById('lim').innerText=S.vip?'ILIMITADO':S.limit+'GB FREE';
  document.getElementById('bar').style.width=S.vip?'100%':Math.min(100,S.used/S.limit*100)+'%';
- document.getElementById('vipB').style.display=S.vip?'block':'none';
-}
-let curApp='storage';
-function openApp(a){curApp=a;document.querySelectorAll('.app').forEach(el=>el.classList.remove('active'));event.currentTarget.classList.add('active');renderMain()}
-function renderMain(){
- let m=document.getElementById('main');
- if(curApp=='storage'){
-  m.innerHTML=`<h1 style="font-size:38px;line-height:0.9">WIFI STORAGE<br><span style="color:#ff6a00">SYSTEM OS</span></h1><p style="opacity:0.6;margin-top:8px">Sistema operativo completo - 5GB FREE de raíz - RECARGAR con WiFi gratis - USAR offline sin biles - VIP $399 ilimitado</p><div class="card"><div style="display:flex;justify-content:space-between"><b>${S.used.toFixed(1)}GB / ${S.vip?'ILIMITADO':S.limit+'GB FREE'}</b><span style="opacity:0.5" class="mono">${S.packs.length} PACKS</span></div><div class="barWrap"><div class="bar" style="width:${S.vip?'100%':Math.min(100,S.used/S.limit*100)+'%'}"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px"><button onclick="recargar()" class="btn btnO" style="padding:18px">📡 RECARGAR</button><button onclick="usar()" class="btn btnW" style="padding:18px">▶ USAR</button></div></div><div style="margin-top:12px">${S.packs.map((pk,i)=>`<div class="file" style="${S.cur===i?'border-color:#ff6a00;background:rgba(255,106,0,0.1)':''}"><div><b>${pk.name}</b><br><span class="mono">${pk.size}GB • ${pk.date} • ${pk.status}</span></div><div style="display:flex;gap:6px"><button onclick="usarPack(${i})" class="btn btnW" style="padding:8px 14px;margin:0;font-size:11px">${S.cur===i?'EN USO':'USAR'}</button><button onclick="delPack(${i})" class="btn btnD" style="padding:8px 10px;margin:0;font-size:11px">X</button></div></div>`).join('')}</div>`;
- }else if(curApp=='explorer'){
-  m.innerHTML=`<h2>📁 EXPLORADOR - SISTEMA DE ARCHIVOS REAL</h2><p style="opacity:0.6;margin-top:6px">Todo tu contenido descargado - Explora todo el sistema operativo</p><div class="card"><div class="mono">/po80/storage/</div>${S.packs.map(pk=>`<div class="file"><div>📦 ${pk.name}<br><span class="mono">${pk.size}GB • OFFLINE • 195 países</span></div><div class="mono">OFFLINE</div></div>`).join('')}<div class="file"><div>📁 /maps/ - 195 países offline</div><div class="mono">2.1GB</div></div><div class="file"><div>📁 /jobs/ - Blueprints y estimados</div><div class="mono">1.4GB</div></div><div class="file"><div>📁 /photos/ - Fotos clientes</div><div class="mono">0.9GB</div></div></div>`;
- }else if(curApp=='maps'){m.innerHTML=`<h2>🗺 MAPS 195 PAÍSES - OFFLINE</h2><div class="card"><div style="height:200px;background:linear-gradient(135deg,#111,#222);border-radius:12px;display:flex;align-items:center;justify-content:center">MAPA OFFLINE - North Las Vegas - Sin internet - Funciona con USAR</div><button onclick="recargar()" class="btn btnO">📡 RECARGAR MAPS</button></div>`}
- else if(curApp=='jobs'){m.innerHTML=`<h2>🔧 JOBS - BLUEPRINTS</h2><div class="card"><div class="file"><div>🏗 Blueprint Casa Vegas - 2.4GB</div><button class="btn btnW" style="padding:6px 12px;margin:0;font-size:11px">USAR</button></div><div class="file"><div>📄 Estimado Cliente - PDF</div><button class="btn btnW" style="padding:6px 12px;margin:0;font-size:11px">USAR</button></div></div>`}
- else if(curApp=='photos'){m.innerHTML=`<h2>🖼 FOTOS CLIENTES - VAULT</h2><div class="card" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px"><div style="height:80px;background:#222;border-radius:10px"></div><div style="height:80px;background:#222;border-radius:10px"></div><div style="height:80px;background:#222;border-radius:10px"></div></div>`}
- else if(curApp=='sos'){m.innerHTML=`<h2>🆘 SOS GPS - SIN SEÑAL</h2><div class="card"><b>GPS funciona sin internet</b><br><span style="opacity:0.6;font-size:12px">Si te quedas sin señal en desierto o basement, USAR activa GPS offline guardado con RECARGAR</span><br><button class="btn btnO" style="margin-top:10px">📍 ACTIVAR SOS OFFLINE</button></div>`}
- else if(curApp=='settings'){m.innerHTML=`<h2>⚙ AJUSTES + VIP $399</h2><div class="card" style="background:#fff;color:#000"><b style="color:#000">PO80.COM - ONE PAYMENT SYSTEM</b><br><span style="font-size:12px;opacity:0.7;color:#000">Descarga FREE. 5GB FREE de raíz. VIP $399 de por vida = espacio ilimitado que quieras. Nunca más biles al año. Un solo pago en po80.com. Ahorra $1200/año.</span><div style="background:#000;color:#fff;padding:10px;border-radius:10px;margin-top:10px;font-size:11px;word-break:break-all">bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s - $399 = ~0.0052 BTC</div><div style="margin-top:10px"><b>po80payments@gmail.com</b> - Manda TXID</div></div>`}
-}
-renderMain();render();
-
+ document.getElementById('cnt').innerText=S.packs.length+' PACKS';
+ document.getElementById('vault').innerHTML=S.packs.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:8px;border:1px solid #222;border-radius:8px;margin-top:6px;background:rgba(255,255,255,0.02)"><span style="font-size:12px">${p}</span><span style="font-size:10px;opacity:0.5">OFFLINE</span></div>`).join('')||'<div style="opacity:0.3;text-align:center;padding:10px;font-size:12px">Sin packs - RECARGAR con WiFi</div>';
+}render();
 function recargar(){
- if(!navigator.onLine){alert('Conectate a WiFi gratis para RECARGAR');return}
+ if(!navigator.onLine){alert('Conectate a WiFi gratis para RECARGAR - Este es el unico boton que necesita internet');return}
  if(S.used>=S.limit&&!S.vip){alert('Llenaste 5GB FREE - Activa VIP $399 para ilimitado - Nunca mas biles');return}
- S.used+=0.8;S.packs.push({name:'WIFI PACK '+(S.packs.length+1)+' - '+['MAPS','JOBS','PHOTOS','ESTIMATES','SOS'][Math.floor(Math.random()*5)],size:'0.8',date:new Date().toLocaleDateString(),status:'OFFLINE READY',type:'wifi'});save();alert('✅ RECARGA REAL - 0.8GB guardado - Ya puedes USAR sin internet');
+ S.used+=0.8;S.packs.push('PACK '+(S.packs.length+1)+' - 0.8GB Offline - '+new Date().toLocaleDateString());save();alert('✅ RECARGA GUARDADA - Ahora puedes USAR sin WiFi sin datos');
 }
-function usar(){if(S.packs.length==0){alert('Recarga primero');return}alert('▶ USANDO: '+S.packs[0].name+'\\n✅ Funciona SIN INTERNET, sin biles, en basement, desierto, carretera');}
-function usarPack(i){S.cur=i;save();renderMain();alert('▶ USANDO AHORA: '+S.packs[i].name+'\\nOFFLINE ACTIVADO');}
-function delPack(i){S.packs.splice(i,1);S.used=Math.max(0,S.used-0.8);save();}
-function activar(){let c=document.getElementById('code').value.trim();if(c.length>8){S.vip=true;S.limit=9999;save();document.getElementById('msg').innerText='✅ VIP $399 ACTIVADO - ILIMITADO PARA SIEMPRE - NUNCA MAS BILES';alert('✅ VIP $399 ACTIVADO - SISTEMA OPERATIVO ILIMITADO');}}
+function usar(){if(S.packs.length==0){alert('Recarga primero con WiFi');return}alert('▶ USANDO OFFLINE - Sin WiFi, sin datos, sin biles - Funciona en basement, desierto, carretera');}
+function activar(){let c=document.getElementById('code').value.trim();if(c.length>8){S.vip=true;S.limit=9999;save();document.getElementById('msg').innerText='✅ VIP $399 ACTIVADO - ILIMITADO PARA SIEMPRE - NUNCA MAS BILES AL AÑO';}}
 if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js')}
 </script>
 </body>
