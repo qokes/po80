@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PO80 — Recarga tu conexión</title>
+
+  <title>PO80.com  — Prepare Your Connection</title>
 
   <meta name="description"
-    content="PO80 permite recargar datos mediante Wi-Fi y utilizarlos posteriormente desde tu dispositivo.">
+    content="PO80 is a data reserve system designed to store data through Wi-Fi and use it later when connectivity is unavailable.">
 
   <link rel="manifest" href="/manifest.json">
 
@@ -17,10 +18,14 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background: #05070d;
-      color: white;
-      font-family: Arial, sans-serif;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
       min-height: 100vh;
     }
 
@@ -35,40 +40,57 @@
       justify-content: space-between;
       align-items: center;
       padding: 24px 0;
+      border-bottom: 1px solid #172232;
     }
 
     .logo {
+      color: #63f5ff;
       font-size: 30px;
       font-weight: 900;
-      letter-spacing: 3px;
-      color: #63f5ff;
+      letter-spacing: 4px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
     }
 
     .status {
-      color: #8d98ad;
+      color: #738198;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    .language {
+      background: #101725;
+      border: 1px solid #26384d;
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 9px 10px;
+      cursor: pointer;
       font-size: 12px;
-      letter-spacing: 1px;
     }
 
     .hero {
       text-align: center;
-      padding: 75px 10px 55px;
+      padding: 85px 10px 65px;
     }
 
     .badge {
       display: inline-block;
-      border: 1px solid #1c5365;
-      color: #63f5ff;
+      border: 1px solid #20556a;
       border-radius: 30px;
+      color: #63f5ff;
       padding: 9px 18px;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 2px;
-      margin-bottom: 25px;
+      margin-bottom: 28px;
     }
 
     h1 {
-      font-size: clamp(38px, 8vw, 78px);
-      line-height: 1.05;
+      font-size: clamp(40px, 8vw, 78px);
+      line-height: 1.04;
       letter-spacing: -3px;
       margin-bottom: 25px;
     }
@@ -78,7 +100,7 @@
     }
 
     .hero p {
-      max-width: 650px;
+      max-width: 680px;
       margin: auto;
       color: #aab4c8;
       font-size: 17px;
@@ -99,10 +121,17 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 13px;
       cursor: pointer;
       border: 1px solid #26384d;
-      color: white;
+      color: #ffffff;
       background: #101725;
+      transition: .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: .9;
     }
 
     .button.primary {
@@ -111,24 +140,19 @@
       border: none;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: .9;
-    }
-
     .system {
       background: #0b101a;
       border: 1px solid #1c2a3b;
-      border-radius: 20px;
-      padding: 30px;
-      margin: 25px auto 60px;
+      border-radius: 22px;
+      padding: 32px;
+      margin: 20px auto 75px;
       max-width: 850px;
     }
 
     .system-title {
       text-align: center;
       color: #8d98ad;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 2px;
       margin-bottom: 25px;
     }
@@ -143,18 +167,13 @@
       background: #111b29;
       border: 1px solid #26384d;
       border-radius: 12px;
-      padding: 22px 8px;
+      padding: 23px 8px;
       text-align: center;
-      color: white;
+      color: #ffffff;
       cursor: pointer;
       font-weight: bold;
       font-size: 12px;
-    }
-
-    .system-button .icon {
-      display: block;
-      font-size: 25px;
-      margin-bottom: 10px;
+      transition: .2s;
     }
 
     .system-button:hover {
@@ -162,48 +181,84 @@
       color: #63f5ff;
     }
 
+    .icon {
+      display: block;
+      color: #63f5ff;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
     .section-title {
       text-align: center;
-      font-size: 28px;
+      font-size: 30px;
       margin-bottom: 12px;
     }
 
     .section-subtitle {
       text-align: center;
       color: #8d98ad;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
+      line-height: 1.6;
     }
 
     .benefits {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
-      margin-bottom: 70px;
+      margin-bottom: 75px;
     }
 
     .card {
       background: #0b101a;
       border: 1px solid #1c2a3b;
-      border-radius: 15px;
-      padding: 25px;
+      border-radius: 16px;
+      padding: 26px;
     }
 
     .card h3 {
       color: #63f5ff;
-      margin-bottom: 12px;
       font-size: 17px;
+      margin-bottom: 12px;
     }
 
     .card p {
       color: #aab4c8;
-      line-height: 1.6;
       font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .about {
+      background: #0b101a;
+      border: 1px solid #1c2a3b;
+      border-radius: 18px;
+      padding: 35px;
+      margin-bottom: 75px;
+      text-align: center;
+    }
+
+    .about h2 {
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+
+    .about p {
+      max-width: 720px;
+      margin: auto;
+      color: #aab4c8;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .founder {
+      color: #63f5ff !important;
+      margin-top: 22px !important;
+      font-weight: bold;
     }
 
     .final {
       text-align: center;
       border-top: 1px solid #1c2a3b;
-      padding: 45px 10px;
+      padding: 50px 10px;
     }
 
     .final h2 {
@@ -220,11 +275,25 @@
       text-align: center;
       color: #596579;
       font-size: 12px;
-      padding: 25px;
+      line-height: 1.8;
+      padding: 28px;
       border-top: 1px solid #111b29;
     }
 
+    footer a {
+      color: #63f5ff;
+      text-decoration: none;
+    }
+
     @media (max-width: 700px) {
+      .header-right {
+        gap: 8px;
+      }
+
+      .status {
+        display: none;
+      }
+
       .system-buttons {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -234,11 +303,15 @@
       }
 
       .hero {
-        padding-top: 45px;
+        padding-top: 55px;
       }
 
       h1 {
         letter-spacing: -1px;
+      }
+
+      .about {
+        padding: 25px;
       }
     }
   </style>
@@ -250,107 +323,183 @@
 
     <header>
       <div class="logo">PO80</div>
-      <div class="status">DATA RESERVE SYSTEM</div>
+
+      <div class="header-right">
+        <div class="status">DATA RESERVE SYSTEM</div>
+
+        <select class="language" id="language" onchange="changeLanguage()">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
     </header>
 
     <main>
 
       <section class="hero">
-        <div class="badge">THE NEXT WAY TO PREPARE YOUR CONNECTION</div>
 
-        <h1>
-          Recarga tu conexión.<br>
-          <span>Úsala cuando la necesites.</span>
+        <div class="badge" data-en="THE NEXT WAY TO PREPARE YOUR CONNECTION"
+             data-es="UNA NUEVA FORMA DE PREPARAR TU CONEXIÓN">
+          THE NEXT WAY TO PREPARE YOUR CONNECTION
+        </div>
+
+        <h1 data-en="Recharge your connection.<br><span>Use it when you need it.</span>"
+            data-es="Recarga tu conexión.<br><span>Úsala cuando la necesites.</span>">
+          Recharge your connection.<br>
+          <span>Use it when you need it.</span>
         </h1>
 
-        <p>
-          PO80 está diseñado para recargar datos mediante Wi-Fi,
-          almacenarlos en tu dispositivo y utilizarlos posteriormente.
-          Aprovecha el Wi-Fi de hoy para prepararte para mañana.
+        <p data-en="PO80 is a data reserve system designed to store data through Wi-Fi and use it later when connectivity is unavailable. Prepare your data before you travel, work, explore or go offline."
+           data-es="PO80 es un sistema de reserva de datos diseñado para almacenar datos mediante Wi-Fi y utilizarlos posteriormente cuando no haya conexión. Prepara tus datos antes de viajar, trabajar, explorar o quedarte sin conexión.">
+          PO80 is a data reserve system designed to store data through Wi-Fi
+          and use it later when connectivity is unavailable. Prepare your data
+          before you travel, work, explore or go offline.
         </p>
 
         <div class="buttons">
-          <a href="#sistema" class="button primary">CONOCER EL SISTEMA</a>
-          <a href="#beneficios" class="button">VER BENEFICIOS</a>
+          <a href="#system" class="button primary"
+             data-en="EXPLORE THE SYSTEM"
+             data-es="CONOCER EL SISTEMA">
+            EXPLORE THE SYSTEM
+          </a>
+
+          <a href="#benefits" class="button"
+             data-en="VIEW BENEFITS"
+             data-es="VER BENEFICIOS">
+            VIEW BENEFITS
+          </a>
         </div>
+
       </section>
 
-      <section class="system" id="sistema">
-        <div class="system-title">
-          SISTEMA PO80 · CUATRO OPCIONES
+      <section class="system" id="system">
+
+        <div class="system-title"
+             data-en="PO80 SYSTEM · FOUR SIMPLE OPTIONS"
+             data-es="SISTEMA PO80 · CUATRO OPCIONES SIMPLES">
+          PO80 SYSTEM · FOUR SIMPLE OPTIONS
         </div>
 
         <div class="system-buttons">
 
           <button class="system-button" onclick="recargar()">
             <span class="icon">↻</span>
-            RECARGAR
+            <span data-en="RECHARGE" data-es="RECARGAR">RECHARGE</span>
           </button>
 
           <button class="system-button" onclick="usar()">
             <span class="icon">▶</span>
-            USAR
+            <span data-en="USE" data-es="USAR">USE</span>
           </button>
 
           <button class="system-button" onclick="apagar()">
             <span class="icon">⏻</span>
-            APAGAR
+            <span data-en="TURN OFF" data-es="APAGAR">TURN OFF</span>
           </button>
 
           <button class="system-button" onclick="prender()">
             <span class="icon">⏻</span>
-            PRENDER
+            <span data-en="TURN ON" data-es="PRENDER">TURN ON</span>
           </button>
 
         </div>
       </section>
 
-      <section id="beneficios">
-        <h2 class="section-title">Más control sobre tus datos</h2>
+      <section id="benefits">
 
-        <p class="section-subtitle">
-          Aprovecha mejor las conexiones Wi-Fi que ya tienes disponibles.
+        <h2 class="section-title"
+            data-en="Your data. Your control."
+            data-es="Tus datos. Tu control.">
+          Your data. Your control.
+        </h2>
+
+        <p class="section-subtitle"
+           data-en="Make better use of the Wi-Fi connections already available to you."
+           data-es="Aprovecha mejor las conexiones Wi-Fi que ya tienes disponibles.">
+          Make better use of the Wi-Fi connections already available to you.
         </p>
 
         <div class="benefits">
 
           <div class="card">
-            <h3>Recarga con Wi-Fi</h3>
-            <p>
-              Aprovecha el Wi-Fi de casa, trabajo, hoteles o lugares
-              disponibles para preparar tus datos.
+            <h3 data-en="Recharge with Wi-Fi" data-es="Recarga con Wi-Fi">
+              Recharge with Wi-Fi
+            </h3>
+
+            <p data-en="Use Wi-Fi at home, work, hotels or public places to prepare your data in advance."
+               data-es="Utiliza el Wi-Fi de casa, trabajo, hoteles o lugares públicos para preparar tus datos con anticipación.">
+              Use Wi-Fi at home, work, hotels or public places to prepare your
+              data in advance.
             </p>
           </div>
 
           <div class="card">
-            <h3>Úsalos después</h3>
-            <p>
-              Accede a los datos previamente almacenados cuando estés
-              fuera de casa o en un lugar sin conexión.
+            <h3 data-en="Use it later" data-es="Úsalo después">
+              Use it later
+            </h3>
+
+            <p data-en="Access previously stored data when you are away from home, traveling or in an area without connectivity."
+               data-es="Accede a los datos previamente almacenados cuando estés fuera de casa, viajando o en un lugar sin conexión.">
+              Access previously stored data when you are away from home,
+              traveling or in an area without connectivity.
             </p>
           </div>
 
           <div class="card">
-            <h3>Reduce tu consumo</h3>
-            <p>
-              Disminuye tu dependencia de los datos móviles y aprovecha
-              mejor tu conexión Wi-Fi.
+            <h3 data-en="Reduce mobile data use" data-es="Reduce el consumo móvil">
+              Reduce mobile data use
+            </h3>
+
+            <p data-en="Prepare your data through Wi-Fi and reduce your dependence on traditional mobile data plans."
+               data-es="Prepara tus datos mediante Wi-Fi y reduce tu dependencia de los planes tradicionales de datos móviles.">
+              Prepare your data through Wi-Fi and reduce your dependence on
+              traditional mobile data plans.
             </p>
           </div>
 
         </div>
       </section>
 
-      <section class="final">
-        <h2>Tu Wi-Fi de hoy puede prepararte para mañana.</h2>
+      <section class="about">
 
-        <p>
-          PO80 · Recargar · Usar · Apagar · Prender
+        <h2 data-en="About PO80" data-es="Sobre PO80">
+          About PO80
+        </h2>
+
+        <p data-en="PO80 is a technology project focused on creating a new way to prepare, store and manage data on personal devices. Its mission is to help people make better use of Wi-Fi and have previously stored data available when connectivity is limited or unavailable."
+           data-es="PO80 es un proyecto tecnológico enfocado en crear una nueva forma de preparar, almacenar y administrar datos en dispositivos personales. Su misión es ayudar a las personas a aprovechar mejor el Wi-Fi y disponer de datos previamente almacenados cuando la conexión sea limitada o no esté disponible.">
+          PO80 is a technology project focused on creating a new way to prepare,
+          store and manage data on personal devices. Its mission is to help
+          people make better use of Wi-Fi and have previously stored data
+          available when connectivity is limited or unavailable.
         </p>
 
-        <a href="#sistema" class="button primary">
-          EXPLORAR PO80
+        <p class="founder"
+           data-en="Founded and created by Jhon Gonzales · Born in Lima, Peru"
+           data-es="Fundado y creado por Jhon Gonzales · Nacido en Lima, Perú">
+          Founded and created by Jhon Gonzales · Born in Lima, Peru
+        </p>
+
+      </section>
+
+      <section class="final">
+
+        <h2 data-en="Prepare today. Stay ready tomorrow."
+            data-es="Prepárate hoy. Mantente listo mañana.">
+          Prepare today. Stay ready tomorrow.
+        </h2>
+
+        <p data-en="PO80 · Recharge · Use · Turn Off · Turn On"
+           data-es="PO80 · Recargar · Usar · Apagar · Prender">
+          PO80 · Recharge · Use · Turn Off · Turn On
+        </p>
+
+        <a href="#system" class="button primary"
+           data-en="EXPLORE PO80"
+           data-es="EXPLORAR PO80">
+          EXPLORE PO80
         </a>
+
       </section>
 
     </main>
@@ -358,24 +507,60 @@
   </div>
 
   <footer>
-    © 2026 PO80. Sistema de almacenamiento de datos en desarrollo.
+    <div>© 2026 PO80. All rights reserved.</div>
+    <div>
+      Founder & Creator: Jhon Gonzales · Lima, Peru
+    </div>
+    <div>
+      <a href="mailto:po80payments@gmail.com">
+        po80payments@gmail.com
+      </a>
+    </div>
   </footer>
 
   <script>
+    let currentLanguage = "en";
+
+    function changeLanguage() {
+      currentLanguage = document.getElementById("language").value;
+
+      document.querySelectorAll("[data-en]").forEach(function(element) {
+        element.innerHTML = element.getAttribute("data-" + currentLanguage);
+      });
+
+      document.documentElement.lang = currentLanguage;
+    }
+
     function recargar() {
-      alert("RECARGAR: conecta tu dispositivo a una red Wi-Fi.");
+      const message = currentLanguage === "en"
+        ? "RECHARGE: Connect your device to a Wi-Fi network."
+        : "RECARGAR: Conecta tu dispositivo a una red Wi-Fi.";
+
+      alert(message);
     }
 
     function usar() {
-      alert("USAR: el sistema utilizará los datos previamente almacenados.");
+      const message = currentLanguage === "en"
+        ? "USE: The system will use previously stored data."
+        : "USAR: El sistema utilizará los datos previamente almacenados.";
+
+      alert(message);
     }
 
     function apagar() {
-      alert("PO80 apagado.");
+      const message = currentLanguage === "en"
+        ? "PO80 is turned off."
+        : "PO80 está apagado.";
+
+      alert(message);
     }
 
     function prender() {
-      alert("PO80 encendido.");
+      const message = currentLanguage === "en"
+        ? "PO80 is turned on."
+        : "PO80 está encendido.";
+
+      alert(message);
     }
   </script>
 
