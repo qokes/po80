@@ -1,89 +1,383 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PO80.COM - ONE PAYMENT $399 - NO MORE BILLS</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#ff6a00">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#050507;color:#fff;font-family:Inter,Arial,sans-serif}
-.wrap{max-width:1100px;margin:0 auto;padding:18px}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border:1px solid #1c1c1c;border-radius:100px;background:#000}
-.hero{margin-top:50px}.hero h1{font-size:72px;line-height:0.9;letter-spacing:-3px;font-weight:800}@media(max-width:700px){.hero h1{font-size:42px}}
-.card{border:1px solid #1c1c1c;background:#0f0f11;border-radius:18px;padding:18px;margin-top:12px}
-.btn{width:100%;padding:18px;border-radius:100px;border:none;font-weight:800;margin-top:8px;cursor:pointer;font-size:15px}
-.btnO{background:#ff6a00;color:#000}.btnW{background:#fff;color:#000}.btnD{background:#1a1a1a;color:#fff;border:1px solid #333}
-.mono{font-family:monospace;font-size:10px;letter-spacing:2px;opacity:0.5}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:800px){.grid{grid-template-columns:1fr}}
-.barWrap{height:12px;background:#111;border-radius:20px;overflow:hidden;border:1px solid #222;margin-top:8px}.bar{height:100%;background:#ff6a00;width:0%;transition:1s}
-.btc{word-break:break-all;background:#fff;color:#000;padding:12px;border-radius:12px;font-family:monospace;font-weight:700;font-size:12px;margin-top:8px}
-.input{width:100%;padding:16px;border-radius:12px;background:#000;border:1px solid #333;color:#fff;margin-top:10px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PO80 — Recarga tu conexión</title>
+
+  <meta name="description"
+    content="PO80 permite recargar datos mediante Wi-Fi y utilizarlos posteriormente desde tu dispositivo.">
+
+  <link rel="manifest" href="/manifest.json">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #05070d;
+      color: white;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: #63f5ff;
+    }
+
+    .status {
+      color: #8d98ad;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 75px 10px 55px;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid #1c5365;
+      color: #63f5ff;
+      border-radius: 30px;
+      padding: 9px 18px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 8vw, 78px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: #63f5ff;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #aab4c8;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      border: 1px solid #26384d;
+      color: white;
+      background: #101725;
+    }
+
+    .button.primary {
+      background: #63f5ff;
+      color: #031016;
+      border: none;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: .9;
+    }
+
+    .system {
+      background: #0b101a;
+      border: 1px solid #1c2a3b;
+      border-radius: 20px;
+      padding: 30px;
+      margin: 25px auto 60px;
+      max-width: 850px;
+    }
+
+    .system-title {
+      text-align: center;
+      color: #8d98ad;
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    .system-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .system-button {
+      background: #111b29;
+      border: 1px solid #26384d;
+      border-radius: 12px;
+      padding: 22px 8px;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .system-button .icon {
+      display: block;
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .system-button:hover {
+      border-color: #63f5ff;
+      color: #63f5ff;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #8d98ad;
+      margin-bottom: 30px;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 70px;
+    }
+
+    .card {
+      background: #0b101a;
+      border: 1px solid #1c2a3b;
+      border-radius: 15px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      color: #63f5ff;
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    .card p {
+      color: #aab4c8;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .final {
+      text-align: center;
+      border-top: 1px solid #1c2a3b;
+      padding: 45px 10px;
+    }
+
+    .final h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .final p {
+      color: #8d98ad;
+      margin-bottom: 25px;
+    }
+
+    footer {
+      text-align: center;
+      color: #596579;
+      font-size: 12px;
+      padding: 25px;
+      border-top: 1px solid #111b29;
+    }
+
+    @media (max-width: 700px) {
+      .system-buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 45px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="wrap">
-<div class="nav"><b>PO80.COM</b><span class="mono">po80payments@gmail.com • 195 COUNTRIES OFFLINE</span></div>
 
-<div class="hero">
-<span style="background:#ff6a00;color:#000;padding:6px 12px;border-radius:20px;font-size:10px;font-weight:800">DESCARGA GRATIS • 5GB FREE ROOT INCLUIDO</span>
-<h1 style="margin-top:12px">THE NEW ERA<br>OF <span style="color:#ff6a00">NO BILLS.</span></h1>
-<p style="opacity:0.6;margin-top:12px;max-width:700px;line-height:1.6">PO80 es almacenamiento WiFi real. Recargas con WiFi gratis y lo usas sin WiFi, sin datos, sin biles. Un solo pago de <b style="color:#fff">$399 VIP</b> y nunca más pagas al año. Ahorras $1,200/año.</p>
-</div>
+  <div class="container">
 
-<!-- INFO Y PRECIOS -->
-<div class="grid">
-<div class="card">
-<div class="mono" style="color:#ff6a00;opacity:1">PRECIOS OFICIALES PO80.COM</div>
-<h2 style="margin-top:8px">FREE = 5GB gratis de raíz</h2>
-<p style="opacity:0.6;font-size:13px;margin-top:6px">Descarga gratis. Incluye 5GB para recargar. Sistema completo: Maps 195 países, Jobs, Photos, Estimates, SOS GPS.</p>
-<h2 style="margin-top:16px">VIP = $399 un solo pago</h2>
-<p style="opacity:0.6;font-size:13px;margin-top:6px">Espacio ilimitado que quieras, para toda la vida. Un pago en po80.com. Nunca más biles al año.</p>
-<div class="btc">BTC: bc1qep3ntxf6lz037ny04706u88jsl364p0ny4776s<br><span style="opacity:0.5">$399 ~ 0.0052 BTC • Un pago, para siempre</span></div>
-</div>
+    <header>
+      <div class="logo">PO80</div>
+      <div class="status">DATA RESERVE SYSTEM</div>
+    </header>
 
-<div class="card" style="border-color:#ff6a00">
-<div class="mono" style="color:#ff6a00;opacity:1">SISTEMA QUE VAS A USAR - SOFTWARE REAL</div>
-<h3 style="margin-top:8px">Almacenamiento WiFi</h3>
-<p style="opacity:0.6;font-size:13px;margin-top:6px;line-height:1.6"><b style="color:#fff">CARGAR WIFI</b> = Necesita internet. Convierte WiFi gratis en GB reales offline.<br><b style="color:#fff">APAGADO / USAR</b> = Sin internet. Usa lo cargado sin WiFi, sin datos, en basement, desierto, carretera.</p>
-<div style="margin-top:12px">
-<div style="display:flex;justify-content:space-between"><b><span id="used">0.0</span>GB / <span id="lim">5GB FREE</span></b><span class="mono"><span id="cnt">0</span> PACKS</span></div>
-<div class="barWrap"><div id="bar" class="bar"></div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
-<button onclick="cargarWifi()" class="btn btnO" style="margin:0">📡 CARGAR WIFI</button>
-<button onclick="apagar()" class="btn btnW" style="margin:0">⏻ APAGADO / USAR</button>
-</div>
-<div id="vault" style="margin-top:10px;max-height:140px;overflow-y:auto"></div>
-</div>
-</div>
-</div>
+    <main>
 
-<!-- PAGO VIP -->
-<div class="card" style="background:#fff;color:#000">
-<div class="mono" style="color:#000">DESBLOQUEO VIP $399 AUTOMÁTICO</div>
-<h2 style="color:#000;margin-top:6px">Paga $399 en cripto y se activa VIP al instante</h2>
-<input id="txid" class="input" style="background:#f2f2f2;color:#000;border:1px solid #ddd" placeholder="Pega TXID BTC o código PO80-VIP-XXXX">
-<button onclick="unlock()" class="btn btnO" style="padding:20px">🔓 DESBLOQUEAR VIP $399 AHORA</button>
-<div id="msg" style="margin-top:8px;font-family:monospace;font-size:11px;color:#000"></div>
-<div id="vipBox" style="display:none;margin-top:12px;padding:12px;background:#00e676;color:#000;border-radius:12px;font-weight:800;text-align:center">✅ VIP $399 ACTIVADO - ILIMITADO PARA SIEMPRE - NUNCA MÁS BILES</div>
-<button onclick="location.href='mailto:po80payments@gmail.com?subject=PO80 VIP $399 PAGADO'" class="btn btnD" style="background:#000;color:#fff">📧 po80payments@gmail.com</button>
-</div>
+      <section class="hero">
+        <div class="badge">THE NEXT WAY TO PREPARE YOUR CONNECTION</div>
 
-<div class="card">
-<div class="mono">DESCARGAR - COMPATIBLE CON TODO</div>
-<div class="grid" style="margin-top:8px">
-<a href="#" onclick="if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js');alert('App instalada - Funciona offline sin WiFi sin datos');}return false" class="btn btnO" style="text-align:center;text-decoration:none;padding:20px">⬇ DESCARGAR APP REAL - PWA</a>
-<a href="#" onclick="alert('iPhone: Compartir > Agregar a pantalla principal');return false" class="btn btnD" style="text-align:center;text-decoration:none;padding:20px">📱 iPhone + Android + Windows + Mac</a>
-</div>
-<p style="opacity:0.4;font-size:10px;margin-top:8px" class="mono">SIN ZIP - SIN ERROR DE PAQUETE - PWA INSTALABLE REAL - 100% OFFLINE DESPUÉS DE CARGAR</p>
-</div>
+        <h1>
+          Recarga tu conexión.<br>
+          <span>Úsala cuando la necesites.</span>
+        </h1>
 
-</div>
-<script>
-let S=JSON.parse(localStorage.getItem('po80_final_sys')||'{"used":0,"limit":5,"packs":[],"vip":false}');
-function save(){localStorage.setItem('po80_final_sys',JSON.stringify(S));render()}
-function render(){
- document.getElementById('used').innerText=S.used.toFixed(1);
- document.getElementById('lim').innerText=S.vip?'ILIMITADO':S.limit+'GB FREE';
- document.getElementById('bar').style.width=S.vip?'100%':Math.min(100,S.used/S.limit*100)+'%';
- document.getElementById('cnt').innerText=S.packs.length;
- document.getElementById('vault').innerHTML=S.packs.map((p,i
+        <p>
+          PO80 está diseñado para recargar datos mediante Wi-Fi,
+          almacenarlos en tu dispositivo y utilizarlos posteriormente.
+          Aprovecha el Wi-Fi de hoy para prepararte para mañana.
+        </p>
+
+        <div class="buttons">
+          <a href="#sistema" class="button primary">CONOCER EL SISTEMA</a>
+          <a href="#beneficios" class="button">VER BENEFICIOS</a>
+        </div>
+      </section>
+
+      <section class="system" id="sistema">
+        <div class="system-title">
+          SISTEMA PO80 · CUATRO OPCIONES
+        </div>
+
+        <div class="system-buttons">
+
+          <button class="system-button" onclick="recargar()">
+            <span class="icon">↻</span>
+            RECARGAR
+          </button>
+
+          <button class="system-button" onclick="usar()">
+            <span class="icon">▶</span>
+            USAR
+          </button>
+
+          <button class="system-button" onclick="apagar()">
+            <span class="icon">⏻</span>
+            APAGAR
+          </button>
+
+          <button class="system-button" onclick="prender()">
+            <span class="icon">⏻</span>
+            PRENDER
+          </button>
+
+        </div>
+      </section>
+
+      <section id="beneficios">
+        <h2 class="section-title">Más control sobre tus datos</h2>
+
+        <p class="section-subtitle">
+          Aprovecha mejor las conexiones Wi-Fi que ya tienes disponibles.
+        </p>
+
+        <div class="benefits">
+
+          <div class="card">
+            <h3>Recarga con Wi-Fi</h3>
+            <p>
+              Aprovecha el Wi-Fi de casa, trabajo, hoteles o lugares
+              disponibles para preparar tus datos.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Úsalos después</h3>
+            <p>
+              Accede a los datos previamente almacenados cuando estés
+              fuera de casa o en un lugar sin conexión.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Reduce tu consumo</h3>
+            <p>
+              Disminuye tu dependencia de los datos móviles y aprovecha
+              mejor tu conexión Wi-Fi.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="final">
+        <h2>Tu Wi-Fi de hoy puede prepararte para mañana.</h2>
+
+        <p>
+          PO80 · Recargar · Usar · Apagar · Prender
+        </p>
+
+        <a href="#sistema" class="button primary">
+          EXPLORAR PO80
+        </a>
+      </section>
+
+    </main>
+
+  </div>
+
+  <footer>
+    © 2026 PO80. Sistema de almacenamiento de datos en desarrollo.
+  </footer>
+
+  <script>
+    function recargar() {
+      alert("RECARGAR: conecta tu dispositivo a una red Wi-Fi.");
+    }
+
+    function usar() {
+      alert("USAR: el sistema utilizará los datos previamente almacenados.");
+    }
+
+    function apagar() {
+      alert("PO80 apagado.");
+    }
+
+    function prender() {
+      alert("PO80 encendido.");
+    }
+  </script>
+
+</body>
+</html>
