@@ -1,823 +1,1714 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>PO80 — Personal Connectivity System</title>
-  <meta name="description" content="PO80 is a personal connectivity platform designed to store, manage and access previously available connectivity resources.">
-  <meta name="theme-color" content="#05070b">
-
-  <style>
-    :root {
-      --bg: #05070b;
-      --bg2: #090d14;
-      --panel: rgba(255,255,255,.055);
-      --panel2: rgba(255,255,255,.035);
-      --border: rgba(255,255,255,.10);
-      --text: #f5f7fb;
-      --muted: #9aa5b5;
-      --accent: #69f0ae;
-      --accent2: #43d9ff;
-      --danger: #ff667d;
-      --max: 1180px;
-      --radius: 24px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(67,217,255,.10), transparent 30%),
-        radial-gradient(circle at 85% 20%, rgba(105,240,174,.08), transparent 28%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 40px));
-      margin: auto;
-    }
-
-    /* NAVIGATION */
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      backdrop-filter: blur(18px);
-      background: rgba(5,7,11,.72);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-
-    .nav-inner {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: -1.5px;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      color: #cbd3df;
-      font-size: 14px;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    .language {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      color: white;
-      border-radius: 10px;
-      padding: 9px 12px;
-      cursor: pointer;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-      padding: 150px 0 90px;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      border: 1px solid rgba(105,240,174,.22);
-      background: rgba(105,240,174,.07);
-      color: var(--accent);
-      padding: 8px 13px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .8px;
-      margin-bottom: 24px;
-    }
-
-    .dot {
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 14px var(--accent);
-    }
-
-    h1 {
-      font-size: clamp(54px, 7vw, 94px);
-      line-height: .94;
-      letter-spacing: -5px;
-      max-width: 760px;
-      margin-bottom: 28px;
-    }
-
-    h1 .gradient {
-      background: linear-gradient(100deg, #fff, #8df5c1, #62dcff);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-description {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 18px;
-      margin-bottom: 34px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 50px;
-      padding: 0 21px;
-      border-radius: 13px;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: .25s ease;
-      font-weight: 800;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #04100a;
-      border-color: var(--accent);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 35px rgba(105,240,174,.18);
-    }
-
-    .btn-secondary {
-      background: var(--panel);
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,.09);
-      transform: translateY(-2px);
-    }
-
-    /* DEVICE */
-
-    .device-wrap {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .device {
-      width: min(360px, 100%);
-      aspect-ratio: 9 / 18;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 42px;
-      padding: 12px;
-      background: linear-gradient(145deg, #161c25, #05070b);
-      box-shadow:
-        0 50px 100px rgba(0,0,0,.5),
-        0 0 80px rgba(67,217,255,.08);
-      transform: rotate(2deg);
-    }
-
-    .screen {
-      width: 100%;
-      height: 100%;
-      border-radius: 31px;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(105,240,174,.15), transparent 30%),
-        #070a10;
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .screen-top {
-      display: flex;
-      justify-content: space-between;
-      color: #8591a3;
-      font-size: 11px;
-      margin-bottom: 35px;
-    }
-
-    .po80-big {
-      font-size: 52px;
-      font-weight: 900;
-      letter-spacing: -4px;
-    }
-
-    .online {
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 35px;
-    }
-
-    .storage {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-
-    .storage-title {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .storage-number {
-      font-size: 38px;
-      font-weight: 900;
-      margin: 3px 0 12px;
-    }
-
-    .progress {
-      height: 6px;
-      border-radius: 20px;
-      background: #171e28;
-      overflow: hidden;
-    }
-
-    .progress span {
-      display: block;
-      width: 62%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-    }
-
-    .phone-buttons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: auto;
-    }
-
-    .phone-button {
-      border: 1px solid var(--border);
-      background: var(--panel);
-      border-radius: 14px;
-      padding: 14px 5px;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    /* STATUS */
-
-    .status-bar {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,.025);
-    }
-
-    .status-inner {
-      min-height: 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .status-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #b9c2cf;
-      font-size: 13px;
-    }
-
-    .status-green {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    /* SECTIONS */
-
-    section {
-      padding: 110px 0;
-    }
-
-    .section-heading {
-      max-width: 700px;
-      margin-bottom: 55px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1;
-      letter-spacing: -3px;
-      margin-bottom: 18px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--panel2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 30px;
-      transition: .3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,.06);
-      border-color: rgba(105,240,174,.22);
-    }
-
-    .icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: rgba(105,240,174,.09);
-      border: 1px solid rgba(105,240,174,.16);
-      color: var(--accent);
-      font-size: 20px;
-      margin-bottom: 25px;
-    }
-
-    .card h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* HOW IT WORKS */
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-
-    .step {
-      border-top: 1px solid var(--border);
-      padding-top: 25px;
-    }
-
-    .step-number {
-      color: var(--accent);
-      font-weight: 900;
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-
-    .step h3 {
-      margin-bottom: 9px;
-    }
-
-    .step p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* DASHBOARD */
-
-    .dashboard {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .dashboard-card {
-      border: 1px solid var(--border);
-      background: var(--panel2);
-      border-radius: var(--radius);
-      padding: 32px;
-    }
-
-    .dashboard-card.large {
-      min-height: 310px;
-    }
-
-    .metric {
-      font-size: 58px;
-      font-weight: 900;
-      letter-spacing: -3px;
-      margin: 15px 0;
-    }
-
-    .metric small {
-      font-size: 18px;
-      color: var(--muted);
-      letter-spacing: 0;
-    }
-
-    .mini-list {
-      list-style: none;
-      margin-top: 25px;
-    }
-
-    .mini-list li {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-      color: #bbc4d1;
-      font-size: 13px;
-    }
-
-    /* PLANS */
-
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 850px;
-    }
-
-    .plan {
-      position: relative;
-      border: 1px solid var(--border);
-      background: var(--panel2);
-      border-radius: 26px;
-      padding: 34px;
-    }
-
-    .plan.featured {
-      border-color: rgba(105,240,174,.38);
-      box-shadow: 0 0 60px rgba(105,240,174,.05);
-    }
-
-    .badge {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      font-size: 10px;
-      color: #031008;
-      background: var(--accent);
-      padding: 6px 9px;
-      border-radius: 999px;
-      font-weight: 900;
-    }
-
-    .plan h3 {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    .price {
-      font-size: 42px;
-      font-weight: 900;
-      margin: 20px 0;
-    }
-
-    .price span {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .plan ul {
-      list-style: none;
-      color: #b5bfcc;
-      font-size: 14px;
-      margin: 20px 0 28px;
-    }
-
-    .plan li {
-      padding: 7px 0;
-    }
-
-    /* SECURITY */
-
-    .security {
-      border: 1px solid var(--border);
-      background:
-        linear-gradient(135deg, rgba(67,217,255,.06), rgba(105,240,174,.035)),
-        var(--panel2);
-      border-radius: 30px;
-      padding: 45px;
-    }
-
-    .security-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .security h2 {
-      font-size: 42px;
-      line-height: 1;
-      letter-spacing: -2px;
-      margin-bottom: 18px;
-    }
-
-    .security p {
-      color: var(--muted);
-    }
-
-    .security-points {
-      display: grid;
-      gap: 12px;
-    }
-
-    .security-point {
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,.14);
-      padding: 16px;
-      border-radius: 14px;
-      font-size: 13px;
-      color: #c5cdd8;
-    }
-
-    /* FOUNDER */
-
-    .founder {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .founder-box {
-      border: 1px solid var(--border);
-      background: var(--panel2);
-      border-radius: 28px;
-      padding: 35px;
-    }
-
-    .founder-name {
-      font-size: 32px;
-      font-weight: 900;
-      margin-bottom: 5px;
-    }
-
-    .founder-location {
-      color: var(--accent);
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-
-    .founder p {
-      color: var(--muted);
-    }
-
-    /* CTA */
-
-    .cta {
-      text-align: center;
-      padding: 120px 20px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .cta h2 {
-      font-size: clamp(40px, 6vw, 70px);
-      letter-spacing: -4px;
-      line-height: .95;
-      margin-bottom: 20px;
-    }
-
-    .cta p {
-      color: var(--muted);
-      max-width: 620px;
-      margin: 0 auto 30px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 45px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .footer-copy {
-      color: #697483;
-      font-size: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 22px;
-      color: #8e99a9;
-      font-size: 12px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 900px) {
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero-grid,
-      .security-grid,
-      .founder,
-      .dashboard {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 125px;
-      }
-
-      .device-wrap {
-        margin-top: 20px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .steps {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .plans {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 560px) {
-
-      .container {
-        width: min(100% - 28px, var(--max));
-      }
-
-      h1 {
-        letter-spacing: -3px;
-      }
-
-      section {
-        padding: 80px 0;
-      }
-
-      .actions {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .security {
-        padding: 28px;
-      }
-
-      .status-inner {
-        padding: 15px 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PO80 — Stored Connectivity System</title>
+<meta name="description" content="PO80 is developing a new way to store, manage and access connectivity resources on your device.">
+<meta name="theme-color" content="#05070c">
+
+<style>
+:root{
+  --bg:#05070c;
+  --bg2:#080c14;
+  --card:rgba(255,255,255,.055);
+  --border:rgba(255,255,255,.10);
+  --text:#f5f7fb;
+  --muted:#8d97a8;
+  --cyan:#53e7ff;
+  --blue:#557cff;
+  --green:#5cffb0;
+  --purple:#9c6cff;
+  --danger:#ff657c;
+  --radius:28px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(83,231,255,.12),transparent 28%),
+    radial-gradient(circle at 85% 15%,rgba(85,124,255,.14),transparent 30%),
+    radial-gradient(circle at 50% 70%,rgba(156,108,255,.08),transparent 35%),
+    var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+  backdrop-filter:blur(22px);
+  background:rgba(5,7,12,.65);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.nav{
+  height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900;
+  letter-spacing:-1px;
+  font-size:24px;
+}
+
+.logoMark{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  font-size:14px;
+  font-weight:950;
+  color:#031016;
+  background:linear-gradient(135deg,var(--cyan),#fff);
+  box-shadow:0 0 30px rgba(83,231,255,.25);
+}
+
+.logo span{
+  color:var(--cyan);
+}
+
+.navLinks{
+  display:flex;
+  gap:30px;
+  color:#aab2c0;
+  font-size:14px;
+}
+
+.navLinks a:hover{
+  color:white;
+}
+
+.navButton{
+  padding:11px 18px;
+  border:1px solid rgba(83,231,255,.3);
+  border-radius:999px;
+  color:var(--cyan);
+  font-size:13px;
+}
+
+.hero{
+  min-height:100vh;
+  padding:150px 0 80px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:60px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid rgba(83,231,255,.22);
+  background:rgba(83,231,255,.055);
+  padding:9px 14px;
+  border-radius:999px;
+  color:#aeefff;
+  font-size:12px;
+  margin-bottom:25px;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 14px var(--green);
+}
+
+h1{
+  font-size:clamp(50px,7vw,88px);
+  line-height:.94;
+  letter-spacing:-5px;
+  max-width:850px;
+}
+
+.gradient{
+  background:linear-gradient(100deg,#fff 10%,var(--cyan) 45%,#7793ff 80%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.heroText{
+  margin-top:28px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.75;
+  max-width:650px;
+}
+
+.actions{
+  display:flex;
+  gap:14px;
+  margin-top:35px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:15px 23px;
+  border-radius:14px;
+  font-weight:800;
+  font-size:14px;
+  transition:.25s;
+  border:1px solid var(--border);
+}
+
+.btnPrimary{
+  color:#031016;
+  background:linear-gradient(135deg,var(--cyan),#9ef5ff);
+  box-shadow:0 10px 40px rgba(83,231,255,.16);
+}
+
+.btnSecondary{
+  background:rgba(255,255,255,.04);
+  color:#dce2eb;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.heroMeta{
+  display:flex;
+  gap:35px;
+  margin-top:40px;
+  color:#7f8999;
+  font-size:12px;
+}
+
+.heroMeta strong{
+  display:block;
+  color:#e7ebf1;
+  font-size:18px;
+  margin-bottom:4px;
+}
+
+/* PHONE */
+
+.phoneArea{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:620px;
+}
+
+.orbit{
+  position:absolute;
+  width:520px;
+  height:520px;
+  border:1px solid rgba(83,231,255,.12);
+  border-radius:50%;
+  animation:spin 20s linear infinite;
+}
+
+.orbit:before,
+.orbit:after{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 25px var(--cyan);
+}
+
+.orbit:before{
+  top:35px;
+  left:80px;
+}
+
+.orbit:after{
+  bottom:70px;
+  right:55px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.phone{
+  width:315px;
+  height:625px;
+  border:9px solid #151a24;
+  border-radius:45px;
+  background:#070a10;
+  box-shadow:
+    0 60px 100px rgba(0,0,0,.65),
+    0 0 80px rgba(83,231,255,.11),
+    inset 0 0 0 1px rgba(255,255,255,.12);
+  position:relative;
+  z-index:3;
+  overflow:hidden;
+}
+
+.phone:before{
+  content:"";
+  position:absolute;
+  top:9px;
+  left:50%;
+  transform:translateX(-50%);
+  width:105px;
+  height:25px;
+  background:#05070c;
+  border-radius:0 0 18px 18px;
+  z-index:5;
+}
+
+.screen{
+  height:100%;
+  padding:52px 18px 18px;
+  background:
+    radial-gradient(circle at 80% 15%,rgba(83,231,255,.14),transparent 28%),
+    linear-gradient(180deg,#0a111b,#05070c 65%);
+}
+
+.phoneTop{
+  display:flex;
+  justify-content:space-between;
+  color:#9da8b8;
+  font-size:10px;
+  margin-bottom:25px;
+}
+
+.appLogo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.appLogoCircle{
+  width:72px;
+  height:72px;
+  margin:auto;
+  border-radius:23px;
+  display:grid;
+  place-items:center;
+  font-weight:950;
+  font-size:22px;
+  color:#031016;
+  background:linear-gradient(135deg,var(--cyan),#fff);
+  box-shadow:0 0 45px rgba(83,231,255,.2);
+}
+
+.appLogo p{
+  margin-top:12px;
+  font-size:11px;
+  color:#7f8a9b;
+  letter-spacing:3px;
+}
+
+.connectionCard{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:22px;
+  padding:18px;
+  margin-bottom:13px;
+}
+
+.cardLabel{
+  color:#798496;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+}
+
+.storage{
+  font-size:33px;
+  font-weight:900;
+  margin-top:5px;
+}
+
+.storage small{
+  color:#7f8a99;
+  font-size:12px;
+}
+
+.progress{
+  height:6px;
+  border-radius:10px;
+  background:#171d27;
+  overflow:hidden;
+  margin-top:15px;
+}
+
+.progress span{
+  display:block;
+  width:64%;
+  height:100%;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--cyan),var(--blue));
+  box-shadow:0 0 15px rgba(83,231,255,.5);
+}
+
+.status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--green);
+  font-size:11px;
+  margin-top:12px;
+}
+
+.status .dot{
+  width:6px;
+  height:6px;
+}
+
+.mainAction{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,var(--cyan),#86dfff);
+  color:#031016;
+  font-weight:950;
+  font-size:14px;
+  margin-top:4px;
+}
+
+.phoneActions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:10px;
+}
+
+.phoneBtn{
+  padding:12px 5px;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.035);
+  border-radius:13px;
+  color:#bfc7d3;
+  font-size:9px;
+  font-weight:800;
+}
+
+/* SECTIONS */
+
+section{
+  padding:115px 0;
+}
+
+.sectionHead{
+  max-width:700px;
+  margin-bottom:55px;
+}
+
+.eyebrow{
+  color:var(--cyan);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-weight:900;
+  margin-bottom:15px;
+}
+
+h2{
+  font-size:clamp(36px,5vw,58px);
+  letter-spacing:-3px;
+  line-height:1;
+}
+
+.sectionHead p{
+  color:var(--muted);
+  line-height:1.7;
+  margin-top:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:30px;
+  position:relative;
+  overflow:hidden;
+}
+
+.card:after{
+  content:"";
+  position:absolute;
+  width:160px;
+  height:160px;
+  background:rgba(83,231,255,.06);
+  filter:blur(50px);
+  top:-80px;
+  right:-80px;
+}
+
+.icon{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  background:rgba(83,231,255,.09);
+  border:1px solid rgba(83,231,255,.16);
+  color:var(--cyan);
+  font-size:20px;
+  margin-bottom:25px;
+}
+
+.card h3{
+  font-size:20px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:14px;
+}
+
+/* SYSTEM */
+
+.system{
+  background:rgba(255,255,255,.018);
+  border-top:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.step{
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:rgba(255,255,255,.035);
+}
+
+.number{
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:30px;
+}
+
+.step h3{
+  font-size:17px;
+  margin-bottom:10px;
+}
+
+.step p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:20px;
+}
+
+.dashSide{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.dashMain{
+  min-height:450px;
+}
+
+.metric{
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:rgba(255,255,255,.035);
+}
+
+.metric span{
+  display:block;
+  color:#778294;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.metric strong{
+  display:block;
+  margin-top:8px;
+  font-size:30px;
+}
+
+.chart{
+  height:230px;
+  display:flex;
+  align-items:end;
+  gap:9px;
+  padding:25px 5px;
+}
+
+.bar{
+  flex:1;
+  border-radius:8px 8px 2px 2px;
+  background:linear-gradient(to top,var(--blue),var(--cyan));
+  opacity:.75;
+}
+
+.chartLabel{
+  display:flex;
+  justify-content:space-between;
+  color:#707b8d;
+  font-size:11px;
+}
+
+/* USE CASES */
+
+.useCases{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.use{
+  min-height:190px;
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:28px;
+  background:rgba(255,255,255,.035);
+}
+
+.use span{
+  color:var(--cyan);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.use h3{
+  margin:20px 0 10px;
+  font-size:21px;
+}
+
+.use p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* PLANS */
+
+.plans{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  max-width:850px;
+  margin:auto;
+}
+
+.plan{
+  padding:38px;
+  border-radius:30px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.035);
+}
+
+.plan.featured{
+  border-color:rgba(83,231,255,.35);
+  background:
+    radial-gradient(circle at 100% 0,rgba(83,231,255,.12),transparent 40%),
+    rgba(255,255,255,.045);
+}
+
+.planTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.planName{
+  font-size:19px;
+  font-weight:900;
+}
+
+.planTag{
+  font-size:10px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(83,231,255,.1);
+  color:var(--cyan);
+}
+
+.price{
+  font-size:48px;
+  font-weight:950;
+  margin:25px 0 5px;
+  letter-spacing:-2px;
+}
+
+.price small{
+  font-size:12px;
+  color:#7e8998;
+  font-weight:500;
+}
+
+.planDesc{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:25px;
+}
+
+.features{
+  list-style:none;
+}
+
+.features li{
+  color:#c4cbd5;
+  font-size:13px;
+  padding:11px 0;
+  border-bottom:1px solid rgba(255,255,255,.055);
+}
+
+.features li:before{
+  content:"✓";
+  color:var(--green);
+  margin-right:10px;
+}
+
+.planBtn{
+  display:block;
+  text-align:center;
+  margin-top:25px;
+  padding:14px;
+  border-radius:13px;
+  border:1px solid var(--border);
+  font-weight:800;
+  font-size:13px;
+}
+
+.featured .planBtn{
+  background:var(--cyan);
+  color:#031016;
+}
+
+/* TECH */
+
+.tech{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.techBox{
+  padding:35px;
+  border:1px solid var(--border);
+  border-radius:28px;
+  background:rgba(255,255,255,.035);
+}
+
+.techLine{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  font-size:13px;
+}
+
+.techLine span{
+  color:#737e90;
+}
+
+.techLine strong{
+  color:#e5eaf2;
+}
+
+/* FOUNDER */
+
+.founder{
+  display:grid;
+  grid-template-columns:.6fr 1.4fr;
+  gap:25px;
+  align-items:stretch;
+}
+
+.founderBox{
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:35px;
+  background:rgba(255,255,255,.035);
+}
+
+.initials{
+  width:80px;
+  height:80px;
+  display:grid;
+  place-items:center;
+  border-radius:24px;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  color:#031016;
+  font-size:25px;
+  font-weight:950;
+  margin-bottom:25px;
+}
+
+.founderBox h3{
+  font-size:25px;
+}
+
+.founderBox p{
+  color:var(--muted);
+  line-height:1.7;
+  margin-top:15px;
+  font-size:14px;
+}
+
+/* CTA */
+
+.final{
+  text-align:center;
+  padding:140px 0;
+}
+
+.final h2{
+  max-width:800px;
+  margin:auto;
+}
+
+.final p{
+  color:var(--muted);
+  max-width:620px;
+  margin:22px auto;
+  line-height:1.7;
+}
+
+footer{
+  border-top:1px solid rgba(255,255,255,.07);
+  padding:35px 0;
+  color:#697486;
+  font-size:12px;
+}
+
+.footerInner{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+/* REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:none;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+  .navLinks{display:none}
+
+  .hero{
+    grid-template-columns:1fr;
+    padding-top:125px;
+  }
+
+  .heroText{
+    font-size:16px;
+  }
+
+  .phoneArea{
+    min-height:600px;
+  }
+
+  .grid,
+  .steps{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .dashboard,
+  .tech,
+  .founder{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  h1{
+    letter-spacing:-3px;
+  }
+
+  section{
+    padding:85px 0;
+  }
+
+  .grid,
+  .steps,
+  .useCases,
+  .plans{
+    grid-template-columns:1fr;
+  }
+
+  .phone{
+    transform:scale(.86);
+  }
+
+  .orbit{
+    width:380px;
+    height:380px;
+  }
+
+  .heroMeta{
+    gap:20px;
+  }
+
+  .footerInner{
+    flex-direction:column;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">
+      <div class="logoMark">PO</div>
+      PO<span>80</span>
+    </a>
 
-  <nav>
-    <div class="container nav-inner">
+    <nav class="navLinks">
+      <a href="#system">System</a>
+      <a href="#technology">Technology</a>
+      <a href="#plans">Plans</a>
+      <a href="#founder">Founder</a>
+    </nav>
 
-      <a href="#top" class="logo">
-        PO<span>80</span>
-      </a>
+    <a href="#download" class="navButton">PO80.COM</a>
+  </div>
+</header>
 
-      <div class="nav-links">
-        <a href="#system">System</a>
-        <a href="#how">How it works</a>
-        <a href="#security">Security</a>
-        <a href="#plans">Plans</a>
-        <a href="#founder">Founder</a>
+
+<main>
+
+<!-- HERO -->
+
+<section class="container hero">
+
+  <div class="reveal">
+
+    <div class="badge">
+      <span class="dot"></span>
+      PO80 SYSTEM — TECHNOLOGY IN DEVELOPMENT
+    </div>
+
+    <h1>
+      Your connectivity.
+      <span class="gradient">Stored differently.</span>
+    </h1>
+
+    <p class="heroText">
+      PO80 is developing a new device-centered system designed to
+      store, manage and make available connectivity resources and
+      previously acquired data when a connection is available.
+    </p>
+
+    <div class="actions">
+      <a href="#system" class="btn btnPrimary">EXPLORE PO80</a>
+      <a href="#technology" class="btn btnSecondary">VIEW TECHNOLOGY</a>
+    </div>
+
+    <div class="heroMeta">
+      <div>
+        <strong>5 GB</strong>
+        Free concept
       </div>
 
-      <select class="language" id="language">
-        <option value="en">English</option>
-        <option value="es">Español</option>
-      </select>
+      <div>
+        <strong>24/7</strong>
+        Device management
+      </div>
 
+      <div>
+        <strong>PO80</strong>
+        Official platform
+      </div>
     </div>
-  </nav>
+
+  </div>
 
 
-  <!-- HERO -->
+  <!-- PHONE -->
 
-  <main id="top">
+  <div class="phoneArea reveal">
 
-    <section class="hero">
+    <div class="orbit"></div>
 
-      <div class="container hero-grid">
+    <div class="phone">
 
-        <div>
+      <div class="screen">
 
-          <div class="eyebrow">
-            <span class="dot"></span>
-            PO80 SYSTEM ONLINE
+        <div class="phoneTop">
+          <span>9:41</span>
+          <span>▰ ◉ ▰</span>
+        </div>
+
+        <div class="appLogo">
+
+          <div class="appLogoCircle">
+            PO80
           </div>
 
-          <h1>
-            Your connectivity.
-            <span class="gradient">Stored differently.</span>
-          </h1>
+          <p>CONNECTIVITY SYSTEM</p>
 
-          <p class="hero-description">
-            PO80 is a personal connectivity platform designed to help users
-            store, manage and access previously available connectivity
-            resources directly from their device.
-          </p>
+        </div>
 
-          <div class="actions">
+        <div class="connectionCard">
 
-            <a href="#download" class="btn btn-primary">
-              DOWNLOAD PO80
-            </a>
+          <div class="cardLabel">
+            STORED RESOURCE
+          </div>
 
-            <a href="#how" class="btn btn-secondary">
-              HOW IT WORKS
-            </a>
+          <div class="storage">
+            3.24 <small>GB</small>
+          </div>
 
+          <div class="progress">
+            <span></span>
+          </div>
+
+          <div class="status">
+            <span class="dot"></span>
+            READY
           </div>
 
         </div>
 
+        <button class="mainAction">
+          ▶ &nbsp; INICIAR / USAR
+        </button>
 
-        <div class="device-wrap">
+        <div class="phoneActions">
 
-          <div class="device">
+          <div class="phoneBtn">
+            ↻<br>
+            RECARGAR
+          </div>
 
-            <div class="screen">
+          <div class="phoneBtn">
+            ◉<br>
+            PRENDER
+          </div>
 
-              <div class="
+          <div class="phoneBtn">
+            ‖<br>
+            PAUSAR
+          </div>
+
+          <div class="phoneBtn">
+            ■<br>
+            APAGAR
+          </div>
+
+        </div>
+
+        <div class="connectionCard" style="margin-top:12px">
+
+          <div class="cardLabel">
+            DAILY CONTROL
+          </div>
+
+          <div style="margin-top:10px;color:#b8c2d0;font-size:11px">
+            Automatic management enabled
+          </div>
+
+          <div style="margin-top:12px;color:#667386;font-size:10px">
+            Next review · Tomorrow
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SYSTEM -->
+
+<section id="system" class="system">
+
+  <div class="container">
+
+    <div class="sectionHead reveal">
+
+      <div class="eyebrow">THE PO80 SYSTEM</div>
+
+      <h2>
+        Designed around
+        <span class="gradient">stored connectivity.</span>
+      </h2>
+
+      <p>
+        PO80 is being designed around the idea that useful connectivity
+        resources can be acquired while connected, stored securely on
+        the device, and managed for later supported use.
+      </p>
+
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step reveal">
+        <div class="number">01 / CONNECT</div>
+        <h3>Connect normally</h3>
+        <p>
+          When Wi-Fi or another supported connection is available,
+          PO80 can prepare and store supported resources.
+        </p>
+      </div>
+
+      <div class="step reveal">
+        <div class="number">02 / STORE</div>
+        <h3>Store locally</h3>
+        <p>
+          The system organizes stored resources on the user's own
+          device instead of depending entirely on the cloud.
+        </p>
+      </div>
+
+      <div class="step reveal">
+        <div class="number">03 / MANAGE</div>
+        <h3>Control usage</h3>
+        <p>
+          RECARGAR, PAUSAR, PRENDER, APAGAR and daily management
+          are designed to be controlled directly from the app.
+        </p>
+      </div>
+
+      <div class="step reveal">
+        <div class="number">04 / USE</div>
+        <h3>Use when needed</h3>
+        <p>
+          Supported stored resources can then be accessed when the
+          device is offline, subject to the final technical implementation.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section>
+
+  <div class="container">
+
+    <div class="sectionHead reveal">
+
+      <div class="eyebrow">CORE FEATURES</div>
+
+      <h2>
+        One system.
+        <span class="gradient">Total control.</span>
+      </h2>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card reveal">
+        <div class="icon">↻</div>
+        <h3>Automatic Reload</h3>
+        <p>
+          When an approved connection becomes available, PO80 is
+          designed to automatically manage the reload process.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">▣</div>
+        <h3>Local Storage</h3>
+        <p>
+          Resources are designed to remain associated with the user's
+          device rather than being treated as a simple online account.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">◉</div>
+        <h3>Instant Control</h3>
+        <p>
+          Activate, pause, resume or stop the PO80 system directly
+          from the phone interface.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">◫</div>
+        <h3>Daily Management</h3>
+        <p>
+          Manage daily resource consumption and prepare the device
+          for future periods.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">⌁</div>
+        <h3>Device Centered</h3>
+        <p>
+          The concept is designed around the smartphone as the
+          primary storage and control environment.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">◇</div>
+        <h3>Private by Design</h3>
+        <p>
+          Security architecture is being designed around encrypted
+          local storage and controlled access to system resources.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section>
+
+  <div class="container">
+
+    <div class="sectionHead reveal">
+
+      <div class="eyebrow">CONTROL CENTER</div>
+
+      <h2>
+        Everything visible
+        <span class="gradient">at a glance.</span>
+      </h2>
+
+      <p>
+        A future PO80 control center can show storage, status,
+        activity and system availability in one interface.
+      </p>
+
+    </div>
+
+    <div class="dashboard">
+
+      <div class="dashSide">
+
+        <div class="metric reveal">
+          <span>Stored</span>
+          <strong>3.24 GB</strong>
+        </div>
+
+        <div class="metric reveal">
+          <span>Available</span>
+          <strong>1.76 GB</strong>
+        </div>
+
+        <div class="metric reveal">
+          <span>System</span>
+          <strong style="color:var(--green);font-size:23px">
+            READY
+          </strong>
+        </div>
+
+      </div>
+
+      <div class="card dashMain reveal">
+
+        <div style="display:flex;justify-content:space-between">
+          <div>
+            <div class="eyebrow" style="margin:0">RESOURCE ACTIVITY</div>
+            <h3 style="margin-top:10px">Storage utilization</h3>
+          </div>
+
+          <div style="color:var(--green);font-size:11px">
+            ● ACTIVE
+          </div>
+        </div>
+
+        <div class="chart">
+
+          <div class="bar" style="height:25%"></div>
+          <div class="bar" style="height:38%"></div>
+          <div class="bar" style="height:31%"></div>
+          <div class="bar" style="height:53%"></div>
+          <div class="bar" style="height:45%"></div>
+          <div class="bar" style="height:68%"></div>
+          <div class="bar" style="height:60%"></div>
+          <div class="bar" style="height:82%"></div>
+          <div class="bar" style="height:72%"></div>
+          <div class="bar" style="height:91%"></div>
+
+        </div>
+
+        <div class="chartLabel">
+          <span>MON</span>
+          <span>TODAY</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- USE CASES -->
+
+<section>
+
+  <div class="container">
+
+    <div class="sectionHead reveal">
+
+      <div class="eyebrow">BUILT FOR REAL LIFE</div>
+
+      <h2>
+        When connectivity
+        <span class="gradient">matters most.</span>
+      </h2>
+
+      <p>
+        PO80 is being designed for situations where connectivity can
+        become difficult, limited or unavailable.
+      </p>
+
+    </div>
+
+
+    <div class="useCases">
+
+      <div class="use reveal">
+        <span>01 / OUTDOORS</span>
+        <h3>Camping & remote locations</h3>
+        <p>
+          Prepare your device before leaving areas with reliable
+          connectivity and manage stored resources while traveling.
+        </p>
+      </div>
+
+      <div class="use reveal">
+        <span>02 / TRAVEL</span>
+        <h3>Roads & long journeys</h3>
+        <p>
+          A system designed to help users manage connectivity resources
+          before entering areas with limited coverage.
+        </p>
+      </div>
+
+      <div class="use reveal">
+        <span>03 / ASSISTANCE</span>
+        <h3>Help & communication</h3>
+        <p>
+          The concept is intended to support access to previously
+          stored resources when connectivity becomes difficult.
+        </p>
+      </div>
+
+      <div class="use reveal">
+        <span>04 / SAFETY</span>
+        <h3>Emergency preparation</h3>
+        <p>
+          PO80 is not a replacement for emergency networks or emergency
+          services. Availability of real emergency communication still
+          depends on the device and networks available.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PLANS -->
+
+<section id="plans" class="system">
+
+  <div class="container">
+
+    <div class="sectionHead reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+
+      <div class="eyebrow">ACCESS</div>
+
+      <h2>
+        Choose your
+        <span class="gradient">PO80 level.</span>
+      </h2>
+
+      <p>
+        Initial plan concepts. Commercial access will only be enabled
+        after the system and payment infrastructure are fully validated.
+      </p>
+
+    </div>
+
+
+    <div class="plans">
+
+      <div class="plan reveal">
+
+        <div class="planTop">
+          <div class="planName">FREE</div>
+          <div class="planTag">START</div>
+        </div>
+
+        <div class="price">
+          5 <small>GB concept</small>
+        </div>
+
+        <p class="planDesc">
+          A starting experience designed to demonstrate the PO80 system.
+        </p>
+
+        <ul class="features">
+          <li>PO80 mobile interface</li>
+          <li>Stored-resource management</li>
+          <li>RECARGAR control</li>
+          <li>USAR / ACTIVAR</li>
+          <li>PAUSAR / APAGAR</li>
+        </ul>
+
+        <a href="#download" class="planBtn">
+          JOIN THE PROJECT
+        </a>
+
+      </div>
+
+
+      <div class="plan featured reveal">
+
+        <div class="planTop">
+          <div class="planName">PO80 VIP</div>
+          <div class="planTag">LIFETIME</div>
+        </div>
+
+        <div class="price">
+          $899.99
+          <small>USD</small>
+        </div>
+
+        <p class="planDesc">
+          Planned lifetime access for the advanced PO80 system.
+          Intended BTC payment infrastructure will be added later.
+        </p>
+
+        <ul class="features">
+          <li>Lifetime access concept</li>
+          <li>Advanced storage capacity</li>
+          <li>Priority system features</li>
+          <li>Advanced device management</li>
+          <li>Future PO80 upgrades</li>
+        </ul>
+
+        <a href="mailto:po80payments@gmail.com" class="planBtn">
+          CONTACT PO80
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TECHNOLOGY -->
+
+<section id="technology">
+
+  <div class="container">
+
+    <div class="sectionHead reveal">
+
+      <div class="eyebrow">TECHNOLOGY</div>
+
+      <h2>
+        Engineered for the
+        <span class="gradient">device.</span>
+      </h2>
+
+      <p>
+        PO80's technical architecture is being developed with native
+        mobile capabilities, secure local storage and controlled network
+        interfaces in mind.
+      </p>
+
+    </div>
+
+
+    <div class="tech">
+
+      <div class="techBox reveal">
+
+        <div class="techLine">
+          <span>Platform</span>
+          <strong>Android First</strong>
+        </div>
+
+        <div class="techLine">
+          <span>Application</span>
+          <strong>Native Mobile</strong>
+        </div>
+
+        <div class="techLine">
+          <span>Local Storage</span>
+          <strong>Encrypted</strong>
+        </div>
+
+        <div class="techLine">
+          <span>Security</span>
+          <strong>Device Keystore</strong>
+        </div>
+
+        <div class="techLine">
+          <span>Network Layer</span>
+          <strong>Under Validation</strong>
+        </div>
+
+      </div>
+
+
+      <div class="techBox reveal">
+
+        <h3 style="font-size:24px;margin-bottom:15px">
+          The important distinction
+        </h3>
+
+        <p style="color:var(--muted);line-height:1.8;font-size:14px">
+
+          PO80 is not presented as a magical source of internet without
+          a physical network. The technology must first acquire data or
+          connectivity resources while a legitimate connection exists.
+
+          <br><br>
+
+          The goal is to make those resources manageable and available
+          for supported offline scenarios, while the deeper network-layer
+          functionality is technically validated.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOUNDER -->
+
+<section id="founder" class="system">
+
+  <div class="container">
+
+    <div class="founder">
+
+      <div class="founderBox reveal">
+
+        <div class="initials">JG</div>
+
+        <h3>Jhon Gonzales</h3>
+
+        <p>
+          Founder of PO80.
+        </p>
+
+        <p>
+          Lima, Peru
+        </p>
+
+      </div>
+
+
+      <div class="founderBox reveal">
+
+        <div class="eyebrow">THE VISION</div>
+
+        <h2 style="font-size:38px">
+          Connectivity should be
+          <span class="gradient">managed differently.</span>
+        </h2>
+
+        <p>
+          PO80 is an independent technology project focused on creating
+          a new approach to how people prepare, store and manage
+          connectivity resources on personal devices.
+        </p>
+
+        <p>
+          The project is being developed with a long-term vision:
+          simple controls, strong security, device-centered technology
+          and an interface that anyone can understand.
+        </p>
+
+        <p>
+          Official contact:
+          <strong style="color:#fff">po80payments@gmail.com</strong>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DOWNLOAD -->
+
+<section id="download" class="final">
+
+  <div class="container reveal">
+
+    <div class="eyebrow">OFFICIAL DISTRIBUTION</div>
+
+    <h2>
+      PO80.
+      <span class="gradient">Coming to your device.</span>
+    </h2>
+
+    <p>
+      PO80 will be distributed officially through PO80.COM.
+      The application download will be enabled when the first
+      validated release is ready.
+    </p>
+
+    <div class="actions" style="justify-content:center">
+
+      <a href="mailto:po80payments@gmail.com" class="btn btnPrimary">
+        CONTACT PO80
+      </a>
+
+      <a href="#technology" class="btn btnSecondary">
+        TECHNOLOGY
+      </a>
+
+    </div>
+
+    <p style="font-size:11px;margin-top:35px">
+      Official distribution planned exclusively through PO80.COM.
+      No Play Store or App Store distribution is planned for the
+      initial project.
+    </p>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <div class="container footerInner">
+
+    <div>
+      <strong style="color:#dfe5ed">PO<span style="color:var(--cyan)">80</span></strong>
+      — Stored Connectivity System
+    </div>
+
+    <div>
+      © 2026 PO80 · Jhon Gonzales · Lima, Peru
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{
+  threshold:.12
+});
+
+document.querySelectorAll(".reveal").forEach(el=>{
+  observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
