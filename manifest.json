@@ -1,13 +1,11 @@
 {
-  "name": "PO80 - WIFI STORAGE SYSTEM",
+  "name": "PO80 - WIFI STORAGE REAL",
   "short_name": "PO80",
-  "description": "5GB FREE Root - VIP $399 Lifetime - One payment, no more bills per year",
-  "start_url": "/",
+  "start_url": "/po80/",
+  "scope": "/po80/",
   "display": "standalone",
   "background_color": "#050507",
   "theme_color": "#ff6a00",
-  "icons": [
-    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
-  ]
+  "description": "5GB FREE Root - RECARGAR/USAR - VIP $399 Lifetime One Payment No More Bills",
+  "icons": [{"src": "https://cdn-icons-png.flaticon.com/512/287/287560.png","sizes":"512x512","type":"image/png"}]
 }
